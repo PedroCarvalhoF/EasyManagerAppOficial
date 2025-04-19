@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Pages.Produto.CategoriaProdutoPage"
+             xmlns:local="clr-namespace:EasyManagerApp.Dtos.ProdutoCategoria"
+             xmlns:views="clr-namespace:EasyManagerApp.Views.ProdutoCategoria"
+             x:DataType="local:CategoriaProdutoDto"
+             BackgroundColor="AliceBlue"
+             Padding="10"
+             Title="Categorias dos Produtos">
+
+    <Grid RowDefinitions="Auto,*,Auto"
+          RowSpacing="10">
+
+        <!-- Barra de busca -->
+        <SearchBar Grid.Row="0"
+                   x:Name="sBarCategoriaProduto"
+                   TextChanged="sBarCategoriaProduto_TextChanged"
+                   Placeholder="Digite o nome da categoria" />
+
+        <!-- Lista de categorias -->
+        <CollectionView Grid.Row="1"
+                        x:Name="cvCategoriaProduto"
+                        BackgroundColor="Transparent"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <views:CategoriaProdutoView />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Botão no rodapé -->
+        <Button Grid.Row="2"
+                Text="Cadastrar Nova Categoria"
+                BackgroundColor="DarkSlateGray"
+                TextColor="White"
+                CornerRadius="10"
+                Margin="0,10,0,0"
+                HeightRequest="50" />
+    </Grid>
+</ContentPage>

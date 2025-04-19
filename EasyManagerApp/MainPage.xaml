@@ -36,9 +36,12 @@
 
                 <VerticalStackLayout Spacing="10">
                     <Label Text="E-mail" />
-                    <Entry Placeholder="Informe seu email" />
+                    <Entry x:Name="txtEmail"
+                           Text="admin@ec.com"
+                           Placeholder="Informe seu email" />
                     <Label Text="Senha" />
-                    <Entry Placeholder="Informe sua senha"
+                    <Entry x:Name="txtSenha" Text="123456"
+                           Placeholder="Informe sua senha"
                            IsPassword="True" />
                 </VerticalStackLayout>
             </Border>
@@ -55,10 +58,12 @@
                         BackgroundColor="{x:StaticResource Gray100}"
                         TextColor="DarkSlateGray" />
 
-                <Button  Grid.Column="1"
-                         Margin="0,0,10,0"
-                         Text="Login"
-                         TextColor="White" />
+                <Button x:Name="btnLogin"
+                        Clicked="btnLogin_Clicked"
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        Text="Login"
+                        TextColor="White" />
             </Grid>
 
         </VerticalStackLayout>

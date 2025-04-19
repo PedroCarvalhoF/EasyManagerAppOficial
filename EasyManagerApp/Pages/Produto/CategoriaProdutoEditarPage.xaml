@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Pages.Produto.CategoriaProdutoEditarPage"
+             Title="Editar Categoria"
+             xmlns:categoria="clr-namespace:EasyManagerApp.Dtos.ProdutoCategoria"
+             x:DataType="categoria:CategoriaProdutoDto">
+
+    <VerticalStackLayout Padding="10"
+                         Spacing="16">
+
+        <!-- ID da categoria -->
+        <Label Text="{Binding Id, StringFormat='ID {0}'}"
+               FontSize="12"
+               HorizontalOptions="Start" />
+
+        <!-- Nome da categoria -->
+        <Label Text="Categoria" />
+        <Entry Text="{Binding NomeCategoria}" />
+
+        <!-- Checkbox para habilitado -->
+        <HorizontalStackLayout>
+            <CheckBox IsChecked="{Binding Habilitado}" />
+            <Label Text="Categoria habilitada"
+                   VerticalOptions="Center"
+                   FontSize="14" />
+        </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>

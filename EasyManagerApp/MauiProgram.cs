@@ -4,6 +4,7 @@ using EasyManagerApp.Services;
 using EasyManagerApp.Services.Account;
 using EasyManagerApp.Services.API;
 using EasyManagerApp.Services.Intefaces;
+using EasyManagerApp.Services.ProdutoCategoria;
 using Microsoft.Extensions.Logging;
 
 namespace EasyManagerApp
@@ -28,6 +29,7 @@ namespace EasyManagerApp
 
             builder.Services.AddSingleton<IApiServices, ApiServices>();
             builder.Services.AddTransient<IAccountServices, AccountServices>();
+            builder.Services.AddTransient<ICategoriaProdutoServices, CategoriaProdutoServices>();
 
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<CadastrarUserPage>();
