@@ -30,4 +30,22 @@ public class CategoriaProdutoServices : ICategoriaProdutoServices
             throw new Exception(ex.Message);
         }
     }
+
+    public async Task<RequestResult<CategoriaProdutoDto>> CadastrarCategoriaProduto<CategoriaProdutoDto>(string token, CategoriaProdutoDtoCreate categoriaCreate, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            string rota_destino = "cadastrar-categoria-produto";
+            string rota = Rota + rota_destino;
+
+            var result = await _apiServices.Post<CategoriaProdutoDto>(token, rota, categoriaCreate, cancellationToken);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
+    }
 }

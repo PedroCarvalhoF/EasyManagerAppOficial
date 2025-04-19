@@ -15,16 +15,19 @@
 
             <!-- ID da categoria -->
             <Label Text="{Binding Id, StringFormat='ID {0}'}"
+                   x:Name="lblId"
                    FontSize="12"
                    HorizontalOptions="Start" />
 
             <!-- Nome da categoria -->
             <Label Text="Categoria" />
-            <Entry Text="{Binding NomeCategoria}" />
+            <Entry x:Name="txtCategoria"
+                   Text="{Binding NomeCategoria}" />
 
             <!-- Checkbox para habilitado -->
             <HorizontalStackLayout>
-                <CheckBox IsChecked="{Binding Habilitado}" />
+                <CheckBox IsChecked="{Binding Habilitado}"
+                          x:Name="chcCategoria" />
                 <Label Text="Categoria habilitada"
                        VerticalOptions="Center"
                        FontSize="14" />
@@ -38,10 +41,13 @@
                     x:Name="btnVoltar"
                     Text="voltar"
                     BackgroundColor="DarkSlateGray"
-                    WidthRequest="100" Clicked="btnVoltar_Clicked" />
+                    WidthRequest="100"
+                    Clicked="btnVoltar_Clicked" />
 
             <Button Grid.Column="1"
-                    Text="salvar" x:Name="btnAlterar" Clicked="btnAlterar_Clicked" />
+                    Text="salvar"
+                    x:Name="btnAlterar"
+                    Clicked="btnAlterar_Clicked" />
         </Grid>
     </Grid>
 </ContentPage>

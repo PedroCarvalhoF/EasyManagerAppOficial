@@ -33,6 +33,8 @@
         <!-- Botão no rodapé -->
         <Button Grid.Row="2"
                 Text="Cadastrar Nova Categoria"
+                x:Name="btnCadastrarCategoria"
+                Clicked="btnCadastrarCategoria_Clicked"
                 BackgroundColor="DarkSlateGray"
                 TextColor="White"
                 CornerRadius="10"

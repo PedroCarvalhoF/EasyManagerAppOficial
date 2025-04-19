@@ -1,7 +1,7 @@
 using EasyManagerApp.Dtos.ProdutoCategoria;
+using EasyManagerApp.Helper.Enum;
 using EasyManagerApp.Services.Intefaces;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.Produto;
 public partial class CategoriaProdutoPage : ContentPage
@@ -10,6 +10,7 @@ public partial class CategoriaProdutoPage : ContentPage
 
     private IEnumerable<CategoriaProdutoDto> _categorias = new List<CategoriaProdutoDto>();
     private ObservableCollection<CategoriaProdutoDto> _categoriasProdutosDtos = new ObservableCollection<CategoriaProdutoDto>();
+    private string _tonken = string.Empty;
 
     public CategoriaProdutoPage(ICategoriaProdutoServices categoriaProdutoServices)
     {
@@ -31,9 +32,13 @@ public partial class CategoriaProdutoPage : ContentPage
     {
         base.OnAppearing();
 
-        var token = await SecureStorage.GetAsync("token");
+        _tonken = await SecureStorage.GetAsync("token");
+        await ConsultarCategorias();
+    }
 
-        var result = await _categoriaProdutoServices.ConsultarCategoriasProdutos<CategoriaProdutoDto>(token, default);
+    private async Task ConsultarCategorias()
+    {
+        var result = await _categoriaProdutoServices.ConsultarCategoriasProdutos<CategoriaProdutoDto>(_tonken, default);
 
         if (result != null && result.Data != null && result.Status)
         {
@@ -53,7 +58,7 @@ public partial class CategoriaProdutoPage : ContentPage
 
     private async void CategoriaProdutoView_EditarClicked(object? sender, CategoriaProdutoDto categoria)
     {
-        var paginaEdicao = new CategoriaProdutoEditarPage(categoria, _categoriaProdutoServices)
+        var paginaEdicao = new CategoriaProdutoEditarPage(categoria, _categoriaProdutoServices, AcoesTeleEnum.Alterar)
         {
             BindingContext = categoria
         };
@@ -88,5 +93,14 @@ public partial class CategoriaProdutoPage : ContentPage
         {
             await DisplayAlert("Erro", ex.Message, "ok");
         }
+    }
+
+    private async void btnCadastrarCategoria_Clicked(object sender, EventArgs e)
+    {
+        var paginaEdicao = new CategoriaProdutoEditarPage(null, _categoriaProdutoServices, AcoesTeleEnum.Cadastrar);
+
+        await Navigation.PushAsync(paginaEdicao);
+
+        await ConsultarCategorias();
     }
 }
