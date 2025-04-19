@@ -33,7 +33,8 @@ public partial class MainPage : ContentPage
 
             await SecureStorage.SetAsync("token", resultLogin.Data.AccessToken ?? string.Empty);
 
-            App.Current.MainPage = new NavigationPage(new HomePage());
+            // Navega para a Shell
+            App.Current.MainPage = new AppShell(); // volta a usar Shell corretamente
         }
         catch (Exception ex)
         {

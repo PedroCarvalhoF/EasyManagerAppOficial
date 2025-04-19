@@ -16,7 +16,7 @@ public partial class ProdutosPage : ContentPage
     {
         try
         {
-            await Navigation.PushAsync(new CategoriaProdutoPage(_categoriaProdutoServices));
+            await Navigation.PushAsync(new CategoriaProdutoPage(_categoriaProdutoServices));           
         }
         catch (Exception ex)
         {

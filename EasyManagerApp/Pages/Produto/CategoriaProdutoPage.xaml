@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:EasyManagerApp.Dtos.ProdutoCategoria"
              xmlns:views="clr-namespace:EasyManagerApp.Views.ProdutoCategoria"
              x:DataType="local:CategoriaProdutoDto"
-             BackgroundColor="AliceBlue"
+             BackgroundColor="White"
              Padding="10"
              Title="Categorias dos Produtos">
 

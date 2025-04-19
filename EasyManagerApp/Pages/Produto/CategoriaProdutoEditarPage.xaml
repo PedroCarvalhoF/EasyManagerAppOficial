@@ -2,29 +2,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.Produto.CategoriaProdutoEditarPage"
-             Title="Editar Categoria"
              xmlns:categoria="clr-namespace:EasyManagerApp.Dtos.ProdutoCategoria"
-             x:DataType="categoria:CategoriaProdutoDto">
+             x:DataType="categoria:CategoriaProdutoDto"
+             Title="Editar Categoria do Produto"
+             Shell.NavBarIsVisible="True"
+             Padding="10">
 
-    <VerticalStackLayout Padding="10"
-                         Spacing="16">
+    <Grid RowDefinitions="*,auto">
+        <VerticalStackLayout Grid.Row="0"
+                             Padding="10"
+                             Spacing="16">
 
-        <!-- ID da categoria -->
-        <Label Text="{Binding Id, StringFormat='ID {0}'}"
-               FontSize="12"
-               HorizontalOptions="Start" />
+            <!-- ID da categoria -->
+            <Label Text="{Binding Id, StringFormat='ID {0}'}"
+                   FontSize="12"
+                   HorizontalOptions="Start" />
 
-        <!-- Nome da categoria -->
-        <Label Text="Categoria" />
-        <Entry Text="{Binding NomeCategoria}" />
+            <!-- Nome da categoria -->
+            <Label Text="Categoria" />
+            <Entry Text="{Binding NomeCategoria}" />
 
-        <!-- Checkbox para habilitado -->
-        <HorizontalStackLayout>
-            <CheckBox IsChecked="{Binding Habilitado}" />
-            <Label Text="Categoria habilitada"
-                   VerticalOptions="Center"
-                   FontSize="14" />
-        </HorizontalStackLayout>
-        
-    </VerticalStackLayout>
+            <!-- Checkbox para habilitado -->
+            <HorizontalStackLayout>
+                <CheckBox IsChecked="{Binding Habilitado}" />
+                <Label Text="Categoria habilitada"
+                       VerticalOptions="Center"
+                       FontSize="14" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="auto,*"
+              ColumnSpacing="5">
+            <Button Grid.Column="0"
+                    x:Name="btnVoltar"
+                    Text="voltar"
+                    BackgroundColor="DarkSlateGray"
+                    WidthRequest="100" Clicked="btnVoltar_Clicked" />
+
+            <Button Grid.Column="1"
+                    Text="salvar" x:Name="btnAlterar" Clicked="btnAlterar_Clicked" />
+        </Grid>
+    </Grid>
 </ContentPage>

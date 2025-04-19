@@ -1,49 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:shell="http://schemas.microsoft.com/dotnet/2021/maui"
-       x:Class="EasyManagerApp.Pages.HomePage"
-       xmlns:produtoPage="clr-namespace:EasyManagerApp.Pages.Produto"
-       xmlns:pontoVendaPage="clr-namespace:EasyManagerApp.Pages.PontoVenda"
-       shell:Shell.NavBarIsVisible="True"
-       Shell.FlyoutBackgroundColor="#282A36"
-       Shell.FlyoutHeaderBehavior="CollapseOnScroll"
-       Shell.TitleColor="Black">
-
-    <!-- Header do menu -->
-    <Shell.FlyoutHeader>
-        <Grid BackgroundColor="DarkSlateGrey"
-              Padding="5">
-            <VerticalStackLayout>
-                <Label Text="EasyManager"
-                       FontSize="24"
-                       TextColor="White"
-                       FontAttributes="Bold" />
-                <Label Text="Bem-vindo!"
-                       FontSize="14"
-                       TextColor="White" />
-            </VerticalStackLayout>
-        </Grid>
-    </Shell.FlyoutHeader>
-
-    <!-- Estilo dos itens do menu -->
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <Grid Padding="12">
-                <Label Text="{Binding Title}"
-                       FontSize="16"
-                       TextColor="White" />
-            </Grid>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    <!-- Itens do menu -->
-    <FlyoutItem Title="Produtos">
-        <ShellContent ContentTemplate="{DataTemplate produtoPage:ProdutosPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Ponto de Venda">
-        <ShellContent ContentTemplate="{DataTemplate pontoVendaPage:PontoVendaPage}" />
-    </FlyoutItem>
-
-</Shell>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shell="http://schemas.microsoft.com/dotnet/2021/maui"
+             x:Class="EasyManagerApp.Pages.HomePage">
+    <StackLayout>
+        <Label Text="Pagina Home Page" />
+    </StackLayout>
+</ContentPage>

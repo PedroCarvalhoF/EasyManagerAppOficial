@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="EasyManagerApp.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:EasyManagerApp"
-    Shell.FlyoutBehavior="Flyout"
-    Title="EasyManagerApp">
+<Shell x:Class="EasyManagerApp.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:homePage="clr-namespace:EasyManagerApp.Pages"
+       xmlns:produtoPage="clr-namespace:EasyManagerApp.Pages.Produto"
+       Shell.FlyoutBehavior="Flyout"
+       Title="EasyManagerApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="Home"
+                  ContentTemplate="{DataTemplate homePage:HomePage}"
+                  Route="HomePage" />
+
+    <ShellContent Title="Produtos"
+                  ContentTemplate="{DataTemplate produtoPage:ProdutosPage}"
+                  Route="ProdutosPage" />
 
 </Shell>

@@ -1,6 +1,6 @@
 namespace EasyManagerApp.Pages;
 
-public partial class HomePage : Shell
+public partial class HomePage : ContentPage
 {
     public HomePage()
     {
