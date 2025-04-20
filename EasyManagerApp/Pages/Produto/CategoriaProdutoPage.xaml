@@ -6,7 +6,7 @@
              xmlns:views="clr-namespace:EasyManagerApp.Views.ProdutoCategoria"
              x:DataType="local:CategoriaProdutoDto"
              BackgroundColor="White"
-             Padding="10"
+             Padding="15"
              Title="Categorias dos Produtos">
 
     <Grid RowDefinitions="Auto,*,Auto"
@@ -25,7 +25,10 @@
                         SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <views:CategoriaProdutoView />
+                    <StackLayout Padding="0,0,10,0">
+                        <views:CategoriaProdutoView />
+                    </StackLayout>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

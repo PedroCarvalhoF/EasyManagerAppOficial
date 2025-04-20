@@ -16,10 +16,6 @@ public partial class CategoriaProdutoEditarPage : ContentPage
         CategoriaProdutoDtoSelecionada = categoriaProdutoDtoSelecionada;
         _categoriaProdutoServices = iCategoriaProdutoServices;
         _acaoTelaSelecionada = acaoTelaSelecionada;
-    }
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
 
         switch (_acaoTelaSelecionada)
         {
@@ -27,15 +23,23 @@ public partial class CategoriaProdutoEditarPage : ContentPage
 
                 lblId.IsVisible = false;
                 btnAlterar.Text = "Cadastrar";
+                chcCategoria.IsVisible = false;
                 break;
             case AcoesTeleEnum.Alterar:
                 lblId.IsVisible = true;
-               
+
 
                 break;
             default:
                 break;
         }
+
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+
     }
 
     private async void btnVoltar_Clicked(object sender, EventArgs e)
@@ -44,7 +48,7 @@ public partial class CategoriaProdutoEditarPage : ContentPage
     }
 
     private async void btnAlterar_Clicked(object sender, EventArgs e)
-    {                           
+    {
         try
         {
             switch (_acaoTelaSelecionada)
@@ -70,6 +74,18 @@ public partial class CategoriaProdutoEditarPage : ContentPage
 
                     break;
                 case AcoesTeleEnum.Alterar:
+
+                    var catUpdate = new CategoriaProdutoDtoUpdate(CategoriaProdutoDtoSelecionada.Id, txtCategoria.Text, chcCategoria.IsChecked);
+                    var resultUpdate = await _categoriaProdutoServices.AlterarCategoriaProduto<CategoriaProdutoDto>(await SecureStorage.GetAsync("token") ?? string.Empty, catUpdate, new CancellationToken());
+
+                    if (resultUpdate.Status)
+                    {
+                        await DisplayAlert("Sucesso", "Categoria atualizada com sucesso.", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Erro", resultUpdate.Mensagem, "OK");
+                    }
                     break;
                 default:
                     break;

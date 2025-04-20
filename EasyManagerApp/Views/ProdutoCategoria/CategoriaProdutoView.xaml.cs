@@ -17,4 +17,13 @@ public partial class CategoriaProdutoView : ContentView
             EditarClicked?.Invoke(this, categoria);
         }
     }
+
+    private void Categoria_Tapped(object sender, TappedEventArgs e)
+    {
+        if (BindingContext is CategoriaProdutoDto categoria)
+        {
+            EditarClicked?.Invoke(this, categoria);
+        }
+
+    }
 }

@@ -5,7 +5,7 @@ using EasyManagerApp.Services.Intefaces;
 using System.Threading;
 
 namespace EasyManagerApp.Services.ProdutoCategoria;
-public class CategoriaProdutoServices : ICategoriaProdutoServices
+public class CategoriaProdutoServices : ICategoriaProdutoServices  
 {
     private readonly IApiServices _apiServices;
     private const string Rota = "CategoriaProduto/";
@@ -39,6 +39,24 @@ public class CategoriaProdutoServices : ICategoriaProdutoServices
             string rota = Rota + rota_destino;
 
             var result = await _apiServices.Post<CategoriaProdutoDto>(token, rota, categoriaCreate, cancellationToken);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<RequestResult<CategoriaProdutoDto>> AlterarCategoriaProduto<CategoriaProdutoDto>(string token, CategoriaProdutoDtoUpdate categoriaUpdate, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            string rota_destino = "atualizar-categoria-produto";
+            string rota = Rota + rota_destino;
+
+            var result = await _apiServices.Post<CategoriaProdutoDto>(token, rota, categoriaUpdate, cancellationToken);
 
             return result;
         }

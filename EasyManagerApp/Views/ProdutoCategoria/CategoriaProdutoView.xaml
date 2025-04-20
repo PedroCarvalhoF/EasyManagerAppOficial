@@ -19,6 +19,10 @@
             StrokeThickness="1"
             StrokeShape="RoundRectangle 10">
 
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Categoria_Tapped" />
+        </Border.GestureRecognizers>
+
         <Grid ColumnDefinitions="*,auto ">
 
             <VerticalStackLayout Grid.Column="0"
@@ -30,9 +34,11 @@
                 <Label Text="{Binding Id, StringFormat='ID: {0}'}"
                        FontSize="14"
                        TextColor="Gray" />
-                <Label Text="{Binding CreateAt, StringFormat='Criado em: {0:dd/MM/yyyy}'}"
+
+                <Label Text="{Binding CreateAt, StringFormat='Criado em: {0:dd-MM-yyyy}'}"
                        FontSize="14"
                        TextColor="Gray" />
+
                 <Label Text="{Binding StatusString}"
                        FontSize="14"
                        TextColor="{Binding Habilitado, Converter={StaticResource StatusToColorConverter}}" />
@@ -40,7 +46,9 @@
 
             <Button Grid.Column="1"
                     Text="editar"
-                    HeightRequest="10" x:Name="btnEditarCategoria" Clicked="btnEditarCategoria_Clicked" />
+                    HeightRequest="10"
+                    x:Name="btnEditarCategoria"
+                    Clicked="btnEditarCategoria_Clicked" />
         </Grid>
 
     </Border>

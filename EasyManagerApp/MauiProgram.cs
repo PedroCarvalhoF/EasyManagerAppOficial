@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using EasyManagerApp.Dtos.ProdutoCategoria;
 using EasyManagerApp.Pages.User;
 using EasyManagerApp.Services;
 using EasyManagerApp.Services.Account;
