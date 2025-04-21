@@ -1,10 +1,13 @@
 ﻿using CommunityToolkit.Maui;
-using EasyManagerApp.Dtos.ProdutoCategoria;
+using EasyManagerApp.Dtos.Produto;
+using EasyManagerApp.DtosViewModel.Produto;
+using EasyManagerApp.Pages.Produto;
 using EasyManagerApp.Pages.User;
 using EasyManagerApp.Services;
 using EasyManagerApp.Services.Account;
 using EasyManagerApp.Services.API;
 using EasyManagerApp.Services.Intefaces;
+using EasyManagerApp.Services.Produto;
 using EasyManagerApp.Services.ProdutoCategoria;
 using Microsoft.Extensions.Logging;
 
@@ -31,9 +34,14 @@ namespace EasyManagerApp
             builder.Services.AddSingleton<IApiServices, ApiServices>();
             builder.Services.AddTransient<IAccountServices, AccountServices>();
             builder.Services.AddTransient<ICategoriaProdutoServices, CategoriaProdutoServices>();
+            builder.Services.AddTransient<IProdutoServices<ProdutoDto>, ProdutoServices>();
 
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<CadastrarUserPage>();
+
+            builder.Services.AddTransient<ProdutoViewModel>();
+            builder.Services.AddTransient<ProdutosPageEditar>();
+
 
 
 #if DEBUG

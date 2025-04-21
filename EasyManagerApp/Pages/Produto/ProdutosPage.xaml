@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EasyManagerApp.Pages.Produto.ProdutosPage">
+             x:Class="EasyManagerApp.Pages.Produto.ProdutosPage"
+             xmlns:viewModels="clr-namespace:EasyManagerApp.DtosViewModel.Produto"
+             xmlns:converters="clr-namespace:EasyManagerApp.Views.TooViews"
+             x:DataType="viewModels:ProdutoViewModel">
 
     <Grid RowDefinitions="*,auto"
           Padding="10">
 
         <Grid Grid.Row="0">
-            <StackLayout>
-                <Label Text="Produtos"
-                       HorizontalTextAlignment="Center" />
-            </StackLayout>
+            <CollectionView Grid.Row="0"
+                            ItemsSource="{Binding ProdutosDtos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10"
+                                Margin="5"
+                                BackgroundColor="#363949"
+                                Stroke="#7E82A0"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10">
+
+                            <VerticalStackLayout>
+                                <Label Text="{Binding NomeProduto}"
+                                       TextColor="White"
+                                       FontSize="16" />
+                                <Label Text="{Binding CodigoProduto}"
+                                       TextColor="LightGray"
+                                       FontSize="14" />
+                                <Label Text="{Binding CategoriaProduto}"
+                                       TextColor="Gray"
+                                       FontSize="12" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
         </Grid>
         <Grid Grid.Row="1"
-              ColumnDefinitions="*"
+              ColumnDefinitions="*,*"
               RowSpacing="10"
               ColumnSpacing="5">
 
@@ -21,6 +47,14 @@
                     x:Name="btnCategoriaProduto"
                     Clicked="btnCategoriaProduto_Clicked"
                     Text="Categorias"
+                    FontAttributes="None"
+                    FontSize="Body"
+                    BackgroundColor="DarkSlateGray" />
+
+            <Button Grid.Column="1"
+                    x:Name="btnCadastrarProduto"
+                    Clicked="btnCadastrarProduto_Clicked"
+                    Text="Novo Produto"
                     FontAttributes="None"
                     FontSize="Body"
                     BackgroundColor="DarkSlateGray" />

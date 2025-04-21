@@ -17,7 +17,7 @@ public class ApiServices : IApiServices
     public async Task<RequestResult<T>> Get<T>(string? token, string url, object? objPost = null, CancellationToken cancellationToken = default)
     {
         try
-        {
+         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
 
             if (!string.IsNullOrEmpty(token))
