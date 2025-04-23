@@ -1,14 +1,19 @@
 ﻿using CommunityToolkit.Maui;
 using EasyManagerApp.Dtos.Produto;
+using EasyManagerApp.Dtos.Produto.UnidadeMedida;
 using EasyManagerApp.DtosViewModel.Produto;
+using EasyManagerApp.DtosViewModel.Produto.UnidadeMedida;
 using EasyManagerApp.Pages.Produto;
+using EasyManagerApp.Pages.Produto.UnidadeMedidaProduto;
 using EasyManagerApp.Pages.User;
 using EasyManagerApp.Services;
 using EasyManagerApp.Services.Account;
 using EasyManagerApp.Services.API;
 using EasyManagerApp.Services.Intefaces;
 using EasyManagerApp.Services.Produto;
+using EasyManagerApp.Services.Produto.UnidadeMedida;
 using EasyManagerApp.Services.ProdutoCategoria;
+using EasyManagerApp.Views.Produto.UnidadeMedidaProduto;
 using Microsoft.Extensions.Logging;
 
 namespace EasyManagerApp
@@ -35,12 +40,18 @@ namespace EasyManagerApp
             builder.Services.AddTransient<IAccountServices, AccountServices>();
             builder.Services.AddTransient<ICategoriaProdutoServices, CategoriaProdutoServices>();
             builder.Services.AddTransient<IProdutoServices<ProdutoDto>, ProdutoServices>();
+            builder.Services.AddTransient<IUnidadeMedidaProdutoServices<UnidadeMedidaProdutoDto>, UnidadeMedidaProdutoServices>();
 
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<CadastrarUserPage>();
 
             builder.Services.AddTransient<ProdutoViewModel>();
             builder.Services.AddTransient<ProdutosPageEditar>();
+
+            builder.Services.AddTransient<UnidadeProdutoMedidaPage>();
+            builder.Services.AddTransient<UnidadeMedidaProdutoViewModel>();
+         
+
 
 
 

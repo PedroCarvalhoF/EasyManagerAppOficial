@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Views.Produto.UnidadeMedidaProduto.UnidadeMedidaProdutoView"
+             xmlns:unidade="clr-namespace:EasyManagerApp.Dtos.Produto.UnidadeMedida"
+             x:DataType="unidade:UnidadeMedidaProdutoDto">
+
+    <Border Padding="10"
+            Margin="5"
+            BackgroundColor="White"
+            Stroke="LightGray"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 10">
+
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Unidade_tapped" />
+        </Border.GestureRecognizers>
+
+        <Grid ColumnDefinitions="*,auto"
+              ColumnSpacing="5"
+              VerticalOptions="Center">
+
+            <VerticalStackLayout Grid.Column="0"
+                                 Spacing="1"
+                                 VerticalOptions="Center">
+
+                <Label Text="{Binding Sigla,StringFormat='Singla: {0}'}"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="DarkSlateGray" />
+
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="{Binding Nome}"
+                           FontSize="13"
+                           TextColor="Gray" />
+
+                    <Label Text="{Binding Descricao}"
+                           FontSize="13"
+                           TextColor="Gray" />
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Grid>
+    </Border>
+</ContentView>

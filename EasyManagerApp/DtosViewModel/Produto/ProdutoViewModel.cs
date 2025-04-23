@@ -11,7 +11,7 @@ public partial class ProdutoViewModel : ObservableObject
     private readonly IProdutoServices<ProdutoDto> _produtoService;
 
     [ObservableProperty]
-    public ObservableCollection<ProdutoDto> produtosDtos = new();
+    private ObservableCollection<ProdutoDto> produtosDtos = new();
 
     public ProdutoViewModel(IProdutoServices<ProdutoDto> produtoService)
     {
@@ -20,6 +20,7 @@ public partial class ProdutoViewModel : ObservableObject
 
     [ObservableProperty]
     private Guid id;
+
     [ObservableProperty]
     private string? nomeProduto;
 
@@ -65,7 +66,7 @@ public partial class ProdutoViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task CarregarProdutosAsync()
+    public async Task CarregarProdutosAsync()
     {
         try
         {
@@ -77,17 +78,10 @@ public partial class ProdutoViewModel : ObservableObject
             {
                 produtosDtos.Clear();
 
-                //foreach (var item in resultado.Data)
-                //{
-                //    produtosDtos.Add(item);
-                //}
-
-                produtosDtos.Add(new ProdutoDto
+                foreach (var item in resultado.Data)
                 {
-                    NomeProduto = "Produto Teste",
-                    CodigoProduto = "TEST123",
-                    CategoriaProduto = "Categoria Teste"
-                });
+                    produtosDtos.Add(item);
+                }
             }
             else
             {

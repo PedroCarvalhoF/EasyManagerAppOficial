@@ -47,6 +47,7 @@
             <Button Grid.Column="1"
                     Text="editar"
                     HeightRequest="10"
+                 
                     x:Name="btnEditarCategoria"
                     Clicked="btnEditarCategoria_Clicked" />
         </Grid>

@@ -1,31 +1,36 @@
-using EasyManagerApp.Dtos.Produto;
+using EasyManagerApp.Dtos.Produto.UnidadeMedida;
 using EasyManagerApp.DtosViewModel.Produto;
+using EasyManagerApp.DtosViewModel.Produto.UnidadeMedida;
+using EasyManagerApp.Pages.Produto.UnidadeMedidaProduto;
 using EasyManagerApp.Services.Intefaces;
+using EasyManagerApp.Views.Produto.UnidadeMedidaProduto;
 
 namespace EasyManagerApp.Pages.Produto;
 
 public partial class ProdutosPage : ContentPage
 {
     private readonly ICategoriaProdutoServices _categoriaProdutoServices;
-    private readonly IServiceProvider _service;
+    public UnidadeMedidaProdutoViewModel UnidadeMedidaProdutoView { get; }
 
-    public ProdutosPage(ICategoriaProdutoServices categoriaProdutoServices,
-                        ProdutoViewModel produtoViewModel,
-                        IServiceProvider service)
+    // Mudando a forma de injeção para permitir que o Maui cuide da instância
+    public ProdutoViewModel ProdutoViewModel { get; }
+
+    // Mudando o construtor para usar a injeção do Maui
+    public ProdutosPage(ICategoriaProdutoServices categoriaProdutoServices, ProdutoViewModel produtoViewModel, UnidadeMedidaProdutoViewModel unidadeMedidaProdutoView)
     {
         InitializeComponent();
 
-        produtoViewModel.ProdutosDtos.Add(new ProdutoDto
-        {
-            NomeProduto = "Produto Direto",
-            CodigoProduto = "BIND001",
-            CategoriaProduto = "TesteBinding"
-        });
-
         _categoriaProdutoServices = categoriaProdutoServices;
-        _service = service;
-        BindingContext = produtoViewModel;
-    }   
+        ProdutoViewModel = produtoViewModel;
+
+        BindingContext = ProdutoViewModel; // Atribui o ViewModel da injeção   
+        UnidadeMedidaProdutoView = unidadeMedidaProdutoView;
+    }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await ((ProdutoViewModel)BindingContext).CarregarProdutosAsync();
+    }
 
     private async void btnCategoriaProduto_Clicked(object sender, EventArgs e)
     {
@@ -42,7 +47,21 @@ public partial class ProdutosPage : ContentPage
     private async void btnCadastrarProduto_Clicked(object sender, EventArgs e)
     {
 
-        var page = _service.GetRequiredService<ProdutosPageEditar>();
-        await Navigation.PushAsync(page);
+        //var page = _service.GetRequiredService<ProdutosPageEditar>();
+        //await Navigation.PushAsync(page);
+    }
+
+    private async void btnUnidadeMedida_Clicked(object sender, EventArgs e)
+    {
+        try
+        {
+
+
+            await Navigation.PushAsync(new UnidadeProdutoMedidaPage(UnidadeMedidaProdutoView));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", ex.Message, "Ok");
+        }
     }
 }
