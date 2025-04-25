@@ -2,9 +2,9 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Views.Produto.ProdutoView"
-             xmlns:prod="clr-namespace:EasyManagerApp.Dtos.Produto"
-             x:DataType="prod:ProdutoDto"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             xmlns:dto="clr-namespace:EasyManagerApp.Dtos.Produto"
+             x:DataType="dto:ProdutoDto">
 
     <Border Padding="10"
             Margin="5"
@@ -13,43 +13,37 @@
             StrokeThickness="1"
             StrokeShape="RoundRectangle 10">
 
-        <Border.GestureRecognizers>
-            <TapGestureRecognizer Tapped="Categoria_Tapped" />
-        </Border.GestureRecognizers>
-
-        <Grid ColumnDefinitions="*,auto"
+        <Grid ColumnDefinitions="*,Auto"
               ColumnSpacing="5"
               VerticalOptions="Center">
 
             <VerticalStackLayout Grid.Column="0"
-                                 Spacing="1"
+                                 Spacing="3"
                                  VerticalOptions="Center">
-
+               
                 <Label Text="{Binding NomeProduto}"
                        FontSize="16"
                        FontAttributes="Bold"
                        TextColor="DarkSlateGray" />
-                <HorizontalStackLayout Spacing="10">
-                    <Label Text="{Binding CodigoProduto, StringFormat='Código: {0}'}"
-                           FontSize="13"
-                           TextColor="Gray" />
 
-                    <Label Text="{Binding CategoriaProduto}"
-                           FontSize="13"
-                           TextColor="DarkSlateGray" />
-                </HorizontalStackLayout>
+                <Label Text="{Binding CodigoProduto, StringFormat='Código: {0}'}"
+                       FontSize="13"
+                       TextColor="Gray" />
 
+                <Label Text="{Binding CategoriaProduto, StringFormat='Categoria: {0}'}"
+                       FontSize="13"
+                       TextColor="SlateGray" />
             </VerticalStackLayout>
 
-            <Button Grid.Column="1"
-                    Text="Editar"
-                    FontSize="14"
-                    FontAttributes="Italic"
+            <Button Text="Editar"
+                    Grid.Column="1"
+                    WidthRequest="80"
+                    HeightRequest="40"
+                    BackgroundColor="#363949"
                     TextColor="#F5F3EF"
-                    WidthRequest="100"
-                    HeightRequest="1"
-                    Clicked="Button_Clicked" />
-
+                    FontAttributes="Bold"
+                    x:Name="btnProdutoEditar"
+                    Clicked="btnProdutoEditar_Clicked"/>
         </Grid>
 
     </Border>

@@ -2,11 +2,23 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.Produto.ProdutosPageEditar"
-             Title="ProdutosPageEditar">
+             Title="ProdutosPageEditar"
+             xmlns:view="clr-namespace:EasyManagerApp.DtosViewModel.Produto"
+             x:DataType="view:ProdutoViewModel">
 
-    <VerticalStackLayout Grid.Row="0"
-                         Padding="20">
-        <Label Text="Editar Produtos" />
-    </VerticalStackLayout>
+    <StackLayout Spacing="10">
+        <Label x:Name="lblId"
+               TextColor="SlateGray"
+               FontAttributes="Bold"
+               FontSize="12" />
+        <Label Text="Nome do Produto:" />
+        <Entry x:Name="txtNomeProduto"
+               Text="{Binding NomeProduto}" />
+
+        <Label Text="Código do Produto:" />
+        <Entry x:Name="txtCodigoProduto"
+               Text="{Binding CodigoProduto}" />
+
+    </StackLayout>
 
 </ContentPage>

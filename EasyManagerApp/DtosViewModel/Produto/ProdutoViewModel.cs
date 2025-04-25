@@ -14,6 +14,9 @@ public partial class ProdutoViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<ProdutoDto> produtosDtos = new();
 
+    [ObservableProperty]
+    private ProdutoDto? produtoSelecionado;
+
     public ProdutoViewModel(IProdutoServices<ProdutoDto> produtoService)
     {
         _produtoService = produtoService;
