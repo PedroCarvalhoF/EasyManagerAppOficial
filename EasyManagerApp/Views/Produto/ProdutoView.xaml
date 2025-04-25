@@ -42,14 +42,14 @@
             </VerticalStackLayout>
 
             <Button Grid.Column="1"
-                    x:Name="btnEditarProduto"
-                    Clicked="btnEditarProduto_Clicked"
                     Text="Editar"
-                    FontSize="12"
-                    FontAttributes="Bold"
+                    FontSize="14"
+                    FontAttributes="Italic"
                     TextColor="#F5F3EF"
                     WidthRequest="100"
-                    HeightRequest="1" />
+                    HeightRequest="1"
+                    Clicked="Button_Clicked" />
+
         </Grid>
 
     </Border>

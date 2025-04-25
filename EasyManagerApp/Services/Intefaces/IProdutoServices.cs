@@ -5,6 +5,9 @@ namespace EasyManagerApp.Services.Intefaces;
 
 public interface IProdutoServices<T> where T : ProdutoDto
 {
-    Task<RequestResult<T>> CadastrarProduto<T>(string token, ProdutoDtoCreate produtoCreate, CancellationToken cancellationToken = default);
-    Task<RequestResult<IEnumerable<T>>> ConsultarProdutos(string token, CancellationToken cancellationToken = default);
+    Task<RequestResult<T>> CreateAsync(ProdutoDtoCreate produtoCreate);
+    Task<RequestResult<T>> UpdateAsync(ProdutoDtoUpdate produtoUpdate);
+    Task<RequestResult<T>> SelectAsync(int id);
+    Task<RequestResult<IEnumerable<T>>> SelectAsync(string token);
 }
+

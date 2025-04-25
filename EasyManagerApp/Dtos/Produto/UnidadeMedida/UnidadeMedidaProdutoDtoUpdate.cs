@@ -13,5 +13,4 @@ public class UnidadeMedidaProdutoDtoUpdate
     public string Nome { get; set; }
     public string Sigla { get; set; }
     public string Descricao { get; set; }
-
 }

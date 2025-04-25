@@ -2,7 +2,6 @@
 using EasyManagerApp.Dtos.Produto.UnidadeMedida;
 using EasyManagerApp.Services.API;
 using EasyManagerApp.Services.Intefaces;
-using System.Threading;
 
 namespace EasyManagerApp.Services.Produto.UnidadeMedida;
 

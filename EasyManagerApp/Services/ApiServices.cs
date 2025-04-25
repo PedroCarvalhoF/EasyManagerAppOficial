@@ -17,7 +17,7 @@ public class ApiServices : IApiServices
     public async Task<RequestResult<T>> Get<T>(string? token, string url, object? objPost = null, CancellationToken cancellationToken = default)
     {
         try
-         {
+        {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
 
             if (!string.IsNullOrEmpty(token))
@@ -30,6 +30,8 @@ public class ApiServices : IApiServices
             }
 
             using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+
+            var strVerificacao = await response.Content.ReadAsStringAsync(cancellationToken);
 
             var responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
 

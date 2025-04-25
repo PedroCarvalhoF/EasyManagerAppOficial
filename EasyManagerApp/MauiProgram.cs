@@ -50,7 +50,7 @@ namespace EasyManagerApp
 
             builder.Services.AddTransient<UnidadeProdutoMedidaPage>();
             builder.Services.AddTransient<UnidadeMedidaProdutoViewModel>();
-         
+
 
 
 

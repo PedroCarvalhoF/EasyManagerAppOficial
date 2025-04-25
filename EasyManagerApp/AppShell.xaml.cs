@@ -14,6 +14,7 @@ namespace EasyManagerApp
 
             //Produtos
             Routing.RegisterRoute("//ProdutosPage", typeof(ProdutosPage));
+            Routing.RegisterRoute("//ProdutosPageEditar", typeof(ProdutosPageEditar));
 
             //Categoria de Prdoutos
             Routing.RegisterRoute("//CategoriaProdutoPage", typeof(CategoriaProdutoPage));

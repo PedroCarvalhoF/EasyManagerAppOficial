@@ -2,26 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.Produto.ProdutosPageEditar"
-             Title="ProdutosPageEditar"
-             xmlns:viewModels="clr-namespace:EasyManagerApp.DtosViewModel.Produto"
-             xmlns:converters="clr-namespace:EasyManagerApp.Views.TooViews">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:GuidToStringConverter x:Key="GuidToStringConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+             Title="ProdutosPageEditar">
 
     <VerticalStackLayout Grid.Row="0"
                          Padding="20">
-        <Entry Text="{Binding NomeProduto}"
-               Placeholder="Nome do Produto" />
-        <Entry Text="{Binding CodigoProduto}"
-               Placeholder="Código do Produto" />
-        <Entry Text="{Binding CategoriaProdutoEntityId, Converter={StaticResource GuidToStringConverter}}"
-               Placeholder="Categoria" />
-        <Button Text="Salvar"
-                Command="{Binding CadastrarCommand}" />
+        <Label Text="Editar Produtos" />
     </VerticalStackLayout>
 
 </ContentPage>

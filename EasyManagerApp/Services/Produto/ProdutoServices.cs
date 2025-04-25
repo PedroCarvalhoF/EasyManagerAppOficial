@@ -1,6 +1,5 @@
 ﻿using EasyManagerApp.Dtos;
 using EasyManagerApp.Dtos.Produto;
-using EasyManagerApp.Dtos.ProdutoCategoria;
 using EasyManagerApp.Services.API;
 using EasyManagerApp.Services.Intefaces;
 
@@ -9,44 +8,42 @@ public class ProdutoServices : IProdutoServices<ProdutoDto>
 {
     private readonly IApiServices _apiServices;
     private const string Rota = "Produto/";
+
     public ProdutoServices(IApiServices apiServices)
     {
         _apiServices = apiServices;
     }
-    public async Task<RequestResult<T>>
-        CadastrarProduto<T>(string token, ProdutoDtoCreate produtoCreate, CancellationToken cancellationToken = default)
+    public Task<RequestResult<ProdutoDto>> SelectAsync(int id)
     {
-        try
-        {
-            string rota_destino = "cadastrar-produto";
-            string rota = Rota + rota_destino;
-
-            var result = await _apiServices.Post<T>(token, rota, produtoCreate, cancellationToken);
-
-            return result;
-        }
-        catch (Exception ex)
-        {
-
-            throw new Exception(ex.Message);
-        }
+        throw new NotImplementedException();
     }
 
-    public async Task<RequestResult<IEnumerable<ProdutoDto>>> ConsultarProdutos(string token, CancellationToken cancellationToken = default)
+    public async Task<RequestResult<IEnumerable<ProdutoDto>>> SelectAsync(string token)
     {
-        try
-        {
-            string rota_destino = "consultar-produtos";
-            string rota = Rota + rota_destino;
-
-            var result = await _apiServices.Get<IEnumerable<ProdutoDto>>(token, rota, null, cancellationToken);
-
-            return result;
-        }
-        catch (Exception ex)
-        {
-
-            throw new Exception(ex.Message);
-        }
+        string rota = Rota + "consultar-produtos";
+        return await _apiServices.Get<IEnumerable<ProdutoDto>>(token, rota, null, default);
     }
+    public Task<RequestResult<ProdutoDto>> CreateAsync(ProdutoDtoCreate produtoCreate)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<RequestResult<ProdutoDto>> UpdateAsync(ProdutoDtoUpdate produtoUpdate)
+    {
+        throw new NotImplementedException();
+    }
+
+
+
+    //public async Task<RequestResult<ProdutoDto>> CadastrarProduto(string token, ProdutoDtoCreate produtoCreate, CancellationToken cancellationToken = default)
+    //{
+    //    string rota = Rota + "cadastrar-produto";
+    //    return await _apiServices.Post<ProdutoDto>(token, rota, produtoCreate, cancellationToken);
+    //}
+
+    //public async Task<RequestResult<IEnumerable<ProdutoDto>>> ConsultarProdutos(string token, CancellationToken cancellationToken = default)
+    //{
+    //    string rota = Rota + "consultar-produtos";
+    //    return await _apiServices.Get<IEnumerable<ProdutoDto>>(token, rota, null, cancellationToken);
+    //}
 }

@@ -1,9 +1,7 @@
-using EasyManagerApp.Dtos.Produto.UnidadeMedida;
 using EasyManagerApp.DtosViewModel.Produto;
 using EasyManagerApp.DtosViewModel.Produto.UnidadeMedida;
 using EasyManagerApp.Pages.Produto.UnidadeMedidaProduto;
 using EasyManagerApp.Services.Intefaces;
-using EasyManagerApp.Views.Produto.UnidadeMedidaProduto;
 
 namespace EasyManagerApp.Pages.Produto;
 

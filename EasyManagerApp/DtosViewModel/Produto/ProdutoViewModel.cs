@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EasyManagerApp.Dtos.Produto;
+using EasyManagerApp.Pages.Produto;
 using EasyManagerApp.Services.Intefaces;
 using System.Collections.ObjectModel;
 
@@ -47,7 +48,7 @@ public partial class ProdutoViewModel : ObservableObject
 
             var token = await SecureStorage.GetAsync("token");
 
-            var result = await _produtoService.CadastrarProduto<ProdutoDto>(token, produtoCreate, default);
+            var result = await _produtoService.CreateAsync(produtoCreate);
 
             if (result.Status)
             {
@@ -72,7 +73,7 @@ public partial class ProdutoViewModel : ObservableObject
         {
             var token = await SecureStorage.GetAsync("token");
 
-            var resultado = await _produtoService.ConsultarProdutos(token, default);
+            var resultado = await _produtoService.SelectAsync(token);
 
             if (resultado.Status && resultado.Data is not null)
             {
@@ -92,6 +93,12 @@ public partial class ProdutoViewModel : ObservableObject
         {
             await Shell.Current.DisplayAlert("Erro", ex.Message, "OK");
         }
+    }
+
+    [RelayCommand]
+    private async Task TelaDeProdutos()
+    {
+        await Shell.Current.GoToAsync($"//{nameof(ProdutosPageEditar)}");
     }
 
 }
