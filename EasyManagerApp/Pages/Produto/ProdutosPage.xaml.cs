@@ -1,3 +1,4 @@
+using EasyManagerApp.Dtos.Produto;
 using EasyManagerApp.DtosViewModel.Produto;
 using EasyManagerApp.DtosViewModel.Produto.UnidadeMedida;
 using EasyManagerApp.Pages.Produto.UnidadeMedidaProduto;
@@ -44,9 +45,16 @@ public partial class ProdutosPage : ContentPage
 
     private async void btnCadastrarProduto_Clicked(object sender, EventArgs e)
     {
+        try
+        {
+            var services = App.Services.GetRequiredService<IProdutoServices<ProdutoDto>>();
 
-        //var page = _service.GetRequiredService<ProdutosPageEditar>();
-        //await Navigation.PushAsync(page);
+            await Navigation.PushAsync(new ProdutosPageEditar(new ProdutoViewModel(services), Helper.Enum.AcoesTeleEnum.Cadastrar));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", ex.Message, "Ok");
+        }
     }
 
     private async void btnUnidadeMedida_Clicked(object sender, EventArgs e)

@@ -2,23 +2,103 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.Produto.ProdutosPageEditar"
-             Title="ProdutosPageEditar"
+             Title="Editar Produto"
+             BackgroundColor="#F5F3EF"
              xmlns:view="clr-namespace:EasyManagerApp.DtosViewModel.Produto"
-             x:DataType="view:ProdutoViewModel">
+             Shell.NavBarIsVisible="False">
 
-    <StackLayout Spacing="10">
-        <Label x:Name="lblId"
-               TextColor="SlateGray"
-               FontAttributes="Bold"
-               FontSize="12" />
-        <Label Text="Nome do Produto:" />
-        <Entry x:Name="txtNomeProduto"
-               Text="{Binding NomeProduto}" />
+    <ScrollView BackgroundColor="White"
+                Padding="10">
 
-        <Label Text="Código do Produto:" />
-        <Entry x:Name="txtCodigoProduto"
-               Text="{Binding CodigoProduto}" />
+        <VerticalStackLayout Padding="10,10,10,10"
+                             Spacing="5">
+            <!-- Título -->
+            <Label Text="{Binding NomeProduto,StringFormat='Produto Selecionado {0}'}"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#363949"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
 
-    </StackLayout>
+            <!-- ID escondido -->
+            <Label x:Name="lblId"
+                   IsVisible="False"
+                   TextColor="Gray"
+                   FontAttributes="Bold"
+                   FontSize="12"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
 
+            <!-- Border clara com campos -->
+            <Border Stroke="#DDD"
+                    BackgroundColor="White"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="20">
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Label Text="Nome do Produto"
+                           FontSize="13"
+                           TextColor="#363949" />
+                    <Entry x:Name="txtNomeProduto"
+                           Text="{Binding NomeProduto}"
+                           Placeholder="Digite o nome"
+                           BackgroundColor="#F0F0F5"
+                           TextColor="#363949"
+                           PlaceholderColor="#A0A0A0"
+                           HeightRequest="40"
+                           FontSize="14" />
+
+                    <Label Text="Código do Produto"
+                           FontSize="13"
+                           TextColor="#363949" />
+                    <Entry x:Name="txtCodigoProduto"
+                           Text="{Binding CodigoProduto}"
+                           Placeholder="Digite o código"
+                           BackgroundColor="#F0F0F5"
+                           TextColor="#363949"
+                           PlaceholderColor="#A0A0A0"
+                           HeightRequest="40"
+                           FontSize="14" />
+
+                    <Picker x:Name="pctCategoria"
+                            TextColor="#363949"
+                            TitleColor="#363949"
+                            Title="Selecione a categoria"
+                            ItemDisplayBinding="{Binding NomeCategoria}" />
+
+                    <Picker x:Name="pckUnidadeMedida"
+                            Title="Selecione Unidade Medida"
+                            TitleColor="#363949"
+                            ItemDisplayBinding="{Binding Sigla}"
+                            TextColor="#363949" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Botão estilizado -->
+
+            <Grid ColumnDefinitions="auto,*"
+                  ColumnSpacing="5"
+                  Margin="10">
+
+                <Button Grid.Column="0"
+                        x:Name="btnVoltar"
+                        Clicked="Button_Clicked"
+                        Text="voltar"
+                        BackgroundColor="DarkSlateGray" />
+
+                <Button Grid.Column="1"
+                        x:Name="btnSalvar"
+                        Text="Salvar Alterações"
+                        Clicked="btnSalvar_Clicked"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        HeightRequest="45"
+                        FontSize="14" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

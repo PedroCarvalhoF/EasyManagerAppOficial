@@ -23,14 +23,34 @@ public class ProdutoServices : IProdutoServices<ProdutoDto>
         string rota = Rota + "consultar-produtos";
         return await _apiServices.Get<IEnumerable<ProdutoDto>>(token, rota, null, default);
     }
-    public Task<RequestResult<ProdutoDto>> CreateAsync(ProdutoDtoCreate produtoCreate)
+    public async Task<RequestResult<ProdutoDto>> CreateAsync(string token, ProdutoDtoCreate produtoCreate)
     {
-        throw new NotImplementedException();
+        try
+        {
+            string rota = Rota + "cadastrar-produto";
+
+            return await _apiServices.Post<ProdutoDto>(token, rota, produtoCreate, default);
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
     }
 
-    public Task<RequestResult<ProdutoDto>> UpdateAsync(ProdutoDtoUpdate produtoUpdate)
+    public async Task<RequestResult<ProdutoDto>> UpdateAsync(string token, ProdutoDtoUpdate produtoUpdate)
     {
-        throw new NotImplementedException();
+        try
+        {
+            string rota = Rota + "atualizar-produto";
+
+            return await _apiServices.Post<ProdutoDto>(token, rota, produtoUpdate, default);
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
     }
 
 

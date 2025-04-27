@@ -14,4 +14,8 @@ public class ProdutoDto
     public Guid CategoriaProdutoEntityId { get; set; }
     [JsonPropertyName("categoriaProduto")]
     public string? CategoriaProduto { get; set; }
+    [JsonPropertyName("unidadeMedidaProdutoEntityId")]
+    public Guid UnidadeMedidaProdutoEntityId { get; set; }
+    [JsonPropertyName("unidadeMedidaProduto")]
+    public string? UnidadeMedidaProduto { get; set; }
 }

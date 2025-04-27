@@ -25,23 +25,24 @@ public partial class ProdutoView : ContentView
         get => (ICommand)GetValue(EditarCommandProperty);
         set => SetValue(EditarCommandProperty, value);
     }
-
-    private async void btnProdutoEditar_Clicked(object sender, EventArgs e)
+    private async void OnProdutoTapped(object sender, EventArgs e)
     {
-        if (BindingContext is ProdutoDto produto)
+        try
         {
-            // Obter o ViewModel diretamente do contêiner de injeção de dependência
-            var viewModel = App.Services.GetRequiredService<ProdutoViewModel>();
+            if (BindingContext is ProdutoDto produto)
+            {
+                var viewModel = App.Services.GetRequiredService<ProdutoViewModel>();
 
-            // Defina a ação que deseja (por exemplo, AcoesTeleEnum.Alterar)
-            AcoesTeleEnum acao = AcoesTeleEnum.Alterar;
+                AcoesTeleEnum acao = AcoesTeleEnum.Alterar;
 
-            viewModel.ProdutoSelecionado = produto;
-            // Navegue para a ProdutosPageEditar passando os três parâmetros
-            await Navigation.PushAsync(new ProdutosPageEditar(viewModel, produto, acao));
+                viewModel.ProdutoSelecionado = produto;
+
+                await Navigation.PushAsync(new ProdutosPageEditar(viewModel, acao));
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
         }
     }
-
-
-
 }

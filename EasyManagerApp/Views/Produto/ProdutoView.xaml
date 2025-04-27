@@ -2,48 +2,42 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Views.Produto.ProdutoView"
-             BackgroundColor="White"
+             BackgroundColor="#F5F3EF"
              xmlns:dto="clr-namespace:EasyManagerApp.Dtos.Produto"
              x:DataType="dto:ProdutoDto">
 
     <Border Padding="10"
-            Margin="5"
+            Margin="5,3"
             BackgroundColor="White"
-            Stroke="LightGray"
+            Stroke="#DDD"
             StrokeThickness="1"
-            StrokeShape="RoundRectangle 10">
+            StrokeShape="RoundRectangle 12">
 
-        <Grid ColumnDefinitions="*,Auto"
-              ColumnSpacing="5"
-              VerticalOptions="Center">
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnProdutoTapped" />
+        </Border.GestureRecognizers>
 
-            <VerticalStackLayout Grid.Column="0"
-                                 Spacing="3"
-                                 VerticalOptions="Center">
-               
+        <Grid ColumnDefinitions="auto,*,auto"
+              VerticalOptions="Center"
+              ColumnSpacing="10">
+
+            <HorizontalStackLayout Grid.Column="0"
+                                   Spacing="5"
+                                   VerticalOptions="Center">
+
+                <Label Text="{Binding CodigoProduto, StringFormat='Cod: {0}'}"
+                       FontSize="13"
+                       TextColor="#363949"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold" />
+
                 <Label Text="{Binding NomeProduto}"
-                       FontSize="16"
+                       FontSize="14"
                        FontAttributes="Bold"
-                       TextColor="DarkSlateGray" />
+                       TextColor="#363949"
+                       VerticalTextAlignment="Center" />
+            </HorizontalStackLayout>
 
-                <Label Text="{Binding CodigoProduto, StringFormat='Código: {0}'}"
-                       FontSize="13"
-                       TextColor="Gray" />
-
-                <Label Text="{Binding CategoriaProduto, StringFormat='Categoria: {0}'}"
-                       FontSize="13"
-                       TextColor="SlateGray" />
-            </VerticalStackLayout>
-
-            <Button Text="Editar"
-                    Grid.Column="1"
-                    WidthRequest="80"
-                    HeightRequest="40"
-                    BackgroundColor="#363949"
-                    TextColor="#F5F3EF"
-                    FontAttributes="Bold"
-                    x:Name="btnProdutoEditar"
-                    Clicked="btnProdutoEditar_Clicked"/>
         </Grid>
 
     </Border>
