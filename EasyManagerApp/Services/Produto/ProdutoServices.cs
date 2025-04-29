@@ -20,14 +20,14 @@ public class ProdutoServices : IProdutoServices<ProdutoDto>
 
     public async Task<RequestResult<IEnumerable<ProdutoDto>>> SelectAsync(string token)
     {
-        string rota = Rota + "consultar-produtos";
+        string rota = Rota;
         return await _apiServices.Get<IEnumerable<ProdutoDto>>(token, rota, null, default);
     }
     public async Task<RequestResult<ProdutoDto>> CreateAsync(string token, ProdutoDtoCreate produtoCreate)
     {
         try
         {
-            string rota = Rota + "cadastrar-produto";
+            string rota = Rota;
 
             return await _apiServices.Post<ProdutoDto>(token, rota, produtoCreate, default);
         }
@@ -42,9 +42,9 @@ public class ProdutoServices : IProdutoServices<ProdutoDto>
     {
         try
         {
-            string rota = Rota + "atualizar-produto";
+            string rota = Rota ;
 
-            return await _apiServices.Post<ProdutoDto>(token, rota, produtoUpdate, default);
+            return await _apiServices.Put<ProdutoDto>(token, rota, produtoUpdate, default);
         }
         catch (Exception ex)
         {

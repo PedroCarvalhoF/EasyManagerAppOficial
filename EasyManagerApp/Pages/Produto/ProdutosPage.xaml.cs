@@ -28,7 +28,7 @@ public partial class ProdutosPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await ((ProdutoViewModel)BindingContext).CarregarProdutosAsync();
+        await ProdutoViewModel.CarregarProdutosAsync();
     }
 
     private async void btnCategoriaProduto_Clicked(object sender, EventArgs e)
@@ -36,6 +36,7 @@ public partial class ProdutosPage : ContentPage
         try
         {
             await Navigation.PushAsync(new CategoriaProdutoPage(_categoriaProdutoServices));
+
         }
         catch (Exception ex)
         {
@@ -50,6 +51,8 @@ public partial class ProdutosPage : ContentPage
             var services = App.Services.GetRequiredService<IProdutoServices<ProdutoDto>>();
 
             await Navigation.PushAsync(new ProdutosPageEditar(new ProdutoViewModel(services), Helper.Enum.AcoesTeleEnum.Cadastrar));
+
+            await ProdutoViewModel.CarregarProdutosAsync();
         }
         catch (Exception ex)
         {
@@ -61,8 +64,6 @@ public partial class ProdutosPage : ContentPage
     {
         try
         {
-
-
             await Navigation.PushAsync(new UnidadeProdutoMedidaPage(UnidadeMedidaProdutoView));
         }
         catch (Exception ex)

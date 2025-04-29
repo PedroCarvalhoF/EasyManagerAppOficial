@@ -38,6 +38,8 @@ public partial class ProdutoView : ContentView
                 viewModel.ProdutoSelecionado = produto;
 
                 await Navigation.PushAsync(new ProdutosPageEditar(viewModel, acao));
+
+                await viewModel.CarregarProdutosAsync();
             }
         }
         catch (Exception ex)
