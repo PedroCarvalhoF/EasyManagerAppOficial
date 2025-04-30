@@ -14,6 +14,8 @@ public partial class ProdutoViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<ProdutoDto> produtosDtos = new();
 
+    private List<ProdutoDto> _todosProdutos = new();
+
     [ObservableProperty]
     private ProdutoDto? produtoSelecionado;
 
@@ -56,13 +58,15 @@ public partial class ProdutoViewModel : ObservableObject
 
             if (resultado.Status && resultado.Data is not null)
             {
-                produtosDtos.Clear();
+                _todosProdutos = resultado.Data.ToList(); // Armazena todos os produtos
+                ProdutosDtos.Clear();
 
-                foreach (var item in resultado.Data)
+                foreach (var item in _todosProdutos)
                 {
-                    produtosDtos.Add(item);
+                    ProdutosDtos.Add(item);
                 }
             }
+
             else
             {
                 await Shell.Current.DisplayAlert("Erro", resultado.Mensagem ?? "Erro ao carregar produtos", "OK");
@@ -73,6 +77,26 @@ public partial class ProdutoViewModel : ObservableObject
             await Shell.Current.DisplayAlert("Erro", ex.Message, "OK");
         }
     }
+    public void FiltrarProdutos(string termo)
+    {
+        if (string.IsNullOrWhiteSpace(termo))
+        {
+            ProdutosDtos = new ObservableCollection<ProdutoDto>(_todosProdutos);
+        }
+        else
+        {
+            var filtro = termo.ToLower();
+
+            var filtrados = _todosProdutos
+                .Where(p =>
+                    (!string.IsNullOrEmpty(p.NomeProduto) && p.NomeProduto.ToLower().Contains(filtro)) ||
+                    (!string.IsNullOrEmpty(p.CodigoProduto) && p.CodigoProduto.ToLower().Contains(filtro)))
+                .ToList();
+
+            ProdutosDtos = new ObservableCollection<ProdutoDto>(filtrados);
+        }
+    }
+
 
     [RelayCommand]
     public async Task CadastrarAsync(ProdutoDtoCreate produtoCreate)

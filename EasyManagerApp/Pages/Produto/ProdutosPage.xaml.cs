@@ -71,4 +71,9 @@ public partial class ProdutosPage : ContentPage
             await DisplayAlert("Erro", ex.Message, "Ok");
         }
     }
+
+    private void txtConsultarProduto_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        ProdutoViewModel?.FiltrarProdutos(e.NewTextValue);
+    }
 }
