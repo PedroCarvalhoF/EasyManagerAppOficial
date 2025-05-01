@@ -7,14 +7,12 @@ using System.Collections.ObjectModel;
 namespace EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
 public partial class EstoqueProdutoViewModel : ObservableObject
 {
-    private readonly IEstoqueProdutoServices<EstoqueProdutoDto> _estoqueProdutoService;
+    private readonly IEstoqueProdutoServices<EstoqueProdutoDto>? _estoqueProdutoService;
+    private List<EstoqueProdutoDto> _todosEstoqueProdutos = new List<EstoqueProdutoDto>();
     public EstoqueProdutoViewModel(IEstoqueProdutoServices<EstoqueProdutoDto> estoqueProdutoService)
     {
         _estoqueProdutoService = estoqueProdutoService;
     }
-
-    private List<EstoqueProdutoDto> _todosEstoqueProdutos = new List<EstoqueProdutoDto>();
-
 
     [ObservableProperty]
     private ObservableCollection<EstoqueProdutoDto> estoqueProdutoDtos = new();
@@ -80,6 +78,8 @@ public partial class EstoqueProdutoViewModel : ObservableObject
             EstoqueProdutoDtos = new ObservableCollection<EstoqueProdutoDto>(filtrados);
         }
     }
+
+    [RelayCommand]
     public void FiltraProdutoEstoqueByCategoriaProduto(Guid categoriaId)
     {
         var filtrados = _todosEstoqueProdutos.Where(p => p.CategoriaProdutoEntityId == categoriaId).ToList();
@@ -87,4 +87,28 @@ public partial class EstoqueProdutoViewModel : ObservableObject
         EstoqueProdutoDtos = new ObservableCollection<EstoqueProdutoDto>(filtrados);
     }
 
+
+   
+    public async Task MovimentarEstoque(string token, EstoqueProdutoDtoManter estoqueProdutoDto)
+    {
+        try
+        {
+            var result = await _estoqueProdutoService.MovimentarEstoque(token, estoqueProdutoDto);
+            if (result.Status)
+            {
+                await LoadEstoqueProduto(token);
+                await Application.Current.MainPage.DisplayAlert("Sucesso", "Estoque Atualizado", "OK");
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Erro", result.Mensagem, "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+
+            await Application.Current.MainPage.DisplayAlert("Erro", ex.Message, "OK");
+        }
+    }
 }

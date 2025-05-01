@@ -2,10 +2,86 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.Produto.Estoque.Estoque.MovimentarEstoquePage"
-             Title="MovimentarEstoquePage">
-    <VerticalStackLayout>
-        <Label Text="MovimentarEstoque PAGE"
-               VerticalOptions="Center"
-               HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Movimentar Produto">
+    <StackLayout Spacing="10"
+                 Background="#F5F3EF"
+                 Padding="10">
+
+        <Grid RowDefinitions="*,*,*,auto"
+              RowSpacing="10">
+
+            <!--Informações do produto-->
+            <VerticalStackLayout Grid.Row="0"
+                                 Spacing="10">
+                <Label Text="{Binding NomeProduto}"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       TextColor="#222" />
+
+                <HorizontalStackLayout HorizontalOptions="Start">
+                    <Label Text="{Binding Quantidade,StringFormat='Estoque Atual: {0}'}"
+                           FontSize="14"
+                           TextColor="#555" />
+                    <Label Text="{Binding UnidadeMedidaProduto}"
+                           FontSize="14"
+                           TextColor="#555" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <Grid Grid.Row="1"
+                  ColumnDefinitions="*,*">
+
+                <Label Grid.Column="0"
+                       Text="Quantidade:"
+                       VerticalOptions="Center" />
+
+                <Entry Grid.Column="1"
+                       x:Name="txtQuantidade"
+                       Keyboard="Numeric"
+                       Placeholder="0"
+                       TextColor="Black"
+                       BackgroundColor="White"
+                       TextChanged="txtQuantidade_TextChanged" />
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="5">
+                <Button Text="ENTRADA"
+                        Grid.Column="0"
+                        x:Name="btnEntradaProduto"
+                        Clicked="btnEntradaProduto_Clicked"
+                        BackgroundColor="SeaGreen" />
+                <Button Text="SAÍDA"
+                        Grid.Column="1"
+                        x:Name="btnSaidaProduto"
+                        Clicked="btnSaidaProduto_Clicked"
+                        BackgroundColor="Crimson"
+                        TextColor="White" />
+            </Grid>
+
+            <StackLayout Grid.Row="3"
+                         Margin="0,30,0,0"
+                         Background="White"
+                         Padding="10"
+                         Spacing="10">
+                <Label x:Name="lblResumoMovimentacao"
+                       Text="Resumo Movimentação"
+                       HorizontalTextAlignment="Center" />
+                <Label x:Name="lblProdutoSelecionado"
+                       Text="Produto" />
+                <Label x:Name="lblQuantidadeSelecionada"
+                       Text="Quantidade" />
+                <Label x:Name="lblOperacao"
+                       Text="Saída"
+                       HorizontalTextAlignment="Center" />
+                <Button x:Name="btnConfirmarMovimentacao"
+                        Text="Selecione Movimentacao"
+                        Clicked="btnConfirmarMovimentacao_Clicked" />
+
+            </StackLayout>
+
+        </Grid>
+
+    </StackLayout>
 </ContentPage>

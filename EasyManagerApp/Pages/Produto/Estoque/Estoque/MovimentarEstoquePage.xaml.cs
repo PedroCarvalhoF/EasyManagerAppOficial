@@ -1,9 +1,69 @@
+using EasyManagerApp.Dtos.Produto.Estoque;
+using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
+using System.Threading.Tasks;
+
 namespace EasyManagerApp.Pages.Produto.Estoque.Estoque;
 
 public partial class MovimentarEstoquePage : ContentPage
 {
-	public MovimentarEstoquePage()
-	{
-		InitializeComponent();
-	}
+    public EstoqueProdutoViewModel EstoqueProdutoViewModel { get; }
+    private readonly string Token;
+
+    private EstoqueProdutoDtoOperacao _estoqueOperacaoSelecionada;
+    public MovimentarEstoquePage(EstoqueProdutoViewModel estoqueProdutoViewModel, string token)
+    {
+        InitializeComponent();
+
+        EstoqueProdutoViewModel = estoqueProdutoViewModel;
+        BindingContext = EstoqueProdutoViewModel;
+        Token = token;
+    }
+
+    private void btnEntradaProduto_Clicked(object sender, EventArgs e)
+    {
+        _estoqueOperacaoSelecionada = EstoqueProdutoDtoOperacao.Entrada;
+
+        lblProdutoSelecionado.Text = EstoqueProdutoViewModel.ProdutoEstoqueSelecionado.NomeProduto;
+        lblQuantidadeSelecionada.Text = txtQuantidade.Text;
+        lblOperacao.Text = "ENTRADA";
+        btnConfirmarMovimentacao.Text = "Confirmar Entrada";
+        btnConfirmarMovimentacao.BackgroundColor = Color.FromArgb("#008236");
+    }
+
+    private void btnSaidaProduto_Clicked(object sender, EventArgs e)
+    {
+        _estoqueOperacaoSelecionada = EstoqueProdutoDtoOperacao.Saida;
+
+        lblProdutoSelecionado.Text = EstoqueProdutoViewModel.ProdutoEstoqueSelecionado.NomeProduto;
+        lblQuantidadeSelecionada.Text = txtQuantidade.Text;
+        lblOperacao.Text = "SAÍDA";
+        btnConfirmarMovimentacao.Text = "Confirmar Saída";
+        btnConfirmarMovimentacao.BackgroundColor = Color.FromArgb("#c10007");
+    }
+
+
+    private void txtQuantidade_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        lblQuantidadeSelecionada.Text = txtQuantidade.Text;
+    }
+
+
+    private async void btnConfirmarMovimentacao_Clicked(object sender, EventArgs e)
+    {
+        try
+        {
+            var prodSelecionado = EstoqueProdutoViewModel.ProdutoEstoqueSelecionado;
+
+            var dto = new EstoqueProdutoDtoManter(prodSelecionado.ProdutoId, prodSelecionado.FilialId, Convert.ToDecimal(txtQuantidade.Text), _estoqueOperacaoSelecionada);
+
+            await EstoqueProdutoViewModel.MovimentarEstoque(Token, dto);
+        }
+        catch (Exception ex)
+        {
+
+            await DisplayAlert("Atenção", ex.Message, "Ok");
+        }
+
+    }
+
 }

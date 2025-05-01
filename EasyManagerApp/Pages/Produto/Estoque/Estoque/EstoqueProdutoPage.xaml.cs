@@ -2,7 +2,6 @@ using EasyManagerApp.Dtos.Produto.Estoque;
 using EasyManagerApp.Dtos.ProdutoCategoria;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
 using EasyManagerApp.Services.Intefaces;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.Produto.Estoque.Estoque;
 
@@ -24,13 +23,9 @@ public partial class EstoqueProdutoPage : ContentPage
 
     protected override async void OnAppearing()
     {
-        token = await SecureStorage.GetAsync("token") ?? string.Empty;
-
         base.OnAppearing();
 
-        cardMovimentacaoEstoque.Token = token;
-        cardMovimentacaoEstoque.SetServicesTemp(App.Services.GetService<IEstoqueProdutoServices<EstoqueProdutoDto>>());
-
+        token = await SecureStorage.GetAsync("token") ?? string.Empty;
         await EstoqueProdutoViewModel.LoadEstoqueProduto(token);
 
 
@@ -69,27 +64,38 @@ public partial class EstoqueProdutoPage : ContentPage
         }
     }
 
-    private void EstoqueProdutoView_ProdutoTapped(object sender, object e)
+    private async void EstoqueProdutoView_ProdutoTapped(object sender, object e)
     {
-        var produtoEstoqueDto = (EstoqueProdutoDto)e;
+        try
+        {
+            var produtoEstoqueDto = (EstoqueProdutoDto)e;
 
-        EstoqueProdutoViewModel.ProdutoEstoqueSelecionado = produtoEstoqueDto;
+            EstoqueProdutoViewModel.ProdutoEstoqueSelecionado = produtoEstoqueDto;
 
-        // (Opcional) Preencher outras propriedades do ViewModel
-        EstoqueProdutoViewModel.NomeProduto = produtoEstoqueDto.NomeProduto;
-        EstoqueProdutoViewModel.Quantidade = produtoEstoqueDto.Quantidade;
-        EstoqueProdutoViewModel.UnidadeMedidaProduto = produtoEstoqueDto.UnidadeMedidaProduto;
-        EstoqueProdutoViewModel.NomeFilial = produtoEstoqueDto.NomeFilial;
-        EstoqueProdutoViewModel.FilialId = produtoEstoqueDto.FilialId;
-        EstoqueProdutoViewModel.ProdutoId = produtoEstoqueDto.ProdutoId;
+            // (Opcional) Preencher outras propriedades do ViewModel
+            EstoqueProdutoViewModel.NomeProduto = produtoEstoqueDto.NomeProduto;
+            EstoqueProdutoViewModel.Quantidade = produtoEstoqueDto.Quantidade;
+            EstoqueProdutoViewModel.UnidadeMedidaProduto = produtoEstoqueDto.UnidadeMedidaProduto;
+            EstoqueProdutoViewModel.NomeFilial = produtoEstoqueDto.NomeFilial;
+            EstoqueProdutoViewModel.FilialId = produtoEstoqueDto.FilialId;
+            EstoqueProdutoViewModel.ProdutoId = produtoEstoqueDto.ProdutoId;
 
-        cardMovimentacaoEstoque.BindingContext = produtoEstoqueDto;
+            await Navigation.PushAsync(new MovimentarEstoquePage(EstoqueProdutoViewModel, token));
+        }
+        catch (Exception ex)
+        {
 
-
+            await DisplayAlert("Atenção", ex.Message, "Ok");
+        }
     }
 
     private async void btnAtualizarEstoque_Clicked(object sender, EventArgs e)
     {
         await EstoqueProdutoViewModel.LoadEstoqueProduto(token);
-    }    
+    }
+
+    private void EstoqueProdutoView_ProdutoTapped(object sender, EstoqueProdutoDto e)
+    {
+
+    }
 }

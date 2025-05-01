@@ -9,46 +9,38 @@
              Shell.NavBarIsVisible="True"
              BackgroundColor="#F5F3EF">
 
-    <Grid RowDefinitions="*,auto">
-        <StackLayout Grid.Row="0"
-                     Padding="10"
-                     Spacing="5">
+    <ScrollView>
+        <Grid RowDefinitions="*,auto">
+            <StackLayout Grid.Row="0"
+                         Padding="10"
+                         Spacing="5">
 
-            <Grid ColumnDefinitions="3*,2*,*"
-                  ColumnSpacing="10">
+                <Grid ColumnDefinitions="2*,*"
+                      ColumnSpacing="10">
 
-                <SearchBar x:Name="txtNomeCodigoProduto"
-                           HeightRequest="50"
-                           Grid.Column="0"
-                           Placeholder="Pesquisar produto"
-                           TextChanged="txtNomeCodigoProduto_TextChanged" />
+                    <SearchBar x:Name="txtNomeCodigoProduto"
+                               HeightRequest="50"
+                               Grid.Column="0"
+                               Placeholder="Pesquisar produto"
+                               TextChanged="txtNomeCodigoProduto_TextChanged" />
 
-                <Picker x:Name="pckCategoriaProduto"
-                        Margin="0,0,0,0"
-                        Grid.Column="1"
-                        ItemDisplayBinding="{Binding NomeCategoria}"
-                        SelectedIndexChanged="pckCategoriaProduto_SelectedIndexChanged"
-                        HeightRequest="50" />
+                    <Picker x:Name="pckCategoriaProduto"
+                            Margin="0,0,0,0"
+                            Grid.Column="1"
+                            ItemDisplayBinding="{Binding NomeCategoria}"
+                            SelectedIndexChanged="pckCategoriaProduto_SelectedIndexChanged"
+                            HeightRequest="50" />
+                </Grid>
+                <CollectionView ItemsSource="{Binding EstoqueProdutoDtos}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <view:EstoqueProdutoView ProdutoTapped="EstoqueProdutoView_ProdutoTapped" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
 
-                <Button x:Name="btnAtualizarEstoque"
-                        Clicked="btnAtualizarEstoque_Clicked"
-                        Grid.Column="2"
-                        Text="AtualizarEstoque"
-                        BackgroundColor="MediumSeaGreen" />
+        </Grid>
+    </ScrollView>
 
-            </Grid>
-            <CollectionView ItemsSource="{Binding EstoqueProdutoDtos}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <view:EstoqueProdutoView ProdutoTapped="EstoqueProdutoView_ProdutoTapped" />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
-
-        <VerticalStackLayout Grid.Row="1">
-            <ctrl_estoque:MovimentacaoProdutoEstoqueCard x:Name="cardMovimentacaoEstoque"
-                                                         BindingContext="{Binding ProdutoSelecionado}" />
-        </VerticalStackLayout>
-    </Grid>
 </ContentPage>
