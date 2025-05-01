@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Views.Produto.Estoque.Estoque.MovimentacaoProdutoEstoqueCard"
+             xmlns:dto="clr-namespace:EasyManagerApp.Dtos.Produto.Estoque"
+             x:DataType="dto:EstoqueProdutoDto">
+
+    <Border Padding="4"
+            BackgroundColor="White"
+            Stroke="#E0E0E0"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 8">
+
+        <VerticalStackLayout Spacing="10"
+                             Background="#F5F3EF"
+                             Padding="10">
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Produto Selecionado"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="{Binding NomeProduto}"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="End"
+                       FontSize="18"
+                       TextColor="#222" />
+                <HorizontalStackLayout HorizontalOptions="End">
+                    <Label Text="{Binding Quantidade,StringFormat='Estoque Atual: {0}'}"
+                           FontSize="14"
+                           TextColor="#555" />
+                    <Label Text="{Binding UnidadeMedidaProduto}"
+                           FontSize="14"
+                           TextColor="#555" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Entrada/Saída -->
+            <HorizontalStackLayout Spacing="10"
+                                   VerticalOptions="End"
+                                   HorizontalOptions="End">
+
+                <Label Text="Quantidade:"
+                       VerticalOptions="Center" />
+                <Entry x:Name="txtQuantidade"
+                       WidthRequest="100"
+                       Keyboard="Numeric"
+                       Placeholder="0"
+                       TextColor="Black"
+                       BackgroundColor="White" />
+
+                <Button Text="ENTRADA"
+                        x:Name="btnEntradaProduto"
+                        Clicked="btnEntradaProduto_Clicked"
+                        BackgroundColor="SeaGreen" />
+                <Button Text="SAÍDA"
+                        x:Name="btnSaidaProduto"
+                        Clicked="btnSaidaProduto_Clicked"
+                        BackgroundColor="Crimson"
+                        WidthRequest="100"
+                        TextColor="White" />
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </Border>
+</ContentView>

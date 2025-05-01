@@ -16,6 +16,7 @@ using EasyManagerApp.Services.Produto;
 using EasyManagerApp.Services.Produto.Estoque;
 using EasyManagerApp.Services.Produto.UnidadeMedida;
 using EasyManagerApp.Services.ProdutoCategoria;
+using EasyManagerApp.Views.Produto.Estoque.Estoque;
 using Microsoft.Extensions.Logging;
 
 namespace EasyManagerApp;
@@ -45,6 +46,9 @@ public static class MauiProgram
         builder.Services.AddTransient<IProdutoServices<ProdutoDto>, ProdutoServices>();
         builder.Services.AddTransient<IUnidadeMedidaProdutoServices<UnidadeMedidaProdutoDto>, UnidadeMedidaProdutoServices>();
         builder.Services.AddTransient<IEstoqueProdutoServices<EstoqueProdutoDto>, EstoqueProdutoServices>();
+
+        //views
+        builder.Services.AddTransient<MovimentacaoProdutoEstoqueCard>();
 
         // Páginas
         builder.Services.AddTransient<MainPage>();

@@ -10,7 +10,7 @@
             Stroke="#E0E0E0"
             StrokeThickness="1"
             StrokeShape="RoundRectangle 12"
-            Margin="8">
+            Margin="1">
 
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnProdutoTapped" />
@@ -35,6 +35,10 @@
                 <Label Text="{Binding Quantidade}"
                        FontSize="14"
                        TextColor="#555" />
+                <Label Text="{Binding UnidadeMedidaProduto}"
+                       FontSize="14"
+                       TextColor="#555" />
+
             </HorizontalStackLayout>
 
         </VerticalStackLayout>

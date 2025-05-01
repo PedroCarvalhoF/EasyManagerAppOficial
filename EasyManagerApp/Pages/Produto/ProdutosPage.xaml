@@ -5,8 +5,8 @@
              xmlns:local="clr-namespace:EasyManagerApp.DtosViewModel.Produto"
              xmlns:view="clr-namespace:EasyManagerApp.Views.Produto"
              BackgroundColor="#F5F3EF"
-             Title=""
-             Shell.NavBarIsVisible="False">
+             Title="Produtos"
+             Shell.NavBarIsVisible="True">
 
     <Grid RowDefinitions="auto,*,auto"
           Padding="10">
