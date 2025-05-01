@@ -4,6 +4,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:homePage="clr-namespace:EasyManagerApp.Pages"
        xmlns:produtoPage="clr-namespace:EasyManagerApp.Pages.Produto"
+       xmlns:estoqueProdutoPage="clr-namespace:EasyManagerApp.Pages.Produto.Estoque.Estoque"
        Shell.FlyoutBehavior="Flyout"
        Title="EasyManagerApp">
 
@@ -14,5 +15,9 @@
     <ShellContent Title="Produtos"
                   ContentTemplate="{DataTemplate produtoPage:ProdutosPage}"
                   Route="ProdutosPage" />
+
+    <ShellContent Title="Estoque"
+                  ContentTemplate="{DataTemplate estoqueProdutoPage:EstoqueProdutoPage}"
+                  Route="EstoquePage" />
 
 </Shell>

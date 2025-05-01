@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Maui;
 using EasyManagerApp.Dtos.Produto;
+using EasyManagerApp.Dtos.Produto.Estoque;
 using EasyManagerApp.Dtos.Produto.UnidadeMedida;
 using EasyManagerApp.DtosViewModel.Produto;
+using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
 using EasyManagerApp.DtosViewModel.Produto.UnidadeMedida;
 using EasyManagerApp.Pages.Produto;
 using EasyManagerApp.Pages.Produto.UnidadeMedidaProduto;
@@ -11,6 +13,7 @@ using EasyManagerApp.Services.Account;
 using EasyManagerApp.Services.API;
 using EasyManagerApp.Services.Intefaces;
 using EasyManagerApp.Services.Produto;
+using EasyManagerApp.Services.Produto.Estoque;
 using EasyManagerApp.Services.Produto.UnidadeMedida;
 using EasyManagerApp.Services.ProdutoCategoria;
 using Microsoft.Extensions.Logging;
@@ -41,6 +44,7 @@ public static class MauiProgram
         builder.Services.AddTransient<ICategoriaProdutoServices, CategoriaProdutoServices>();
         builder.Services.AddTransient<IProdutoServices<ProdutoDto>, ProdutoServices>();
         builder.Services.AddTransient<IUnidadeMedidaProdutoServices<UnidadeMedidaProdutoDto>, UnidadeMedidaProdutoServices>();
+        builder.Services.AddTransient<IEstoqueProdutoServices<EstoqueProdutoDto>, EstoqueProdutoServices>();
 
         // Páginas
         builder.Services.AddTransient<MainPage>();
@@ -51,6 +55,8 @@ public static class MauiProgram
 
         builder.Services.AddTransient<UnidadeProdutoMedidaPage>();
         builder.Services.AddTransient<UnidadeMedidaProdutoViewModel>();
+
+        builder.Services.AddTransient<EstoqueProdutoViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Pages.Produto.Estoque.Estoque.EstoqueProdutoPage"
+             Title="EstoqueProdutoPage"
+             xmlns:view="clr-namespace:EasyManagerApp.Views.Produto.Estoque.Estoque"
+             xmlns:model="clr-namespace:EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque">
+
+    <VerticalStackLayout>
+        <CollectionView Grid.Row="0"
+                        ItemsSource="{Binding EstoqueProdutoDtos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <view:EstoqueProdutoView />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

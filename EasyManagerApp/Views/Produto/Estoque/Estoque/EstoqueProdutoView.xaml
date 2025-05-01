@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Views.Produto.Estoque.Estoque.EstoqueProdutoView"
+             xmlns:dto="clr-namespace:EasyManagerApp.Dtos.Produto.Estoque"
+             x:DataType="dto:EstoqueProdutoDto">
+
+    <Border Padding="14"
+            BackgroundColor="#FFFFFF"
+            Stroke="#E0E0E0"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 12"
+            Margin="8">
+
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnProdutoTapped" />
+        </Border.GestureRecognizers>
+
+        <VerticalStackLayout Spacing="4">
+
+            <!-- Nome do produto -->
+            <Label Text="{Binding NomeProduto}"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   TextColor="#222" />
+
+            <!-- Informações adicionais -->
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="{Binding NomeFilial}"
+                       FontSize="14"
+                       TextColor="#555" />
+                <Label Text="•"
+                       FontSize="14"
+                       TextColor="#AAA" />
+                <Label Text="{Binding Quantidade}"
+                       FontSize="14"
+                       TextColor="#555" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </Border>
+</ContentView>
