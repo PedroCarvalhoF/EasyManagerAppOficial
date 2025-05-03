@@ -2,34 +2,81 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.User.CadastrarUserPage"
+             BackgroundColor="#F5F6FA"
              Title="Criar Conta">
-
-    <ScrollView>
-        <VerticalStackLayout Padding="20"
-                             Spacing="15">
-
-            <Label Text="Criar Conta"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
-            <Entry x:Name="txtNome"
-                   Placeholder="Nome" />
-            <Entry x:Name="txtSobreNome"
-                   Placeholder="Sobrenome" />
-            <Entry x:Name="txtEmail"
-                   Placeholder="Email"
-                   Keyboard="Email" />
-            <Entry x:Name="txtSenha"
-                   Placeholder="Senha"
-                   IsPassword="True" />
-            <Entry x:Name="txtConfirmarSenha"
-                   Placeholder="Confirmar Senha"
-                   IsPassword="True" />
-
-            <Button Text="Cadastrar"
-                    x:Name="btnCadastrarUsuario"
-                    Clicked="btnCadastrarUsuario_Clicked" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+    <Grid>
+        <Border StrokeShape="RoundRectangle 16"
+                Background="White"
+                StrokeThickness="0"
+                Padding="32,32,32,24"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                WidthRequest="380"
+                HeightRequest="600">
+            <Border.Shadow>
+                <Shadow Brush="#00000022"
+                        Radius="16"
+                        Opacity="0.18" />
+            </Border.Shadow>
+            <ScrollView>
+                <VerticalStackLayout Spacing="18">
+                    <!-- Ícone topo -->
+                    <Image Source="editar.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           WidthRequest="50" />
+                    <!-- Título -->
+                    <Label Text="Criar Conta"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#1d293d" />
+                    <!-- Nome -->
+                    <Entry x:Name="txtNome"
+                           Placeholder="Nome"
+                           BackgroundColor="#F5F6FA"
+                           HeightRequest="44"
+                           FontSize="15" />
+                    <!-- Sobrenome -->
+                    <Entry x:Name="txtSobreNome"
+                           Placeholder="Sobrenome"
+                           BackgroundColor="#F5F6FA"
+                           HeightRequest="44"
+                           FontSize="15" />
+                    <!-- Email -->
+                    <Entry x:Name="txtEmail"
+                           Placeholder="Email"
+                           Keyboard="Email"
+                           BackgroundColor="#F5F6FA"
+                           HeightRequest="44"
+                           FontSize="15" />
+                    <!-- Senha -->
+                    <Entry x:Name="txtSenha"
+                           Placeholder="Senha"
+                           IsPassword="True"
+                           BackgroundColor="#F5F6FA"
+                           HeightRequest="44"
+                           FontSize="15" />
+                    <!-- Confirmar Senha -->
+                    <Entry x:Name="txtConfirmarSenha"
+                           Placeholder="Confirmar Senha"
+                           IsPassword="True"
+                           BackgroundColor="#F5F6FA"
+                           HeightRequest="44"
+                           FontSize="15" />
+                    <!-- Botão Cadastrar -->
+                    <Button Text="Cadastrar"
+                            x:Name="btnCadastrarUsuario"
+                            Clicked="btnCadastrarUsuario_Clicked"
+                            BackgroundColor="#1d293d"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HeightRequest="44"
+                            CornerRadius="8"
+                            Margin="0,8,0,0" />
+                </VerticalStackLayout>
+            </ScrollView>
+        </Border>
+    </Grid>
 </ContentPage>
