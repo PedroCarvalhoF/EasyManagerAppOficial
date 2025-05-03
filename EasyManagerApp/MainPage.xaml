@@ -42,8 +42,10 @@
                            FontSize="14"
                            TextColor="#1d293d" />
                     <Entry x:Name="txtEmail"
+                           Text="admin@ec.com"
                            Placeholder="Informe seu e-mail"
                            Keyboard="Email"
+                           TextColor="#1d293d"
                            BackgroundColor="#F5F6FA"
                            HeightRequest="44"
                            Margin="0,0,0,0"
@@ -53,9 +55,11 @@
                 <VerticalStackLayout Spacing="4">
                     <Label Text="Senha"
                            FontAttributes="Bold"
-                           FontSize="14"
+                           FontSize="14" 
                            TextColor="#222" />
                     <Entry x:Name="txtSenha"
+                           Text="123456"
+                           TextColor="#1d293d"
                            Placeholder="********"
                            IsPassword="True"
                            BackgroundColor="#F5F6FA"

@@ -4,60 +4,60 @@
              x:Class="EasyManagerApp.Pages.Produto.ProdutosPage"
              xmlns:local="clr-namespace:EasyManagerApp.DtosViewModel.Produto"
              xmlns:view="clr-namespace:EasyManagerApp.Views.Produto"
-             BackgroundColor="#F5F3EF"
-             Title="Produtos"
+             BackgroundColor="#F5F6FA"
              Shell.NavBarIsVisible="True">
+    <Grid>
+        <VerticalStackLayout Spacing="12"
+                             Padding="16,16,16,0">
 
-    <Grid RowDefinitions="auto,*,auto"
-          Padding="10">
-
-        <VerticalStackLayout Grid.Row="0"
-                             Margin="0,0,0,10">
             <SearchBar x:Name="txtConsultarProduto"
-                       Placeholder="Nome/Codigo Produto"
-                       TextChanged="txtConsultarProduto_TextChanged"/>
-        </VerticalStackLayout>
-
-        <Grid Grid.Row="1">
-            <CollectionView Grid.Row="0"
-                            ItemsSource="{Binding ProdutosDtos}">
+                       Placeholder="Buscar por nome ou código"
+                       BackgroundColor="#F5F6FA"
+                       HeightRequest="44"
+                       Margin="0,0,0,8"
+                       TextChanged="txtConsultarProduto_TextChanged" />
+            <CollectionView ItemsSource="{Binding ProdutosDtos}"
+                            ItemsLayout="VerticalGrid, 2"
+                            Margin="0,0,0,80"
+                            SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <view:ProdutoView />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+        </VerticalStackLayout>
+        <!-- Botão flutuante para novo produto -->
 
-        </Grid>
+        <HorizontalStackLayout HorizontalOptions="Center">
 
-        <Grid Grid.Row="2"
-              ColumnDefinitions="auto,auto,*"
-              RowSpacing="10"
-              ColumnSpacing="5">
-
-            <Button Grid.Column="0"
-                    x:Name="btnUnidadeMedida"
-                    Clicked="btnUnidadeMedida_Clicked"
-                    Text="Medidas"
-                    FontAttributes="None"
-                    FontSize="Body"
-                    BackgroundColor="DarkSlateGray" />
-
-            <Button Grid.Column="1"
-                    x:Name="btnCategoriaProduto"
-                    Clicked="btnCategoriaProduto_Clicked"
+            <Button Clicked="btnCategoriaProduto_Clicked"
                     Text="Categorias"
-                    FontAttributes="None"
-                    FontSize="Body"
-                    BackgroundColor="DarkSlateGray" />
+                    FontSize="14"
+                    WidthRequest="100"
+                    HeightRequest="30"
+                    CornerRadius="23"
+                    BackgroundColor="#1d293d"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Margin="0,0,6,12" />
 
-            <Button Grid.Column="2"
-                    x:Name="btnCadastrarProduto"
+            <Button x:Name="btnCadastrarProduto"
                     Clicked="btnCadastrarProduto_Clicked"
                     Text="Novo Produto"
-                    FontAttributes="None"
-                    FontSize="Body"
-                    BackgroundColor="#008236" />
-        </Grid>
+                    FontSize="14"
+                    WidthRequest="140"
+                    HeightRequest="30"
+                    CornerRadius="23"
+                    BackgroundColor="SeaGreen"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Margin="0,0,12,12" />
+
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>

@@ -2,63 +2,32 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Views.Produto.ProdutoView"
-             BackgroundColor="#F5F3EF"
+             BackgroundColor="Transparent"
              xmlns:dto="clr-namespace:EasyManagerApp.Dtos.Produto"
              x:DataType="dto:ProdutoDto">
-
-    <Border Padding="10"
-            BackgroundColor="White"
-            Stroke="#DDD"
-            StrokeThickness="1"
-            StrokeShape="RoundRectangle 5">
-
+    <Border Padding="12"
+            Background="White"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 16"
+            Margin="8,8,8,8">
+        <Border.Shadow>
+            <Shadow Brush="#00000022" Radius="8" Opacity="0.10" />
+        </Border.Shadow>
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnProdutoTapped" />
         </Border.GestureRecognizers>
-
-        <Grid ColumnDefinitions="auto,*,auto"
-              VerticalOptions="Center"
-              ColumnSpacing="10">
-
-            <HorizontalStackLayout Grid.Column="0"
-                                   Spacing="5"
-                                   VerticalOptions="Center">
-
-                <Grid ColumnDefinitions="auto,*,auto"
-                      RowDefinitions="*,*,*"
-                      ColumnSpacing="10">
-
-                    <Label Grid.Column="0"
-                           Grid.Row="0"
-                           Text="{Binding CodigoProduto,StringFormat='código: {0}'}"
-                           FontSize="10"
-                           TextColor="Gray"
-                           VerticalTextAlignment="Center"
-                           HorizontalTextAlignment="Start"
-                           FontAttributes="Bold" />
-
-                    <Label Grid.Column="0"
-                           Grid.Row="1"
-                           Grid.RowSpan="2"
-                           Text="{Binding NomeProduto}"
-                           FontSize="15"
-                           FontAttributes="Bold"
-                           TextColor="#363949"
-                           VerticalTextAlignment="Center"
-                           WidthRequest="200" />
-
-                    <Label Grid.Column="1"
-                           Grid.Row="0"
-                           Text="{Binding CategoriaProduto}"
-                           FontSize="10"
-                           FontAttributes="Bold"
-                           TextColor="Gray"
-                           VerticalTextAlignment="Center" />
-                </Grid>
-
-            </HorizontalStackLayout>
-
-        </Grid>
-
+        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="{Binding CategoriaProduto}"
+                   FontSize="12"
+                   TextColor="#888"
+                   HorizontalTextAlignment="Center" />
+            <Label Text="{Binding NomeProduto}"
+                   FontAttributes="Bold"
+                   FontSize="15"
+                   TextColor="#1d293d"
+                   HorizontalTextAlignment="Center" />
+            
+          
+        </VerticalStackLayout>
     </Border>
 </ContentView>
