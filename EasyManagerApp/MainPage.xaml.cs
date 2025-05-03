@@ -12,15 +12,7 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         _servicesProvider = servicesProvider;
-    }
-
-    private async void btnCadastrarUsuario_Clicked(object sender, EventArgs e)
-    {
-        //// Certifique-se de que o método GetRequiredService está disponível ao usar o namespace correto
-        var page = _servicesProvider.GetRequiredService<CadastrarUserPage>();
-        await Navigation.PushAsync(page);
-    }
-
+    }   
     private async void btnLogin_Clicked(object sender, EventArgs e)
     {
         try
@@ -41,5 +33,17 @@ public partial class MainPage : ContentPage
 
             await DisplayAlert("Erro", ex.Message, "Ok");
         }
+    }
+
+    private async void cadastrarNovoUsuario_Click(object sender, TappedEventArgs e)
+    {
+        //// Certifique-se de que o método GetRequiredService está disponível ao usar o namespace correto
+        var page = _servicesProvider.GetRequiredService<CadastrarUserPage>();
+        await Navigation.PushAsync(page);
+    }
+
+    private void btnCadastrarUsuario_Clicked(object sender, EventArgs e)
+    {
+
     }
 }

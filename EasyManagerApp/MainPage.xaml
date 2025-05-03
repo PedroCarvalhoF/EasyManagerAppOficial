@@ -1,72 +1,108 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="EasyManagerApp.MainPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="White">
-    <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="DarkSlateGray"
-                                   StatusBarStyle="LightContent" />
-    </ContentPage.Behaviors>
-
-    <VerticalStackLayout Spacing="5"
-                         Padding="10"
-                         VerticalOptions="Center">
-
-        <StackLayout>
-            <Label Text="Seja bem vindo Easy Manager"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center" />
-            <Label Text="Informe seu login e senha para continuar"
-                   HorizontalTextAlignment="Center" />
-        </StackLayout>
-
-        <VerticalStackLayout Spacing="10">
-
-            <Border Padding="10"
-                    Margin="10"
-                    StrokeShape="RoundRectangle 10"
-                    Background="White">
-                <Border.Shadow>
-                    <Shadow Brush="LightGray"
-                            Radius="10"
-                            Opacity="0.8" />
-                </Border.Shadow>
-
-                <VerticalStackLayout Spacing="10">
-                    <Label Text="E-mail" />
+             BackgroundColor="#F5F6FA">
+    <Grid>
+        <Border StrokeShape="RoundRectangle 16"
+                Background="White"
+                StrokeThickness="0"
+                Padding="32,32,32,24"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                WidthRequest="380"
+                MinimumWidthRequest="320">
+            <Border.Shadow>
+                <Shadow Brush="#00000022"
+                        Radius="16"
+                        Opacity="0.18" />
+            </Border.Shadow>
+            <VerticalStackLayout Spacing="18">
+                <!-- Ícone topo -->
+                <Image Source="easy_logo_01.png"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       WidthRequest="50" />
+                <!-- Título -->
+                <Label Text="Bem-vindo ao Easy Manager"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       TextColor="#1d293d" />
+                <!-- Subtítulo -->
+                <Label Text="Faça login para acessar o sistema"
+                       FontSize="14"
+                       TextColor="#888"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,0,0,8" />
+                <!-- Nome -->
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Nome"
+                           FontAttributes="Bold"
+                           FontSize="14"
+                           TextColor="#1d293d" />
                     <Entry x:Name="txtEmail"
-                           Text="admin@ec.com"
-                           Placeholder="Informe seu email" />
-                    <Label Text="Senha" />
-                    <Entry x:Name="txtSenha" Text="123456"
-                           Placeholder="Informe sua senha"
-                           IsPassword="True" />
+                           Placeholder="Seu nome"
+                           Keyboard="Email"
+                           BackgroundColor="#F5F6FA"
+                           HeightRequest="44"
+                           Margin="0,0,0,0"
+                           FontSize="15" />
                 </VerticalStackLayout>
-            </Border>
-
-            <Grid ColumnDefinitions="auto,*"
-                  Padding="10,0,0,10"
-                  ColumnSpacing="10">
-
+                <!-- Senha -->
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Senha"
+                           FontAttributes="Bold"
+                           FontSize="14"
+                           TextColor="#222" />
+                    <Entry x:Name="txtSenha"
+                           Placeholder="********"
+                           IsPassword="True"
+                           BackgroundColor="#F5F6FA"
+                           HeightRequest="44"
+                           FontSize="15" />
+                </VerticalStackLayout>
+                <!-- Botão Entrar -->
+                <Button x:Name="btnLogin"
+                        Text="Entrar"
+                        Clicked="btnLogin_Clicked"
+                        BackgroundColor="#1d293d"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HeightRequest="44"
+                        CornerRadius="8"
+                        Margin="0,8,0,0" />
+                <!-- Links -->
+                <VerticalStackLayout Spacing="2"
+                                     Margin="0,8,0,0">
+                    <Label Text="Esqueceu sua senha?"
+                           FontSize="13"
+                           TextColor="#6A6A6A"
+                           HorizontalTextAlignment="Center" />
+                    <Label HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Não possui cadastro? "
+                                      FontSize="13"
+                                      TextColor="#6A6A6A" />
+                                <Span Text="Cadastre-se"
+                                      FontSize="13"
+                                      TextColor="#1d293d"
+                                      FontAttributes="Bold">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="cadastrarNovoUsuario_Click" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+                <!-- Botão oculto para cadastro -->
                 <Button x:Name="btnCadastrarUsuario"
                         Clicked="btnCadastrarUsuario_Clicked"
-                        Grid.Column="0"
-                        Text="criar conta"
-                        FontAttributes="Bold"
-                        BackgroundColor="{x:StaticResource Gray100}"
-                        TextColor="DarkSlateGray" />
-
-                <Button x:Name="btnLogin"
-                        Clicked="btnLogin_Clicked"
-                        Grid.Column="1"
-                        Margin="0,0,10,0"
-                        Text="Login"
-                        TextColor="White" />
-            </Grid>
-
-        </VerticalStackLayout>
-
-    </VerticalStackLayout>
+                        IsVisible="False" />
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
 </ContentPage>
