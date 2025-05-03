@@ -17,6 +17,15 @@ public partial class MovimentarEstoquePage : ContentPage
         EstoqueProdutoViewModel = estoqueProdutoViewModel;
         BindingContext = EstoqueProdutoViewModel;
         Token = token;
+        btnConfirmarMovimentacao.IsEnabled = false;
+
+       
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        txtQuantidade.Focus();
     }
 
     private void btnEntradaProduto_Clicked(object sender, EventArgs e)
@@ -28,6 +37,7 @@ public partial class MovimentarEstoquePage : ContentPage
         lblOperacao.Text = "ENTRADA";
         btnConfirmarMovimentacao.Text = "Confirmar Entrada";
         btnConfirmarMovimentacao.BackgroundColor = Color.FromArgb("#008236");
+        btnConfirmarMovimentacao.IsEnabled = true;
     }
 
     private void btnSaidaProduto_Clicked(object sender, EventArgs e)
@@ -39,6 +49,7 @@ public partial class MovimentarEstoquePage : ContentPage
         lblOperacao.Text = "SAÍDA";
         btnConfirmarMovimentacao.Text = "Confirmar Saída";
         btnConfirmarMovimentacao.BackgroundColor = Color.FromArgb("#c10007");
+        btnConfirmarMovimentacao.IsEnabled = true;
     }
 
 
@@ -52,11 +63,19 @@ public partial class MovimentarEstoquePage : ContentPage
     {
         try
         {
+
+
             var prodSelecionado = EstoqueProdutoViewModel.ProdutoEstoqueSelecionado;
 
-            var dto = new EstoqueProdutoDtoManter(prodSelecionado.ProdutoId, prodSelecionado.FilialId, Convert.ToDecimal(txtQuantidade.Text), _estoqueOperacaoSelecionada);
+            if (txtQuantidade.Text == string.Empty)
+                return;
 
-            await EstoqueProdutoViewModel.MovimentarEstoque(Token, dto);
+            if (decimal.TryParse(txtQuantidade.Text, out decimal result))
+            {
+                var dto = new EstoqueProdutoDtoManter(prodSelecionado.ProdutoId, prodSelecionado.FilialId, Convert.ToDecimal(txtQuantidade.Text), _estoqueOperacaoSelecionada!);
+
+                await EstoqueProdutoViewModel.MovimentarEstoque(Token, dto);
+            }
         }
         catch (Exception ex)
         {

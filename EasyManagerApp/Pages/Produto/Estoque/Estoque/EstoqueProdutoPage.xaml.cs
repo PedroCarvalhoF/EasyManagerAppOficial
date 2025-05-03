@@ -29,16 +29,16 @@ public partial class EstoqueProdutoPage : ContentPage
         await EstoqueProdutoViewModel.LoadEstoqueProduto(token);
 
 
-        var result = await _categoriaProdutoSerices.ConsultarCategoriasProdutos<CategoriaProdutoDto>(token, CancellationToken.None);
+        //var result = await _categoriaProdutoSerices.ConsultarCategoriasProdutos<CategoriaProdutoDto>(token, CancellationToken.None);
 
-        if (result != null && result.Status)
-        {
-            pckCategoriaProduto.ItemsSource = result.Data.ToList();
-        }
-        else
-        {
-            await DisplayAlert("Erro", "Erro ao carregar categorias de produtos", "OK");
-        }
+        //if (result != null && result.Status)
+        //{
+        //  //  pckCategoriaProduto.ItemsSource = result.Data.ToList();
+        //}
+        //else
+        //{
+        //    await DisplayAlert("Erro", "Erro ao carregar categorias de produtos", "OK");
+        //}
     }
     private async void txtNomeCodigoProduto_TextChanged(object sender, TextChangedEventArgs e)
     {

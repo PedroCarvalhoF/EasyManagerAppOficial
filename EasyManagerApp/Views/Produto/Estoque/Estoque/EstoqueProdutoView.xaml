@@ -16,31 +16,33 @@
             <TapGestureRecognizer Tapped="OnProdutoTapped" />
         </Border.GestureRecognizers>
 
-        <VerticalStackLayout Spacing="4">
+        <VerticalStackLayout>
+            <Label Text="{Binding NomeFilial}"
+                   TextColor="Gainsboro"
+                   FontSize="Micro" />
 
-            <!-- Nome do produto -->
-            <Label Text="{Binding NomeProduto}"
-                   FontAttributes="Bold"
-                   FontSize="18"
-                   TextColor="#222" />
-
-            <!-- Informações adicionais -->
             <HorizontalStackLayout Spacing="10">
-                <Label Text="{Binding NomeFilial}"
-                       FontSize="14"
-                       TextColor="#555" />
-                <Label Text="•"
-                       FontSize="14"
-                       TextColor="#AAA" />
-                <Label Text="{Binding Quantidade}"
-                       FontSize="14"
-                       TextColor="#555" />
-                <Label Text="{Binding UnidadeMedidaProduto}"
-                       FontSize="14"
-                       TextColor="#555" />
+
+                <HorizontalStackLayout VerticalOptions="End"
+                                       WidthRequest="100">
+                    <Label Text="{Binding Quantidade}"
+                           FontSize="14"
+                           TextColor="#555" />
+                    <Label Text="{Binding UnidadeMedidaProduto}"
+                           FontSize="14"
+                           TextColor="#555" />
+                </HorizontalStackLayout>
+
+                <VerticalStackLayout>
+
+                    <Label Text="{Binding NomeProduto}"
+                           FontSize="Header"
+                           FontAttributes="Bold"
+                           TextColor="#363949" />
+                </VerticalStackLayout>
 
             </HorizontalStackLayout>
-
         </VerticalStackLayout>
+
     </Border>
 </ContentView>
