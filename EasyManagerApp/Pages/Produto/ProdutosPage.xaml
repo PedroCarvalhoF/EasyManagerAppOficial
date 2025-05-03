@@ -7,57 +7,60 @@
              BackgroundColor="#F5F6FA"
              Shell.NavBarIsVisible="True">
     <Grid>
-        <VerticalStackLayout Spacing="12"
-                             Padding="16,16,16,0">
-
+        <!-- Grid principal para SearchBar e CollectionView -->
+        <Grid Padding="16,16,16,0" RowDefinitions="Auto,*">
             <SearchBar x:Name="txtConsultarProduto"
+                       Grid.Row="0"
                        Placeholder="Buscar por nome ou código"
                        BackgroundColor="#F5F6FA"
                        HeightRequest="44"
                        Margin="0,0,0,8"
                        TextChanged="txtConsultarProduto_TextChanged" />
-            <CollectionView ItemsSource="{Binding ProdutosDtos}"
+            <CollectionView Grid.Row="1"
+                            ItemsSource="{Binding ProdutosDtos}"
                             ItemsLayout="VerticalGrid, 2"
-                            Margin="0,0,0,80"
-                            SelectionMode="None">
+                            SelectionMode="None"
+                            Margin="0,0,0,0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <view:ProdutoView />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </VerticalStackLayout>
-        <!-- Botão flutuante para novo produto -->
-
-        <HorizontalStackLayout HorizontalOptions="Center">
-
-            <Button Clicked="btnCategoriaProduto_Clicked"
-                    Text="Categorias"
-                    FontSize="14"
-                    WidthRequest="100"
-                    HeightRequest="30"
-                    CornerRadius="23"
-                    BackgroundColor="#1d293d"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    VerticalOptions="End"
-                    HorizontalOptions="End"
-                    Margin="0,0,6,12" />
-
-            <Button x:Name="btnCadastrarProduto"
-                    Clicked="btnCadastrarProduto_Clicked"
-                    Text="Novo Produto"
-                    FontSize="14"
-                    WidthRequest="140"
-                    HeightRequest="30"
-                    CornerRadius="23"
-                    BackgroundColor="SeaGreen"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    VerticalOptions="End"
-                    HorizontalOptions="End"
-                    Margin="0,0,12,12" />
-
-        </HorizontalStackLayout>
+        </Grid>
+        <!-- Botões flutuantes centralizados -->
+        <Grid VerticalOptions="End" HorizontalOptions="Center" Padding="0,0,0,16">
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                <Border StrokeShape="RoundRectangle 20" BackgroundColor="Transparent">
+                    <Border.Shadow>
+                        <Shadow Brush="#00000022" Radius="8" Opacity="0.18" />
+                    </Border.Shadow>
+                    <Button Clicked="btnCategoriaProduto_Clicked"
+                            Text="Categorias"
+                            FontSize="14"
+                            WidthRequest="100"
+                            HeightRequest="40"
+                            CornerRadius="20"
+                            BackgroundColor="#1d293d"
+                            TextColor="White"
+                            FontAttributes="Bold" />
+                </Border>
+                <Border StrokeShape="RoundRectangle 20" BackgroundColor="Transparent">
+                    <Border.Shadow>
+                        <Shadow Brush="#00000022" Radius="8" Opacity="0.18" />
+                    </Border.Shadow>
+                    <Button x:Name="btnCadastrarProduto"
+                            Clicked="btnCadastrarProduto_Clicked"
+                            Text="Novo Produto"
+                            FontSize="14"
+                            WidthRequest="140"
+                            HeightRequest="40"
+                            CornerRadius="20"
+                            BackgroundColor="SeaGreen"
+                            TextColor="White"
+                            FontAttributes="Bold" />
+                </Border>
+            </HorizontalStackLayout>
+        </Grid>
     </Grid>
 </ContentPage>

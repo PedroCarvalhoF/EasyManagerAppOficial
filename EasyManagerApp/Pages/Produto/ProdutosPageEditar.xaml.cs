@@ -30,11 +30,11 @@ public partial class ProdutosPageEditar : ContentPage
         {
             case AcoesTeleEnum.Cadastrar:
                 btnSalvar.Text = "Cadastrar";
-                lblId.IsVisible = false;
+                //lblId.IsVisible = false;
                 break;
             case AcoesTeleEnum.Alterar:
-                lblId.IsVisible = true;
-                lblId.Text = $"id: {_viewModel.ProdutoSelecionado.Id}"; ;
+                // lblId.IsVisible = true;
+                //lblId.Text = $"id: {_viewModel.ProdutoSelecionado.Id}"; ;
                 txtNomeProduto.Text = _viewModel.ProdutoSelecionado.NomeProduto;
                 txtCodigoProduto.Text = _viewModel.ProdutoSelecionado.CodigoProduto;
 
