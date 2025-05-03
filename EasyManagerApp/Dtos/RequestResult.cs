@@ -16,7 +16,13 @@ public class RequestResult<T>
     [JsonPropertyName("data")]
     public T? Data { get; set; }
 
-    public RequestResult() { }    
+    public RequestResult() { }
+    public RequestResult(Exception ex)
+    {
+        Status = false;
+        StatusCode = 600;
+        Mensagem = $"Erro inesperado.Detalhes: {ex.Message}";
+    }
     public RequestResult(bool status, int statusCode, string? mensagem = null, T? data = default)
     {
         Status = status;

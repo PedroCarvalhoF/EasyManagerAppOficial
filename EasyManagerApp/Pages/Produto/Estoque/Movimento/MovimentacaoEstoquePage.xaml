@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Pages.Produto.Estoque.Movimento.MovimentacaoEstoquePage"
+             BackgroundColor="#F5F3EF"
+             Title="Movimentação de Estoque"
+             Shell.NavBarIsVisible="True">
+
+    <VerticalStackLayout Padding="10">
+        <VerticalStackLayout Spacing="5">
+            <Picker x:Name="pckFilial"
+                    Title="Filial"
+                    ItemsSource="{Binding FiliaisDtos}"
+                    ItemDisplayBinding="{Binding NomeFilial}" />
+
+            <Picker x:Name="pckProduto"
+                    Title="Selecione o Produto"
+                    ItemsSource="{Binding EstoqueProdutoDtos}"
+                    ItemDisplayBinding="{Binding NomeProduto}" />
+            
+            <HorizontalStackLayout Spacing="5"
+                                   HorizontalOptions="End">
+                <Button x:Name="btnConsultar"
+                        Text="Consultar"
+                        Clicked="btnConsultar_Clicked" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <ScrollView>
+            <!--Resultado-->
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

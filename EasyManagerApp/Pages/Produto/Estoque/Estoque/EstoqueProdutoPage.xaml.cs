@@ -1,6 +1,9 @@
+using EasyManagerApp.Dtos.Filial;
 using EasyManagerApp.Dtos.Produto.Estoque;
 using EasyManagerApp.Dtos.ProdutoCategoria;
+using EasyManagerApp.DtosViewModel.Filial;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
+using EasyManagerApp.Pages.Produto.Estoque.Movimento;
 using EasyManagerApp.Services.Intefaces;
 
 namespace EasyManagerApp.Pages.Produto.Estoque.Estoque;
@@ -97,5 +100,12 @@ public partial class EstoqueProdutoPage : ContentPage
     private void EstoqueProdutoView_ProdutoTapped(object sender, EstoqueProdutoDto e)
     {
 
+    }
+
+    private async void btnHistoricoMovimentacao_Clicked(object sender, EventArgs e)
+    {
+        var services = App.Services.GetRequiredService<FilialViewModel>();
+
+        await Navigation.PushAsync(new MovimentacaoEstoquePage(services, EstoqueProdutoViewModel));
     }
 }

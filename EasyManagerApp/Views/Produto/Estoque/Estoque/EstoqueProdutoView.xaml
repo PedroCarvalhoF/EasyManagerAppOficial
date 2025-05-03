@@ -18,27 +18,26 @@
 
         <VerticalStackLayout>
             <Label Text="{Binding NomeFilial}"
-                   TextColor="Gainsboro"
-                   FontSize="Micro" />
+                   FontSize="Small" />
 
             <HorizontalStackLayout Spacing="10">
 
                 <HorizontalStackLayout VerticalOptions="End"
-                                       WidthRequest="100">
-                    <Label Text="{Binding Quantidade}"
-                           FontSize="14"
+                                       WidthRequest="120"
+                                       Spacing="2">
+                    <Label Text="{Binding Quantidade,StringFormat='{0}'}"
+                           FontSize="Subtitle"
                            TextColor="#555" />
                     <Label Text="{Binding UnidadeMedidaProduto}"
-                           FontSize="14"
+                           FontSize="Subtitle"
                            TextColor="#555" />
                 </HorizontalStackLayout>
 
                 <VerticalStackLayout>
 
                     <Label Text="{Binding NomeProduto}"
-                           FontSize="Header"
-                           FontAttributes="Bold"
-                           TextColor="#363949" />
+                           FontSize="Subtitle"
+                           FontAttributes="Bold" />
                 </VerticalStackLayout>
 
             </HorizontalStackLayout>

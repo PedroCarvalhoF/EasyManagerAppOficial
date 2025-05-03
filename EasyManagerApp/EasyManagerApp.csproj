@@ -86,6 +86,9 @@
 	  <MauiXaml Update="Pages\Produto\Estoque\Estoque\MovimentarEstoquePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\Produto\Estoque\Movimento\MovimentacaoEstoquePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Produto\ProdutosPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -113,6 +116,10 @@
 	  <MauiXaml Update="Views\Produto\UnidadeMedidaProduto\UnidadeMedidaProdutoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Dtos\Helper\" />
 	</ItemGroup>
 
 </Project>
