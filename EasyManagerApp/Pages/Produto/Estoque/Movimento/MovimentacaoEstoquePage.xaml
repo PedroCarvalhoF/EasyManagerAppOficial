@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.Produto.Estoque.Movimento.MovimentacaoEstoquePage"
@@ -6,7 +5,10 @@
              Title="Movimentação de Estoque"
              Shell.NavBarIsVisible="True">
 
-    <VerticalStackLayout Padding="10">
+    <VerticalStackLayout Padding="10"
+                         Spacing="10">
+
+        <!-- Filtros -->
         <VerticalStackLayout Spacing="5">
             <Picker x:Name="pckFilial"
                     Title="Filial"
@@ -17,7 +19,7 @@
                     Title="Selecione o Produto"
                     ItemsSource="{Binding EstoqueProdutoDtos}"
                     ItemDisplayBinding="{Binding NomeProduto}" />
-            
+
             <HorizontalStackLayout Spacing="5"
                                    HorizontalOptions="End">
                 <Button x:Name="btnConsultar"
@@ -25,8 +27,71 @@
                         Clicked="btnConsultar_Clicked" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
-        <ScrollView>
-            <!--Resultado-->
-        </ScrollView>
+
+        <!-- Lista com rolagem funcional -->
+        <CollectionView x:Name="cvMovimentacaoEstoque"
+                        ItemsSource="{Binding MovimentoEstoqueDtos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="#DDD"
+                            StrokeThickness="1"
+                            BackgroundColor="White"
+                            Padding="12"
+                            Margin="1"
+                            StrokeShape="RoundRectangle 12">
+
+                        <!--#region 
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border"
+                                         Binding="{Binding Tipo}"
+                                         Value="Entrada">
+                                <Setter Property="Stroke"
+                                        Value="#28A745" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="Border"
+                                         Binding="{Binding Tipo}"
+                                         Value="Saída">
+                                <Setter Property="Stroke"
+                                        Value="#DC3545" />
+                            </DataTrigger>
+                        </Border.Triggers>
+                       -->
+
+                        <HorizontalStackLayout Spacing="4"
+                                               VerticalOptions="Center">
+                            <Label Text="{Binding Tipo}"
+                                   FontAttributes="Bold"
+                                   FontSize="12"
+                                   TextColor="#363949"
+                                   WidthRequest="50"
+                                   HorizontalTextAlignment="Start">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding Tipo}"
+                                                 Value="Entrada">
+                                        <Setter Property="TextColor"
+                                                Value="#28A745" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding Tipo}"
+                                                 Value="Saída">
+                                        <Setter Property="TextColor"
+                                                Value="#DC3545" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Label Text="{Binding DataMovimentacao, StringFormat='{0:dd/MM/yyyy HH:mm:ss}'}"
+                                   FontSize="12" />
+                            <Label Text="{Binding Quantidade}"
+                                   FontSize="12" />
+                            <Label Text="{Binding NomeUsuarioRegistro, StringFormat='Usuário: {0}'}"
+                                   FontSize="12" />                          
+
+                            
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

@@ -2,10 +2,12 @@
 using EasyManagerApp.Dtos.Filial;
 using EasyManagerApp.Dtos.Produto;
 using EasyManagerApp.Dtos.Produto.Estoque;
+using EasyManagerApp.Dtos.Produto.Estoque.Movimento;
 using EasyManagerApp.Dtos.Produto.UnidadeMedida;
 using EasyManagerApp.DtosViewModel.Filial;
 using EasyManagerApp.DtosViewModel.Produto;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
+using EasyManagerApp.DtosViewModel.Produto.Estoque.Movimento;
 using EasyManagerApp.DtosViewModel.Produto.UnidadeMedida;
 using EasyManagerApp.Pages.Produto;
 using EasyManagerApp.Pages.Produto.UnidadeMedidaProduto;
@@ -50,6 +52,7 @@ public static class MauiProgram
         builder.Services.AddTransient<IUnidadeMedidaProdutoServices<UnidadeMedidaProdutoDto>, UnidadeMedidaProdutoServices>();
         builder.Services.AddTransient<IEstoqueProdutoServices<EstoqueProdutoDto>, EstoqueProdutoServices>();
         builder.Services.AddTransient<IFilialServices<FilialDto>, FilialServices>();
+        builder.Services.AddTransient<IMovimentoEstoqueServices<MovimentoEstoqueDto>, MovimentoEstoqueServices>();
 
         //views
         builder.Services.AddTransient<MovimentacaoProdutoEstoqueCard>();
@@ -64,7 +67,6 @@ public static class MauiProgram
         //Filial
         builder.Services.AddTransient<FilialViewModel>();
 
-
         //Unidade Medida do Produto
         builder.Services.AddTransient<UnidadeProdutoMedidaPage>();
         builder.Services.AddTransient<UnidadeMedidaProdutoViewModel>();
@@ -72,6 +74,8 @@ public static class MauiProgram
         //estoque
         builder.Services.AddTransient<EstoqueProdutoViewModel>();
 
+        //Movimento Estoque
+        builder.Services.AddTransient<MovimentoEstoqueViewModel>();
 
 
 #if DEBUG

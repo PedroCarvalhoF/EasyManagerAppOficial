@@ -3,7 +3,7 @@
 namespace EasyManagerApp.Dtos.Produto.Estoque.Movimento;
 public class MovimentoEstoqueDto
 {
-    [JsonPropertyName("id")]
+    [JsonPropertyName("produtoId")]
     public Guid ProdutoId { get; set; }
 
     [JsonPropertyName("nomeProduto")]

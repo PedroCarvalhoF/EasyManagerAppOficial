@@ -3,6 +3,7 @@ using EasyManagerApp.Dtos.Produto.Estoque;
 using EasyManagerApp.Dtos.Produto.Estoque.Movimento;
 using EasyManagerApp.DtosViewModel.Filial;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
+using EasyManagerApp.DtosViewModel.Produto.Estoque.Movimento;
 using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.Produto.Estoque.Movimento;
@@ -11,11 +12,14 @@ public partial class MovimentacaoEstoquePage : ContentPage
 {
     public FilialViewModel FilialViewModel { get; }
     public EstoqueProdutoViewModel EstoqueProdutoViewModel { get; }
+
+    public MovimentoEstoqueViewModel MovimentoEstoqueViewModel { get; }
     public MovimentacaoEstoquePage(FilialViewModel filialViewModel, EstoqueProdutoViewModel estoqueProdutoView)
     {
         InitializeComponent();
         FilialViewModel = filialViewModel;
         EstoqueProdutoViewModel = estoqueProdutoView;
+        MovimentoEstoqueViewModel = App.Services.GetRequiredService<MovimentoEstoqueViewModel>();
     }
     protected override async void OnAppearing()
     {
@@ -31,7 +35,7 @@ public partial class MovimentacaoEstoquePage : ContentPage
 
         if (FilialViewModel.FiliaisDtos.Count == 1)
             pckFilial.SelectedIndex = 0;
-    }   
+    }
     private async void btnConsultar_Clicked(object sender, EventArgs e)
     {
         try
@@ -40,6 +44,10 @@ public partial class MovimentacaoEstoquePage : ContentPage
                 pckFilial.SelectedItem is FilialDto filial ? filial.Id : Guid.Empty,
                 pckProduto.SelectedItem is EstoqueProdutoDto produto ? produto.ProdutoId : Guid.Empty
             );
+
+            await MovimentoEstoqueViewModel.SelectMovimentoFiltro(dtoFiltro);
+
+            cvMovimentacaoEstoque.ItemsSource = MovimentoEstoqueViewModel.MovimentoEstoqueDtos;
         }
         catch (Exception ex)
         {
