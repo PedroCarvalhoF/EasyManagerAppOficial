@@ -3,54 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Views.ProdutoCategoria.CategoriaProdutoView"
              xmlns:cat="clr-namespace:EasyManagerApp.Dtos.ProdutoCategoria"
-             xmlns:toolviews="clr-namespace:EasyManagerApp.Views.TooViews"
-             x:DataType="cat:CategoriaProdutoDto">
-
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <toolviews:StatusToColorConverter x:Key="StatusToColorConverter" />
-        </ResourceDictionary>
-    </ContentView.Resources>
-
-    <Border Padding="10"
-            Margin="5"
-            BackgroundColor="White"
-            Stroke="LightGray"
-            StrokeThickness="1"
-            StrokeShape="RoundRectangle 10">
-
+             x:DataType="cat:CategoriaProdutoDto"
+             BackgroundColor="Transparent">
+    <Border Padding="12"
+            Background="White"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 16"
+            Margin="8,8,8,8">
+        <Border.Shadow>
+            <Shadow Brush="#00000022" Radius="8" Opacity="0.10" />
+        </Border.Shadow>
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="Categoria_Tapped" />
         </Border.GestureRecognizers>
-
-        <Grid ColumnDefinitions="*,auto ">
-
-            <VerticalStackLayout Grid.Column="0"
-                                 Spacing="4">
-                <Label Text="{Binding NomeCategoria}"
-                       FontSize="18"
-                       FontAttributes="Bold"
-                       TextColor="DarkSlateGray" />
-                <Label Text="{Binding Id, StringFormat='ID: {0}'}"
-                       FontSize="14"
-                       TextColor="Gray" />
-
-                <Label Text="{Binding CreateAt, StringFormat='Criado em: {0:dd-MM-yyyy}'}"
-                       FontSize="14"
-                       TextColor="Gray" />
-
-                <Label Text="{Binding StatusString}"
-                       FontSize="14"
-                       TextColor="{Binding Habilitado, Converter={StaticResource StatusToColorConverter}}" />
-            </VerticalStackLayout>
-
-            <Button Grid.Column="1"
-                    Text="editar"
-                    HeightRequest="10"
-                 
-                    x:Name="btnEditarCategoria"
-                    Clicked="btnEditarCategoria_Clicked" />
-        </Grid>
-
+        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="{Binding NomeCategoria}"
+                   FontAttributes="Bold"
+                   FontSize="15"
+                   TextColor="#1d293d"
+                   HorizontalTextAlignment="Center" />
+            <!-- Adicione outros campos desejados aqui -->
+        </VerticalStackLayout>
     </Border>
 </ContentView>

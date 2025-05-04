@@ -6,106 +6,102 @@
              BackgroundColor="#F5F6FA"
              xmlns:view="clr-namespace:EasyManagerApp.DtosViewModel.Produto"
              Shell.NavBarIsVisible="False">
-    <Grid>
-        <ScrollView>
-            <Grid>
-                <VerticalStackLayout Spacing="18"
-                                     VerticalOptions="Center"
-                                     HorizontalOptions="Center"
-                                     Padding="24">
-                    <!-- Título -->
-                    <Label Text="Editar Produto"
-                           FontSize="22"
-                           FontAttributes="Bold"
-                           TextColor="#1d293d"
-                           HorizontalOptions="Center"
-                           HorizontalTextAlignment="Center"
-                           Margin="0,0,0,8" />
-                    <Label Text="{Binding NomeProduto,StringFormat='Produto Selecionado: {0}'}"
-                           FontSize="15"
-                           TextColor="#888"
-                           HorizontalOptions="Center"
-                           HorizontalTextAlignment="Center"
-                           Margin="0,0,0,8" />
-                    <!-- Caixa de campos -->
-                    <Border StrokeShape="RoundRectangle 16"
-                            Background="White"
-                            StrokeThickness="0"
-                            Padding="10"
-                            Margin="0,0,0,0">
-                        <Border.Shadow>
-                            <Shadow Brush="#00000022"
-                                    Radius="12"
-                                    Opacity="0.10" />
-                        </Border.Shadow>
-                        <VerticalStackLayout Spacing="14">
-                            <Label Text="Nome do Produto"
-                                   FontSize="13"
-                                   TextColor="#1d293d" />
-                            <Entry x:Name="txtNomeProduto"
-                                   Text="{Binding NomeProduto}"
-                                   Placeholder="Digite o nome"
-                                   BackgroundColor="#F5F6FA"
-                                   TextColor="#1d293d"
-                                   PlaceholderColor="#A0A0A0"
-                                   HeightRequest="40"
-                                   FontSize="14" />
-                            <Label Text="Código do Produto"
-                                   FontSize="13"
-                                   TextColor="#1d293d" />
-                            <Entry x:Name="txtCodigoProduto"
-                                   Text="{Binding CodigoProduto}"
-                                   Placeholder="Digite o código"
-                                   BackgroundColor="#F5F6FA"
-                                   TextColor="#1d293d"
-                                   PlaceholderColor="#A0A0A0"
-                                   HeightRequest="40"
-                                   FontSize="14" />
-                            <Label Text="Categoria"
-                                   FontSize="13"
-                                   TextColor="#1d293d" />
-                            <Picker x:Name="pctCategoria"
-                                    TextColor="#1d293d"
-                                    TitleColor="#1d293d"
-                                    Title="Selecione a categoria"
-                                    ItemDisplayBinding="{Binding NomeCategoria}" />
-                            <Label Text="Unidade de Medida"
-                                   FontSize="13"
-                                   TextColor="#1d293d" />
-                            <Picker x:Name="pckUnidadeMedida"
-                                    Title="Selecione Unidade Medida"
-                                    TitleColor="#1d293d"
-                                    ItemDisplayBinding="{Binding Sigla}"
-                                    TextColor="#1d293d" />
-                        </VerticalStackLayout>
-                    </Border>
-                    <!-- Botões -->
-                    <HorizontalStackLayout Spacing="12"
-                                           HorizontalOptions="Center"
-                                           Margin="0,16,0,0">
-                        <Button x:Name="btnVoltar"
-                                Clicked="Button_Clicked"
-                                Text="Voltar"
-                                BackgroundColor="#1d293d"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                CornerRadius="16"
-                                HeightRequest="45"
-                                FontSize="14"
-                                WidthRequest="110" />
-                        <Button x:Name="btnSalvar"
-                                Text="Salvar Alterações"
-                                Clicked="btnSalvar_Clicked"
-                                BackgroundColor="SeaGreen"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                CornerRadius="16"
-                                HeightRequest="45"
-                                FontSize="14"
-                                WidthRequest="180" />
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
-            </Grid>
-        </ScrollView>
-    </Grid>
+
+    <VerticalStackLayout Spacing="10"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Padding="10"
+                         WidthRequest="450">
+        <!-- Título -->
+        <Label Text="Editar Produto"
+               FontSize="22"
+               FontAttributes="Bold"
+               TextColor="#1d293d"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Margin="0,0,0,8" />
+        <Label Text="{Binding NomeProduto,StringFormat='Produto Selecionado: {0}'}"
+               FontSize="15"
+               TextColor="#888"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Margin="0,0,0,8" />
+        <!-- Caixa de campos -->
+        <Border StrokeShape="RoundRectangle 16"
+                Background="White"
+                StrokeThickness="0"
+                Padding="10"
+                Margin="0,0,0,0">
+            <Border.Shadow>
+                <Shadow Brush="#00000022"
+                        Radius="12"
+                        Opacity="0.10" />
+            </Border.Shadow>
+            <VerticalStackLayout Spacing="14">
+                <Label Text="Nome do Produto"
+                       FontSize="13"
+                       TextColor="#1d293d" />
+                <Entry x:Name="txtNomeProduto"
+                       Text="{Binding NomeProduto}"
+                       Placeholder="Digite o nome"
+                       BackgroundColor="#F5F6FA"
+                       TextColor="#1d293d"
+                       PlaceholderColor="#A0A0A0"
+                       HeightRequest="40"
+                       FontSize="14" />
+                <Label Text="Código do Produto"
+                       FontSize="13"
+                       TextColor="#1d293d" />
+                <Entry x:Name="txtCodigoProduto"
+                       Text="{Binding CodigoProduto}"
+                       Placeholder="Digite o código"
+                       BackgroundColor="#F5F6FA"
+                       TextColor="#1d293d"
+                       PlaceholderColor="#A0A0A0"
+                       HeightRequest="40"
+                       FontSize="14" />
+                <Label Text="Categoria"
+                       FontSize="13"
+                       TextColor="#1d293d" />
+                <Picker x:Name="pctCategoria"
+                        TextColor="#1d293d"
+                        TitleColor="#1d293d"
+                        Title="Selecione a categoria"
+                        ItemDisplayBinding="{Binding NomeCategoria}" />
+                <Label Text="Unidade de Medida"
+                       FontSize="13"
+                       TextColor="#1d293d" />
+                <Picker x:Name="pckUnidadeMedida"
+                        Title="Selecione Unidade Medida"
+                        TitleColor="#1d293d"
+                        ItemDisplayBinding="{Binding Sigla}"
+                        TextColor="#1d293d" />
+            </VerticalStackLayout>
+        </Border>
+        <!-- Botões -->
+        <HorizontalStackLayout Spacing="12"
+                               HorizontalOptions="Center"
+                               Margin="0,16,0,0">
+            <Button x:Name="btnVoltar"
+                    Clicked="Button_Clicked"
+                    Text="Voltar"
+                    BackgroundColor="#1d293d"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="16"
+                    HeightRequest="45"
+                    FontSize="14"
+                    WidthRequest="110" />
+            <Button x:Name="btnSalvar"
+                    Text="Salvar Alterações"
+                    Clicked="btnSalvar_Clicked"
+                    BackgroundColor="SeaGreen"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="16"
+                    HeightRequest="45"
+                    FontSize="14"
+                    WidthRequest="180" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
 </ContentPage>

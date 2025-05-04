@@ -17,10 +17,7 @@
             <TapGestureRecognizer Tapped="OnProdutoTapped" />
         </Border.GestureRecognizers>
         <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="{Binding CategoriaProduto}"
-                   FontSize="12"
-                   TextColor="#888"
-                   HorizontalTextAlignment="Center" />
+            
             <Label Text="{Binding NomeProduto}"
                    FontAttributes="Bold"
                    FontSize="15"

@@ -21,13 +21,12 @@ public partial class CategoriaProdutoEditarPage : ContentPage
         {
             case AcoesTeleEnum.Cadastrar:
 
-                lblId.IsVisible = false;
+                //lblId.IsVisible = false;
                 btnAlterar.Text = "Cadastrar";
                 chcCategoria.IsVisible = false;
                 break;
             case AcoesTeleEnum.Alterar:
-                lblId.IsVisible = true;
-
+                //lblId.IsVisible = true;
 
                 break;
             default:

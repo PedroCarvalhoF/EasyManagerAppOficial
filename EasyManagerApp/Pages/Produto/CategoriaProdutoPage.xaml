@@ -3,45 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.Produto.CategoriaProdutoPage"
              xmlns:local="clr-namespace:EasyManagerApp.Dtos.ProdutoCategoria"
-             xmlns:views="clr-namespace:EasyManagerApp.Views.ProdutoCategoria"
+             xmlns:view="clr-namespace:EasyManagerApp.Views.ProdutoCategoria"
              x:DataType="local:CategoriaProdutoDto"
-             BackgroundColor="White"
-             Padding="15"
-             Title="Categorias dos Produtos">
-
-    <Grid RowDefinitions="Auto,*,Auto"
-          RowSpacing="10">
-
-        <!-- Barra de busca -->
-        <SearchBar Grid.Row="0"
-                   x:Name="sBarCategoriaProduto"
-                   TextChanged="sBarCategoriaProduto_TextChanged"
-                   Placeholder="Digite o nome da categoria" />
-
-        <!-- Lista de categorias -->
-        <CollectionView Grid.Row="1"
-                        x:Name="cvCategoriaProduto"
-                        BackgroundColor="Transparent"
-                        SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="0,0,10,0">
-                        <views:CategoriaProdutoView />
-                    </StackLayout>
-
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-        <!-- Botão no rodapé -->
-        <Button Grid.Row="2"
-                Text="Cadastrar Nova Categoria"
-                x:Name="btnCadastrarCategoria"
-                Clicked="btnCadastrarCategoria_Clicked"
-                BackgroundColor="DarkSlateGray"
-                TextColor="White"
-                CornerRadius="10"
-                Margin="0,10,0,0"
-                HeightRequest="50" />
+             BackgroundColor="#F5F6FA"
+             Title="Categorias dos Produtos"
+             Shell.NavBarIsVisible="True">
+    <Grid>
+        <!-- Grid principal para SearchBar e CollectionView -->
+        <Grid Padding="16,16,16,0" RowDefinitions="Auto,*">
+            <SearchBar x:Name="sBarCategoriaProduto"
+                       Grid.Row="0"
+                       Placeholder="Buscar categoria"
+                       BackgroundColor="#F5F6FA"
+                       HeightRequest="44"
+                       Margin="0,0,0,8"
+                       TextChanged="sBarCategoriaProduto_TextChanged" />
+            <CollectionView Grid.Row="1"
+                            x:Name="cvCategoriaProduto"
+                            ItemsLayout="VerticalGrid, 2"
+                            SelectionMode="None"
+                            Margin="0,0,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <view:CategoriaProdutoView />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <!-- Botão flutuante centralizado -->
+        <Grid VerticalOptions="End" HorizontalOptions="Center" Padding="0,0,0,16">
+            <Border StrokeShape="RoundRectangle 20" BackgroundColor="Transparent">
+                <Border.Shadow>
+                    <Shadow Brush="#00000022" Radius="8" Opacity="0.18" />
+                </Border.Shadow>
+                <Button Text="Cadastrar Nova Categoria"
+                        x:Name="btnCadastrarCategoria"
+                        Clicked="btnCadastrarCategoria_Clicked"
+                        BackgroundColor="#1d293d"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="20"
+                        HeightRequest="48"
+                        WidthRequest="240" />
+            </Border>
+        </Grid>
     </Grid>
 </ContentPage>
