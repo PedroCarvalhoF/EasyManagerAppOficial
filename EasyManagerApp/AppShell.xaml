@@ -8,6 +8,7 @@
        Shell.FlyoutBehavior="Flyout"
        Title="EasyManagerApp">
 
+    <!--- Flyout
     <ShellContent Title="Home"
                   ContentTemplate="{DataTemplate homePage:HomePage}"
                   Route="HomePage" />
@@ -19,5 +20,6 @@
     <ShellContent Title="Estoque"
                   ContentTemplate="{DataTemplate estoqueProdutoPage:EstoqueProdutoPage}"
                   Route="EstoquePage" />
+     Header -->
 
 </Shell>

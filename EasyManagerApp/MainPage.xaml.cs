@@ -12,7 +12,7 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         _servicesProvider = servicesProvider;
-    }   
+    }
     private async void btnLogin_Clicked(object sender, EventArgs e)
     {
         try
@@ -25,8 +25,7 @@ public partial class MainPage : ContentPage
 
             await SecureStorage.SetAsync("token", resultLogin.Data.AccessToken ?? string.Empty);
 
-            // Navega para a Shell
-            App.Current.MainPage = new AppShell(); // volta a usar Shell corretamente
+            App.Current.MainPage = new AppShell(Dtos.RolesEnum.Programador); // volta a usar Shell corretamente
         }
         catch (Exception ex)
         {
