@@ -3,45 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Views.Produto.Estoque.Estoque.EstoqueProdutoView"
              xmlns:dto="clr-namespace:EasyManagerApp.Dtos.Produto.Estoque"
-             x:DataType="dto:EstoqueProdutoDto">
+             x:DataType="dto:EstoqueProdutoDto"
+             BackgroundColor="Transparent">
 
-    <Border Padding="14"
-            BackgroundColor="#FFFFFF"
-            Stroke="#E0E0E0"
-            StrokeThickness="1"
-            StrokeShape="RoundRectangle 12"
-            Margin="1">
-
+    <Border Padding="12"
+            Background="White"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 16"
+            Margin="8,8,8,8">
+        <Border.Shadow>
+            <Shadow Brush="#00000022" Radius="8" Opacity="0.10" />
+        </Border.Shadow>
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnProdutoTapped" />
         </Border.GestureRecognizers>
 
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="8">
             <Label Text="{Binding NomeFilial}"
-                   FontSize="Small" />
+                   FontSize="12"
+                   TextColor="#666" />
 
             <HorizontalStackLayout Spacing="10">
-
                 <HorizontalStackLayout VerticalOptions="End"
-                                       WidthRequest="120"
-                                       Spacing="2">
+                                     WidthRequest="120"
+                                     Spacing="2">
                     <Label Text="{Binding Quantidade,StringFormat='{0}'}"
-                           FontSize="Subtitle"
-                           TextColor="#555" />
+                           FontSize="14"
+                           TextColor="#1d293d"
+                           FontAttributes="Bold" />
                     <Label Text="{Binding UnidadeMedidaProduto}"
-                           FontSize="Subtitle"
-                           TextColor="#555" />
+                           FontSize="14"
+                           TextColor="#1d293d" />
                 </HorizontalStackLayout>
 
                 <VerticalStackLayout>
-
                     <Label Text="{Binding NomeProduto}"
-                           FontSize="Subtitle"
-                           FontAttributes="Bold" />
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="#1d293d" />
                 </VerticalStackLayout>
-
             </HorizontalStackLayout>
         </VerticalStackLayout>
-
     </Border>
 </ContentView>
