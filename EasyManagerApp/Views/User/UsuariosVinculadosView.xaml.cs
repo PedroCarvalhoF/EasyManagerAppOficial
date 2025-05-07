@@ -28,6 +28,7 @@ public partial class UsuariosVinculadosView : ContentView
     {
         var view_model = App.Services.GetRequiredService<UsuarioVinculadoClienteViewModel>();
 
+        view_model.Token = await SecureStorage.GetAsync("token");
         view_model.UsuarioSelecionado = _usuarioSelecionado;
 
         await Navigation.PushAsync(new UsuariosVinculadosPageEditar(view_model));

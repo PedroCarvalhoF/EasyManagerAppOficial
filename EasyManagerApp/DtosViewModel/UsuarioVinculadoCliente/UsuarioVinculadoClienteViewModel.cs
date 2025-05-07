@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using EasyManagerApp.Dtos.UsuarioVinculadoCliente;
 using EasyManagerApp.Services.Intefaces;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente;
 public partial class UsuarioVinculadoClienteViewModel : ObservableObject
@@ -40,7 +41,7 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
     [ObservableProperty]
     private string searchText;
     partial void OnUsuarioSelecionadoChanged(UsuarioVinculadoClienteDto value)
-    {
+    {        
         if (value != null)
         {
             ClienteId = value.ClienteId;
@@ -50,8 +51,7 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
             AcessoPermitido = value.AcessoPermitido;
             NomeUsuarioVinculado = value.NomeUsuarioVinculado;
             IdUsuarioVinculado = value.IdUsuarioVinculado;
-        }
-    }
+        }    }
 
     partial void OnSearchTextChanged(string value)
     {

@@ -9,5 +9,13 @@ public partial class UsuariosVinculadosPageEditar : ContentPage
     {
         InitializeComponent();
         _usuarioVinculadoClienteViewModel = usuarioVinculadoClienteViewModel;
+        BindingContext = _usuarioVinculadoClienteViewModel;
+
+    }
+
+    private async void OnVoltarClicked(object sender, EventArgs e)
+    {
+        
+        await Navigation.PopAsync();
     }
 }
