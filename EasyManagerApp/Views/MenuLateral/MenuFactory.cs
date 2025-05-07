@@ -10,45 +10,10 @@ namespace EasyManagerApp.Views.MenuLateral
             {
                 new MenuItemModel
                 {
-                    Titulo = "Dashboard",
-                    Icone = "dashboard.png",
-                    PaginaDestino = "Dashboard.DashboardPage",
-                    RolesPermitidas = new List<RolesEnum> { RolesEnum.Programador}
-                },
-                new MenuItemModel
-                {
-                    Titulo = "Produtos",
-                    Icone = "produtos.png",
-                    PaginaDestino = "Produto.ProdutosPage",
-                    RolesPermitidas = new List<RolesEnum> {  { RolesEnum.Programador} }
-                },
-                new MenuItemModel
-                {
-                    Titulo = "Categorias",
-                    Icone = "categorias.png",
-                    PaginaDestino = "Produto.CategoriaProdutoPage",
-                    RolesPermitidas = new List<RolesEnum> {  { RolesEnum.Programador} }
-                },
-                new MenuItemModel
-                {
-                    Titulo = "Estoque",
-                    Icone = "estoque.png",
-                    PaginaDestino = "Produto.Estoque.Estoque.EstoqueProdutoPage",
-                    RolesPermitidas = new List<RolesEnum> { { RolesEnum.Programador } }
-                },
-                new MenuItemModel
-                {
-                    Titulo = "Movimentação",
-                    Icone = "movimentacao.png",
-                    PaginaDestino = "Produto.Estoque.Movimento.MovimentacaoEstoquePage",
-                    RolesPermitidas = new List<RolesEnum> {  RolesEnum.Programador }
-                },
-                new MenuItemModel
-                {
-                    Titulo = "Lista de Compras",
-                    Icone = "lista_compra.png",
-                    PaginaDestino = "ListaCompra.ListaCompraPage",
-                    RolesPermitidas = new List<RolesEnum> {  RolesEnum.Programador }
+                    Titulo = "Usuarios",
+                    Icone = "usuarios.png",
+                    PaginaDestino = "User.UsuariosVinculados.UsuariosVinculadosPage",
+                    RolesPermitidas = new List<RolesEnum> { RolesEnum.Programador,RolesEnum.Admin}
                 }
             };
 
