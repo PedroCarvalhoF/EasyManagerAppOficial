@@ -4,69 +4,48 @@
              x:Class="EasyManagerApp.Pages.User.UsuariosVinculados.UsuariosVinculadosPageEditar"
              xmlns:model="clr-namespace:EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente"
              x:DataType="model:UsuarioVinculadoClienteViewModel"
-             Title="Editar Usuário Vinculado"
-             BackgroundColor="#F5F6FA">
+           
+             BackgroundColor="{StaticResource SecondaryColor}">
 
     <ScrollView>
         <VerticalStackLayout Padding="16" Spacing="16">
             <!-- Informações do Cliente -->
-            <Border StrokeShape="RoundRectangle 10"
-                    Stroke="LightGray"
-                    StrokeThickness="1"
-                    BackgroundColor="White"
-                    Padding="16">
+            <Border Style="{StaticResource CardBorderStyle}">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Informações do Cliente"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TextColor="#1d293d"/>
+                           Style="{StaticResource TitleTextStyle}"/>
                     
                     <Label Text="{Binding ClienteNome}"
-                           FontSize="16"
-                           TextColor="DarkSlateGray"/>
+                           Style="{StaticResource SubtitleTextStyle}"/>
                 </VerticalStackLayout>
             </Border>
 
             <!-- Informações do Usuário -->
-            <Border StrokeShape="RoundRectangle 10"
-                    Stroke="LightGray"
-                    StrokeThickness="1"
-                    BackgroundColor="White"
-                    Padding="16">
+            <Border Style="{StaticResource CardBorderStyle}">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Informações do Usuário"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TextColor="#1d293d"/>
+                           Style="{StaticResource TitleTextStyle}"/>
                     
                     <Label Text="{Binding NomeUsuarioVinculado}"
-                           FontSize="16"
-                           TextColor="DarkSlateGray"/>
+                           Style="{StaticResource SubtitleTextStyle}"/>
                     
                     <Label Text="{Binding EmailUsuarioVinculado}"
-                           FontSize="14"
-                           TextColor="Gray"/>
+                           Style="{StaticResource BodyTextStyle}"/>
                 </VerticalStackLayout>
             </Border>
 
             <!-- Controle de Acesso -->
-            <Border StrokeShape="RoundRectangle 10"
-                    Stroke="LightGray"
-                    StrokeThickness="1"
-                    BackgroundColor="White"
-                    Padding="16">
+            <Border Style="{StaticResource CardBorderStyle}">
                 <VerticalStackLayout Spacing="16">
                     <Label Text="Controle de Acesso"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TextColor="#1d293d"/>
+                           Style="{StaticResource TitleTextStyle}"/>
                     
                     <HorizontalStackLayout Spacing="8">
                         <Switch IsToggled="{Binding AcessoPermitido}"
-                                OnColor="#1d293d"/>
+                                OnColor="{StaticResource PrimaryColor}"/>
                         <Label Text="Permitir acesso ao sistema"
-                               VerticalOptions="Center"
-                               TextColor="DarkSlateGray"/>
+                               Style="{StaticResource SubtitleTextStyle}"
+                               VerticalOptions="Center"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Border>
@@ -75,15 +54,11 @@
             <VerticalStackLayout Spacing="8">
                 <Button Text="Salvar Alterações"
                         Command="{Binding LiberarBloquearAcessoCommand}"
-                        BackgroundColor="#1d293d"
-                        TextColor="White"
-                        HeightRequest="50"/>
+                        Style="{StaticResource PrimaryButtonStyle}"/>
                 
                 <Button Text="Voltar"
                         Clicked="OnVoltarClicked"
-                        BackgroundColor="Gray"
-                        TextColor="White"
-                        HeightRequest="50"/>
+                        Style="{StaticResource SecondaryButtonStyle}"/>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
