@@ -122,6 +122,9 @@
 	  <MauiXaml Update="Views\Produto\UnidadeMedidaProduto\UnidadeMedidaProdutoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\User\UsuariosVinculadosView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>

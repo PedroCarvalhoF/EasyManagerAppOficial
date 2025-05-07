@@ -4,11 +4,13 @@ using EasyManagerApp.Dtos.Produto;
 using EasyManagerApp.Dtos.Produto.Estoque;
 using EasyManagerApp.Dtos.Produto.Estoque.Movimento;
 using EasyManagerApp.Dtos.Produto.UnidadeMedida;
+using EasyManagerApp.Dtos.UsuarioVinculadoCliente;
 using EasyManagerApp.DtosViewModel.Filial;
 using EasyManagerApp.DtosViewModel.Produto;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Movimento;
 using EasyManagerApp.DtosViewModel.Produto.UnidadeMedida;
+using EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente;
 using EasyManagerApp.Pages.Produto;
 using EasyManagerApp.Pages.Produto.UnidadeMedidaProduto;
 using EasyManagerApp.Pages.User;
@@ -21,6 +23,7 @@ using EasyManagerApp.Services.Produto;
 using EasyManagerApp.Services.Produto.Estoque;
 using EasyManagerApp.Services.Produto.UnidadeMedida;
 using EasyManagerApp.Services.ProdutoCategoria;
+using EasyManagerApp.Services.UsuarioClienteVinculo;
 using EasyManagerApp.Views.Produto.Estoque.Estoque;
 using Microsoft.Extensions.Logging;
 
@@ -53,9 +56,13 @@ public static class MauiProgram
         builder.Services.AddTransient<IEstoqueProdutoServices<EstoqueProdutoDto>, EstoqueProdutoServices>();
         builder.Services.AddTransient<IFilialServices<FilialDto>, FilialServices>();
         builder.Services.AddTransient<IMovimentoEstoqueServices<MovimentoEstoqueDto>, MovimentoEstoqueServices>();
+        builder.Services.AddTransient<IUsuarioClienteVinculoServices<UsuarioVinculadoClienteDto>, UsuarioClienteVinculoServices>();
 
         //views
         builder.Services.AddTransient<MovimentacaoProdutoEstoqueCard>();
+
+        builder.Services.AddTransient<UsuarioVinculadoClienteViewModel>();
+
 
         // Páginas
         builder.Services.AddTransient<MainPage>();

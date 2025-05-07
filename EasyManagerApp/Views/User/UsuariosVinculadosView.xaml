@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Views.User.UsuariosVinculadosView"
+             xmlns:model="clr-namespace:EasyManagerApp.Dtos.UsuarioVinculadoCliente"
+             x:DataType="model:UsuarioVinculadoClienteDto">
+
+    <Border Padding="10"
+            Margin="5"
+            BackgroundColor="White"
+            Stroke="LightGray"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 10">
+
+        <Grid ColumnDefinitions="*,auto"
+              ColumnSpacing="5"
+              VerticalOptions="Center">
+
+            <VerticalStackLayout Grid.Column="0"
+                                 Spacing="1"
+                                 VerticalOptions="Center">
+
+                <Label Text="{Binding NomeUsuarioVinculado}"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="DarkSlateGray" />
+
+                <Label Text="{Binding EmailUsuarioVinculado}"
+                       FontSize="13"
+                       TextColor="Gray" />
+
+            </VerticalStackLayout>
+
+            <Switch Grid.Column="1"
+                    IsToggled="{Binding AcessoPermitido}"
+                    OnColor="Green"
+                    ThumbColor="White"
+                    VerticalOptions="Center" />
+
+        </Grid>
+    </Border>
+</ContentView> 

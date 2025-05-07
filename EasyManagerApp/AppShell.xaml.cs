@@ -1,12 +1,15 @@
 ﻿using EasyManagerApp.Dtos;
+using EasyManagerApp.Dtos.UsuarioVinculadoCliente;
 using EasyManagerApp.DtosViewModel.Filial;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
+using EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente;
 using EasyManagerApp.Pages;
 using EasyManagerApp.Pages.Dashboard;
 using EasyManagerApp.Pages.ListaCompra;
 using EasyManagerApp.Pages.Produto;
 using EasyManagerApp.Pages.Produto.Estoque.Estoque;
 using EasyManagerApp.Pages.Produto.Estoque.Movimento;
+using EasyManagerApp.Pages.User.UsuariosVinculados;
 using EasyManagerApp.Services.Intefaces;
 using EasyManagerApp.Views.MenuLateral;
 
@@ -16,8 +19,10 @@ namespace EasyManagerApp
     {
         private readonly FilialViewModel _filialViewModel;
         private readonly EstoqueProdutoViewModel _estoqueProdutoViewModel;
+        private readonly UsuarioVinculadoClienteViewModel _usuarioVinculadoClienteViewModel;
 
         private readonly ICategoriaProdutoServices _categoriaProdutoServices;
+
 
         public AppShell(RolesEnum role)
         {
@@ -26,8 +31,12 @@ namespace EasyManagerApp
             // Initialize required ViewModels
             _filialViewModel = App.Services.GetRequiredService<FilialViewModel>();
             _estoqueProdutoViewModel = App.Services.GetRequiredService<EstoqueProdutoViewModel>();
+            _usuarioVinculadoClienteViewModel = App.Services.GetRequiredService<UsuarioVinculadoClienteViewModel>();
+
 
             _categoriaProdutoServices = App.Services.GetRequiredService<ICategoriaProdutoServices>();
+
+
 
             RegisterRoutes();
             CarregarMenus(role);
@@ -97,6 +106,10 @@ namespace EasyManagerApp
                 return new EstoqueProdutoPage(_estoqueProdutoViewModel, _categoriaProdutoServices);
             }
 
+            if (type == typeof(UsuariosVinculadosPage))
+            {
+                return new UsuariosVinculadosPage(_usuarioVinculadoClienteViewModel);
+            }
 
             // For pages with parameterless constructors
             return (Page)Activator.CreateInstance(type);

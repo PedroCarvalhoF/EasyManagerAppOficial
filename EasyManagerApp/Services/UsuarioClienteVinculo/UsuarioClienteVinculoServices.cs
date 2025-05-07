@@ -17,7 +17,7 @@ public class UsuarioClienteVinculoServices : IUsuarioClienteVinculoServices<Usua
         try
         {
             //api/usuarioclientevinculo/select-usuarios-vinculados-by-cliente-id
-            string rota = Rota + "/select-usuarios-vinculados-by-cliente-id";
+            string rota = Rota + "select-usuarios-vinculados-by-cliente-id";
             return await _apiServices.Get<IEnumerable<UsuarioVinculadoClienteDto>>(token, rota, null, default);
         }
         catch (Exception ex)
