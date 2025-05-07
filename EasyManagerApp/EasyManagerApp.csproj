@@ -107,6 +107,9 @@
 	  <MauiXaml Update="Pages\User\CadastrarUserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\User\UsuariosVinculados\UsuariosVinculadosPageEditar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ProdutoCategoria\CategoriaProdutoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

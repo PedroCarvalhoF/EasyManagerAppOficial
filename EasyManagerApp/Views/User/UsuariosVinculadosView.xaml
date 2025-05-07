@@ -11,6 +11,9 @@
             Stroke="LightGray"
             StrokeThickness="1"
             StrokeShape="RoundRectangle 10">
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+        </Border.GestureRecognizers>
 
         <Grid ColumnDefinitions="*,auto"
               ColumnSpacing="5"
@@ -30,12 +33,14 @@
                        TextColor="Gray" />
 
             </VerticalStackLayout>
-
-            <Switch Grid.Column="1"
-                    IsToggled="{Binding AcessoPermitido}"
-                    OnColor="Green"
-                    ThumbColor="White"
-                    VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   x:Name="lblStatus"
+                   FontSize="13"
+                   Text="HabilitadoDesabilitado"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
 
         </Grid>
     </Border>

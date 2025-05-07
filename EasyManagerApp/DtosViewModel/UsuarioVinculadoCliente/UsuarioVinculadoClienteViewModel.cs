@@ -17,6 +17,7 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
 
     [ObservableProperty]
     private ObservableCollection<UsuarioVinculadoClienteDto> usuarios = new();
+
     [ObservableProperty]
     private UsuarioVinculadoClienteDto usuarioSelecionado = new();
 
@@ -38,6 +39,19 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
 
     [ObservableProperty]
     private string searchText;
+    partial void OnUsuarioSelecionadoChanged(UsuarioVinculadoClienteDto value)
+    {
+        if (value != null)
+        {
+            ClienteId = value.ClienteId;
+            clienteNome = value.ClienteNome;
+
+            EmailUsuarioVinculado = value.EmailUsuarioVinculado;
+            AcessoPermitido = value.AcessoPermitido;
+            NomeUsuarioVinculado = value.NomeUsuarioVinculado;
+            IdUsuarioVinculado = value.IdUsuarioVinculado;
+        }
+    }
 
     partial void OnSearchTextChanged(string value)
     {
@@ -52,7 +66,7 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
             return;
         }
 
-        var filtered = _todosUsuarios.Where(u => 
+        var filtered = _todosUsuarios.Where(u =>
             u.NomeUsuarioVinculado?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true ||
             u.EmailUsuarioVinculado?.Contains(searchText, StringComparison.OrdinalIgnoreCase) == true);
 
@@ -95,7 +109,7 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task LiberarBloquearAcesso()
+    public async Task LiberarBloquearAcesso()
     {
         var liberarRemoverAcesso = new UsuarioVinculadoClienteDtoLiberarRemoverAcesso
         {
@@ -108,5 +122,18 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
         {
             await CarregarUsuariosVinculados();
         }
+        else
+        {
+            await Shell.Current.DisplayAlert("Erro", result.Mensagem ?? "Erro ao carregar produtos", "OK");
+        }
+
+    }
+
+    [RelayCommand]
+    private async Task AlterarAcessoUsuario(UsuarioVinculadoClienteDto usuario)
+    {
+        EmailUsuarioVinculado = usuario.EmailUsuarioVinculado;
+        AcessoPermitido = usuario.AcessoPermitido;
+        await LiberarBloquearAcesso();
     }
 }

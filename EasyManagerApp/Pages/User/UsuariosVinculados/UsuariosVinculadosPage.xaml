@@ -17,12 +17,13 @@
                    Margin="0,0,0,8" />
 
         <!-- Lista de Usuários -->
-        <CollectionView Grid.Row="1"
+        <CollectionView x:Name="cllviewUsuarios"
+                        Grid.Row="1"
                         ItemsSource="{Binding Usuarios}"
                         SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <view:UsuariosVinculadosView />
+                    <view:UsuariosVinculadosView/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

@@ -45,7 +45,7 @@ public class UsuarioClienteVinculoServices : IUsuarioClienteVinculoServices<Usua
         try
         {
             //api/usuarioclientevinculo/liberar-remover-acesso-usuario-vinculado
-            string rota = Rota + "/liberar-remover-acesso-usuario-vinculado";
+            string rota = Rota + "liberar-remover-acesso-usuario-vinculado";
             return await _apiServices.Post<UsuarioVinculadoClienteDto>(token, rota, liberarRemoverAcesso, default);
         }
         catch (Exception ex)
