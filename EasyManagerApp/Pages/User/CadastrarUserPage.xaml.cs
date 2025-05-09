@@ -1,6 +1,5 @@
 using EasyManagerApp.Dtos.Account;
 using EasyManagerApp.Services.Intefaces;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.User;
 

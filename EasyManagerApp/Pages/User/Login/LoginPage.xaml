@@ -1,8 +1,8 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EasyManagerApp.MainPage"
-             Shell.NavBarIsVisible="False"
-             BackgroundColor="#F5F6FA">
+             x:Class="EasyManagerApp.Pages.User.Login.LoginPage"             
+             BackgroundColor="#1d293d" Shell.NavBarIsVisible="False">
     <Grid>
         <Border StrokeShape="RoundRectangle 16"
                 Background="White"
@@ -55,7 +55,7 @@
                 <VerticalStackLayout Spacing="4">
                     <Label Text="Senha"
                            FontAttributes="Bold"
-                           FontSize="14" 
+                           FontSize="14"
                            TextColor="#222" />
                     <Entry x:Name="txtSenha"
                            Text="123456"

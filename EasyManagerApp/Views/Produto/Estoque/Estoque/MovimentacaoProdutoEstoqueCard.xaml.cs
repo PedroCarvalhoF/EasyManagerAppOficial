@@ -36,7 +36,7 @@ public partial class MovimentacaoProdutoEstoqueCard : ContentView
         catch (Exception ex)
         {
 
-            await AppShell.Current.DisplayAlert("Atenção", ex.Message, "OK");
+            //await AppShell.Current.DisplayAlert("Atenção", ex.Message, "OK");
         }
     }
 
@@ -57,7 +57,7 @@ public partial class MovimentacaoProdutoEstoqueCard : ContentView
         catch (Exception ex)
         {
 
-            await AppShell.Current.DisplayAlert("Atenção", ex.Message, "OK");
+           // await AppShell.Current.DisplayAlert("Atenção", ex.Message, "OK");
         }
     }
 
