@@ -4,19 +4,19 @@
              x:Class="EasyManagerApp.Pages.User.UsuariosVinculados.UsuariosVinculadosPageEditar"
              xmlns:model="clr-namespace:EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente"
              x:DataType="model:UsuarioVinculadoClienteViewModel"
-           
              BackgroundColor="{StaticResource SecondaryColor}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="16" Spacing="16">
+        <VerticalStackLayout Padding="16"
+                             Spacing="16">
             <!-- Informações do Cliente -->
             <Border Style="{StaticResource CardBorderStyle}">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Informações do Cliente"
-                           Style="{StaticResource TitleTextStyle}"/>
-                    
+                           Style="{StaticResource TitleTextStyle}" />
+
                     <Label Text="{Binding ClienteNome}"
-                           Style="{StaticResource SubtitleTextStyle}"/>
+                           Style="{StaticResource SubtitleTextStyle}" />
                 </VerticalStackLayout>
             </Border>
 
@@ -24,41 +24,47 @@
             <Border Style="{StaticResource CardBorderStyle}">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Informações do Usuário"
-                           Style="{StaticResource TitleTextStyle}"/>
-                    
+                           Style="{StaticResource TitleTextStyle}" />
+
                     <Label Text="{Binding NomeUsuarioVinculado}"
-                           Style="{StaticResource SubtitleTextStyle}"/>
-                    
+                           Style="{StaticResource SubtitleTextStyle}" />
+
                     <Label Text="{Binding EmailUsuarioVinculado}"
-                           Style="{StaticResource BodyTextStyle}"/>
+                           Style="{StaticResource BodyTextStyle}" />
                 </VerticalStackLayout>
             </Border>
 
             <!-- Controle de Acesso -->
             <Border Style="{StaticResource CardBorderStyle}">
-                <VerticalStackLayout Spacing="16">
+                <HorizontalStackLayout Spacing="10"
+                                       VerticalOptions="Center">
+
                     <Label Text="Controle de Acesso"
-                           Style="{StaticResource TitleTextStyle}"/>
-                    
-                    <HorizontalStackLayout Spacing="8">
+                           Style="{StaticResource TitleTextStyle}" />
+
+                    <VerticalStackLayout Spacing="10">
+
                         <Switch IsToggled="{Binding AcessoPermitido}"
-                                OnColor="{StaticResource PrimaryColor}"/>
-                        <Label Text="Permitir acesso ao sistema"
+                                OnColor="{StaticResource PrimaryColor}"
+                                Toggled="Switch_Toggled" />
+
+                        <Label x:Name="lblAcesso"
+                               Text="Liberar acesso"
                                Style="{StaticResource SubtitleTextStyle}"
-                               VerticalOptions="Center"/>
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
+                               VerticalOptions="Center" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
             </Border>
 
             <!-- Botões de Ação -->
             <VerticalStackLayout Spacing="8">
                 <Button Text="Salvar Alterações"
                         Command="{Binding LiberarBloquearAcessoCommand}"
-                        Style="{StaticResource PrimaryButtonStyle}"/>
-                
+                        Style="{StaticResource PrimaryButtonStyle}" />
+
                 <Button Text="Voltar"
                         Clicked="OnVoltarClicked"
-                        Style="{StaticResource SecondaryButtonStyle}"/>
+                        Style="{StaticResource SecondaryButtonStyle}" />
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

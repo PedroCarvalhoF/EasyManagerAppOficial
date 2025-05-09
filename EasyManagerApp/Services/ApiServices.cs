@@ -1,6 +1,6 @@
 ﻿using EasyManagerApp.Dtos;
 using EasyManagerApp.Services.API;
-using System;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -12,50 +12,67 @@ public class ApiServices : IApiServices
     private static readonly HttpClient _httpClient = new()
     {
         BaseAddress = new Uri("https://pw8cff3s-7141.brs.devtunnels.ms/api/"),
-        Timeout = TimeSpan.FromSeconds(10) // Evita longos tempos de espera
+        Timeout = TimeSpan.FromSeconds(10)
     };
 
-    public async Task<RequestResult<T>> Get<T>(string? token, string url, object? objPost = null, CancellationToken cancellationToken = default)
+    public async Task<RequestResult<T>> Get<T>(string? token, string url, object? body = null, CancellationToken cancellationToken = default)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, url);
+        if (!string.IsNullOrEmpty(token))
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        if (body != null)
+        {
+            var json = JsonSerializer.Serialize(body);
+            request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+        }
+
+        return await SendRequest<T>(request, cancellationToken);
+    }
+
+    public async Task<RequestResult<T>> Post<T>(string? token, string url, object? body = null, CancellationToken cancellationToken = default)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Post, url);
+        if (!string.IsNullOrEmpty(token))
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        if (body != null)
+        {
+            var json = JsonSerializer.Serialize(body);
+            request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+        }
+
+        return await SendRequest<T>(request, cancellationToken);
+    }
+
+    public async Task<RequestResult<T>> Put<T>(string token, string url, object? body, CancellationToken cancellationToken = default)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Put, url);
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        if (body != null)
+        {
+            var json = JsonSerializer.Serialize(body);
+            request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+        }
+
+        return await SendRequest<T>(request, cancellationToken);
+    }
+
+    private async Task<RequestResult<T>> SendRequest<T>(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         try
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
-
-            if (!string.IsNullOrEmpty(token))
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            if (objPost != null)
-            {
-                var json = JsonSerializer.Serialize(objPost);
-                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
-            }
-
             using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
-
-            var strVerificacao = await response.Content.ReadAsStringAsync(cancellationToken);
-
             var responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
 
-            if (!response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
-                try
-                {
-                    // Tenta desserializar a resposta como um RequestResult<T>
-
-                    if ((int)response.StatusCode > 500)
-                        return RequestResult<T>.ErroRequisicao("Não foi possível acesso com servidor.");
-
-                    var erroResult = JsonSerializer.Deserialize<RequestResult<T>>(responseBody);
-                    return erroResult ?? RequestResult<T>.ErroRequisicao("Erro na API desconhecido.", (int)response.StatusCode);
-                }
-                catch
-                {
-                    return RequestResult<T>.ErroRequisicao(responseBody, (int)response.StatusCode);
-                }
+                var successResult = JsonSerializer.Deserialize<RequestResult<T>>(responseBody);
+                return successResult ?? RequestResult<T>.ErroLeituraAPI();
             }
 
-            var result = JsonSerializer.Deserialize<RequestResult<T>>(responseBody);
-            return result ?? RequestResult<T>.ErroLeituraAPI();
+            return HandleErrorResponse<T>(response, responseBody);
         }
         catch (TaskCanceledException)
         {
@@ -71,111 +88,36 @@ public class ApiServices : IApiServices
         }
     }
 
-    public async Task<RequestResult<T>> Post<T>(string? token, string url, object? objPost = null, CancellationToken cancellationToken = default)
+    private static RequestResult<T> HandleErrorResponse<T>(HttpResponseMessage response, string responseBody)
     {
         try
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            var statusCode = (int)response.StatusCode;
 
-            if (!string.IsNullOrEmpty(token))
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            if (objPost != null)
+            return response.StatusCode switch
             {
-                var json = JsonSerializer.Serialize(objPost);
-                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
-            }
+                HttpStatusCode.BadRequest => RequestResult<T>.ErroRequisicao("Algo deu errado com as informações enviadas. Confira e tente de novo.", statusCode),
+                HttpStatusCode.Unauthorized => RequestResult<T>.ErroRequisicao("Você precisa estar logado para fazer isso.", statusCode),
+                HttpStatusCode.Forbidden => RequestResult<T>.ErroRequisicao("Você não tem permissão pra isso.", statusCode),
+                HttpStatusCode.NotFound => RequestResult<T>.ErroRequisicao("Não encontramos o que você procurava.", statusCode),
+                HttpStatusCode.Conflict => RequestResult<T>.ErroRequisicao("Tem algo em conflito com o que você tentou fazer.", statusCode),
+                HttpStatusCode.UnprocessableEntity => RequestResult<T>.ErroRequisicao("Algum dado está incorreto. Corrija e tente de novo.", statusCode),
+                HttpStatusCode.TooManyRequests => RequestResult<T>.ErroRequisicao("Muitas tentativas em pouco tempo. Espere um pouco e tente de novo.", statusCode),
+                HttpStatusCode.InternalServerError => RequestResult<T>.ErroRequisicao("O servidor teve um problema. Tente novamente mais tarde.", statusCode),
+                HttpStatusCode.BadGateway => RequestResult<T>.ErroRequisicao("Problema de comunicação com o servidor. Tente mais tarde.", statusCode),
+                HttpStatusCode.ServiceUnavailable => RequestResult<T>.ErroRequisicao("O serviço está fora do ar no momento. Tente de novo em breve.", statusCode),
+                HttpStatusCode.GatewayTimeout => RequestResult<T>.ErroRequisicao("Demorou demais pra responder. Tente de novo.", statusCode),
+                _ when statusCode >= 500 => RequestResult<T>.ErroRequisicao("Algo deu errado do lado do servidor. Tente de novo mais tarde.", statusCode),
 
-            using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
-
-            var responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                try
-                {
-                    // Tenta desserializar a resposta como um RequestResult<T>
-
-                    if ((int)response.StatusCode > 500)
-                        return RequestResult<T>.ErroRequisicao("Não foi possível acesso com servidor.");
-
-                    var erroResult = JsonSerializer.Deserialize<RequestResult<T>>(responseBody);
-                    return erroResult ?? RequestResult<T>.ErroRequisicao("Erro na API desconhecido.", (int)response.StatusCode);
-                }
-                catch
-                {
-                    return RequestResult<T>.ErroRequisicao(responseBody, (int)response.StatusCode);
-                }
-            }
-
-            var result = JsonSerializer.Deserialize<RequestResult<T>>(responseBody);
-            return result ?? RequestResult<T>.ErroLeituraAPI();
+                _ => JsonSerializer.Deserialize<RequestResult<T>>(responseBody)
+                     ?? RequestResult<T>.ErroRequisicao("Aconteceu um erro inesperado. Tente novamente.", statusCode)
+            };
         }
-        catch (TaskCanceledException)
+        catch
         {
-            return RequestResult<T>.ErroRequisicao("Requisição cancelada pelo usuário ou timeout.");
-        }
-        catch (HttpRequestException ex)
-        {
-            return RequestResult<T>.ErroRequisicao($"Falha na conexão: {ex.Message}");
-        }
-        catch (Exception ex)
-        {
-            return RequestResult<T>.ErroProcessarResultadoApi(ex);
+            return RequestResult<T>.ErroRequisicao($"Não conseguimos entender a resposta do servidor. Detalhes: {responseBody}", (int)response.StatusCode);
         }
     }
 
-    public async Task<RequestResult<T>> Put<T>(string token, string url, object? objPut, CancellationToken cancellationToken = default)
-    {
-        try
-        {
-            var request = new HttpRequestMessage(HttpMethod.Put, url);
 
-            if (!string.IsNullOrEmpty(token))
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            if (objPut != null)
-            {
-                var json = JsonSerializer.Serialize(objPut);
-                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
-            }
-
-            using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
-
-            var responseBody = await response.Content.ReadAsStringAsync(cancellationToken);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                try
-                {
-                    // Tenta desserializar a resposta como um RequestResult<T>
-
-                    if ((int)response.StatusCode > 500)
-                        return RequestResult<T>.ErroRequisicao("Não foi possível acesso com servidor.");
-
-                    var erroResult = JsonSerializer.Deserialize<RequestResult<T>>(responseBody);
-                    return erroResult ?? RequestResult<T>.ErroRequisicao("Erro na API desconhecido.", (int)response.StatusCode);
-                }
-                catch
-                {
-                    return RequestResult<T>.ErroRequisicao(responseBody, (int)response.StatusCode);
-                }
-            }
-
-            var result = JsonSerializer.Deserialize<RequestResult<T>>(responseBody);
-            return result ?? RequestResult<T>.ErroLeituraAPI();
-        }
-        catch (TaskCanceledException)
-        {
-            return RequestResult<T>.ErroRequisicao("Requisição cancelada pelo usuário ou timeout.");
-        }
-        catch (HttpRequestException ex)
-        {
-            return RequestResult<T>.ErroRequisicao($"Falha na conexão: {ex.Message}");
-        }
-        catch (Exception ex)
-        {
-            return RequestResult<T>.ErroProcessarResultadoApi(ex);
-        }
-    }
 }

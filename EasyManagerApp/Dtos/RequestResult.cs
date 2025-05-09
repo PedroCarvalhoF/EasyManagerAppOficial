@@ -17,12 +17,10 @@ public class RequestResult<T>
     public T? Data { get; set; }
 
     public RequestResult() { }
+
     public RequestResult(Exception ex)
-    {
-        Status = false;
-        StatusCode = 600;
-        Mensagem = $"Erro inesperado.Detalhes: {ex.Message}";
-    }
+        : this(false, 600, $"Erro inesperado. Detalhes: {ex.Message}") { }
+
     public RequestResult(bool status, int statusCode, string? mensagem = null, T? data = default)
     {
         Status = status;
@@ -31,12 +29,12 @@ public class RequestResult<T>
         Data = data;
     }
 
-    public static RequestResult<T> ErroLeituraAPI()
-        => new RequestResult<T>(false, 400, "Erro inesperado. Verifique a conexão.");
+    public static RequestResult<T> ErroLeituraAPI() =>
+        new(false, 400, "Erro inesperado. Verifique a conexão.");
 
-    public static RequestResult<T> ErroProcessarResultadoApi(Exception ex)
-        => new RequestResult<T>(false, 500, $"Erro ao processar resultado da API: {ex.Message}");
+    public static RequestResult<T> ErroProcessarResultadoApi(Exception ex) =>
+        new(false, 500, $"Erro ao processar resultado da API: {ex.Message}");
 
-    public static RequestResult<T> ErroRequisicao(string mensagem, int statusCode = 400)
-        => new RequestResult<T>(false, statusCode, mensagem);
+    public static RequestResult<T> ErroRequisicao(string mensagem, int statusCode = 400) =>
+        new(false, statusCode, mensagem);
 }
