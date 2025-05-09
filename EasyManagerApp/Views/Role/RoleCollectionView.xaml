@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Views.Role.RoleCollectionView"
+             xmlns:dto="clr-namespace:EasyManagerApp.Dtos.Role"
+             x:DataType="dto:RoleDto">
+
+    <Border Style="{StaticResource CardBorderStyle}">
+        <HorizontalStackLayout>
+            <Label Text="{Binding RoleName}"
+                   Style="{StaticResource TitleTextStyle}"
+                   Margin="10,16,10,10" />
+            <Switch OnColor="{StaticResource PrimaryColor}"
+                    WidthRequest="10"
+                    HeightRequest="30" />
+        </HorizontalStackLayout>
+    </Border>
+
+</ContentView>

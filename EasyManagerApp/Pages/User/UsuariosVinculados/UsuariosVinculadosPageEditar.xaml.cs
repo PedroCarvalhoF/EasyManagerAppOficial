@@ -1,23 +1,24 @@
-using EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente;
+using EasyManagerApp.DtosViewModel.Compostas;
 
 namespace EasyManagerApp.Pages.User.UsuariosVinculados;
 
 public partial class UsuariosVinculadosPageEditar : ContentPage
 {
-    private UsuarioVinculadoClienteViewModel _usuarioVinculadoClienteViewModel;
-    public UsuariosVinculadosPageEditar(UsuarioVinculadoClienteViewModel usuarioVinculadoClienteViewModel)
+    private readonly UsuarioVinculadoClienteEditarViewModel _viewModel;
+
+    public UsuariosVinculadosPageEditar(UsuarioVinculadoClienteEditarViewModel viewModel)
     {
         InitializeComponent();
-        _usuarioVinculadoClienteViewModel = usuarioVinculadoClienteViewModel;
-        BindingContext = _usuarioVinculadoClienteViewModel;
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
 
-        if (_usuarioVinculadoClienteViewModel.acessoPermitido)
-            lblAcesso.Text = "Remover Acesso";
-        else
-            lblAcesso.Text = "Liberar Acesso";
+        AtualizarTextoAcesso();
+    }
 
-
-
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.Role.InitAsync();
     }
 
     private async void OnVoltarClicked(object sender, EventArgs e)
@@ -27,9 +28,16 @@ public partial class UsuariosVinculadosPageEditar : ContentPage
 
     private void Switch_Toggled(object sender, ToggledEventArgs e)
     {
-        if (_usuarioVinculadoClienteViewModel.acessoPermitido)
-            lblAcesso.Text = "Remover Acesso";
-        else
-            lblAcesso.Text = "Liberar Acesso";
+        AtualizarTextoAcesso();
+    }
+
+    private void AtualizarTextoAcesso()
+    {
+        lblAcesso.Text = _viewModel.UsuarioVinculado.acessoPermitido
+            ? "Remover Acesso"
+            : "Liberar Acesso";
+
+        cllviewPermissoes.IsVisible = _viewModel.UsuarioVinculado.acessoPermitido;
+        borderPermissoes.IsVisible = _viewModel.UsuarioVinculado.acessoPermitido;
     }
 }

@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyManagerApp.Pages.User.UsuariosVinculados.UsuariosVinculadosPageEditar"
-             xmlns:model="clr-namespace:EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente"
-             x:DataType="model:UsuarioVinculadoClienteViewModel"
+             xmlns:model="clr-namespace:EasyManagerApp.DtosViewModel.Compostas"
+             xmlns:modelview_user_role="clr-namespace:EasyManagerApp.Dtos.Role"
+             xmlns:collection_view_permissoes="clr-namespace:EasyManagerApp.Views.Role"
+             x:DataType="model:UsuarioVinculadoClienteEditarViewModel"
              BackgroundColor="{StaticResource SecondaryColor}">
 
     <ScrollView>
@@ -15,7 +17,7 @@
                     <Label Text="Informações do Cliente"
                            Style="{StaticResource TitleTextStyle}" />
 
-                    <Label Text="{Binding ClienteNome}"
+                    <Label Text="{Binding UsuarioVinculado.ClienteNome}"
                            Style="{StaticResource SubtitleTextStyle}" />
                 </VerticalStackLayout>
             </Border>
@@ -26,10 +28,10 @@
                     <Label Text="Informações do Usuário"
                            Style="{StaticResource TitleTextStyle}" />
 
-                    <Label Text="{Binding NomeUsuarioVinculado}"
+                    <Label Text="{Binding UsuarioVinculado.NomeUsuarioVinculado}"
                            Style="{StaticResource SubtitleTextStyle}" />
 
-                    <Label Text="{Binding EmailUsuarioVinculado}"
+                    <Label Text="{Binding UsuarioVinculado.EmailUsuarioVinculado}"
                            Style="{StaticResource BodyTextStyle}" />
                 </VerticalStackLayout>
             </Border>
@@ -44,7 +46,7 @@
 
                     <VerticalStackLayout Spacing="10">
 
-                        <Switch IsToggled="{Binding AcessoPermitido}"
+                        <Switch IsToggled="{Binding UsuarioVinculado.AcessoPermitido}"
                                 OnColor="{StaticResource PrimaryColor}"
                                 Toggled="Switch_Toggled" />
 
@@ -55,6 +57,18 @@
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
             </Border>
+
+            <!-- Roles de Permissoes-->
+            <CollectionView x:Name="cllviewPermissoes"
+                            ItemsSource="{Binding Role.RolesPermissoes}"
+                            ItemsLayout="VerticalGrid, 2"                           >
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <collection_view_permissoes:RoleCollectionView />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <!-- Botões de Ação -->
             <VerticalStackLayout Spacing="8">

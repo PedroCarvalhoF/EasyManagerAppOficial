@@ -1,4 +1,5 @@
-﻿using EasyManagerApp.DtosViewModel.Filial;
+﻿using EasyManagerApp.DtosViewModel.Compostas;
+using EasyManagerApp.DtosViewModel.Filial;
 using EasyManagerApp.DtosViewModel.Produto;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Movimento;
@@ -12,7 +13,7 @@ public static class ConfigureViewModels
     public static void ConfigureViewModelsApp(this MauiAppBuilder builder)
     {
         builder.Services.AddScoped<UserRoleViewModel>();
-
+        builder.Services.AddScoped<UsuarioVinculadoClienteEditarViewModel>();
 
         builder.Services.AddScoped<UsuarioVinculadoClienteViewModel>();
         builder.Services.AddScoped<ProdutoViewModel>();

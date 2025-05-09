@@ -1,4 +1,6 @@
 using EasyManagerApp.Dtos.UsuarioVinculadoCliente;
+using EasyManagerApp.DtosViewModel.Compostas;
+using EasyManagerApp.DtosViewModel.Role;
 using EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente;
 using EasyManagerApp.Pages.User.UsuariosVinculados;
 
@@ -27,10 +29,13 @@ public partial class UsuariosVinculadosView : ContentView
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
         var view_model = App.Services.GetRequiredService<UsuarioVinculadoClienteViewModel>();
+        var view_modelRole = App.Services.GetRequiredService<UserRoleViewModel>();
 
         view_model.Token = await SecureStorage.GetAsync("token");
         view_model.UsuarioSelecionado = _usuarioSelecionado;
 
-        await Navigation.PushAsync(new UsuariosVinculadosPageEditar(view_model));
+        var vm = new UsuarioVinculadoClienteEditarViewModel(view_model, view_modelRole);
+
+        await Navigation.PushAsync(new UsuariosVinculadosPageEditar(vm));
     }
 }
