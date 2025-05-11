@@ -2,7 +2,6 @@ using EasyManagerApp.Dtos.Account;
 using EasyManagerApp.Dtos.Filial;
 using EasyManagerApp.DtosViewModel.Role;
 using EasyManagerApp.Pages.Filial;
-using EasyManagerApp.Pages.PageAdmin;
 using EasyManagerApp.Services.Intefaces;
 
 namespace EasyManagerApp.Pages.User.Login;

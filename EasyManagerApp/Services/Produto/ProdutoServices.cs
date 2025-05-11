@@ -42,7 +42,7 @@ public class ProdutoServices : IProdutoServices<ProdutoDto>
     {
         try
         {
-            string rota = Rota ;
+            string rota = Rota;
 
             return await _apiServices.Put<ProdutoDto>(token, rota, produtoUpdate, default);
         }

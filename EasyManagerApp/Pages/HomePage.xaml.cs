@@ -1,4 +1,3 @@
-using EasyManagerApp.Dtos.Filial;
 using EasyManagerApp.DtosViewModel.Filial;
 using EasyManagerApp.Pages.Filial;
 
@@ -15,7 +14,7 @@ public partial class HomePage : ContentPage
         base.OnAppearing();
 
         //l.Text = ConfiguracoesGlobalApp.GetFilialSelecionada().NomeFilial;
-        
+
     }
     private async void Filial_Tapped(object sender, TappedEventArgs e)
     {
@@ -30,5 +29,5 @@ public partial class HomePage : ContentPage
 
             await DisplayAlert("Erro", ex.Message, "OK");
         }
-    }   
+    }
 }

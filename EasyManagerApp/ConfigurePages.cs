@@ -11,13 +11,13 @@ public static class ConfigurePages
 {
     public static void ConfigurePagesApp(this MauiAppBuilder builder)
     {
-        
+
         builder.Services.AddScoped<MovimentacaoProdutoEstoqueCard>();
         builder.Services.AddScoped<CadastrarUserPage>();
         builder.Services.AddScoped<ProdutosPageEditar>();
         builder.Services.AddScoped<UnidadeProdutoMedidaPage>();
         builder.Services.AddScoped<UserRolePage>();
         builder.Services.AddScoped<RoleUserPage>();
-        builder.Services.AddScoped<FilialPage>();   
+        builder.Services.AddScoped<FilialPage>();
     }
 }

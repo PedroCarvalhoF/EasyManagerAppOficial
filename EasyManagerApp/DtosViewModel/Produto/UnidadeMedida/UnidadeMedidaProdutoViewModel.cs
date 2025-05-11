@@ -37,7 +37,7 @@ public partial class UnidadeMedidaProdutoViewModel : ObservableObject
             if (result != null && result.Status)
             {
                 UnidadesMedidasProdutos = new ObservableCollection<UnidadeMedidaProdutoDto>(result.Data);
-            
+
             }
             else
             {

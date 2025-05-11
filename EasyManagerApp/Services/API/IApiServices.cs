@@ -1,5 +1,4 @@
 ﻿using EasyManagerApp.Dtos;
-using EasyManagerApp.Dtos.Produto;
 
 namespace EasyManagerApp.Services.API;
 

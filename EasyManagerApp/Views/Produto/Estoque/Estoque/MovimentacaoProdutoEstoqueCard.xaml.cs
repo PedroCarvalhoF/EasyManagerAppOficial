@@ -5,11 +5,11 @@ namespace EasyManagerApp.Views.Produto.Estoque.Estoque;
 
 public partial class MovimentacaoProdutoEstoqueCard : ContentView
 {
-    private  IEstoqueProdutoServices<EstoqueProdutoDto> _estoqueProdutoService;
+    private IEstoqueProdutoServices<EstoqueProdutoDto> _estoqueProdutoService;
     public string? Token { get; set; }
     public MovimentacaoProdutoEstoqueCard()
     {
-        InitializeComponent();       
+        InitializeComponent();
     }
 
     public void SetServicesTemp(IEstoqueProdutoServices<EstoqueProdutoDto> estoqueProdutoService)
@@ -57,7 +57,7 @@ public partial class MovimentacaoProdutoEstoqueCard : ContentView
         catch (Exception ex)
         {
 
-           // await AppShell.Current.DisplayAlert("Atenção", ex.Message, "OK");
+            // await AppShell.Current.DisplayAlert("Atenção", ex.Message, "OK");
         }
     }
 

@@ -1,5 +1,4 @@
 using EasyManagerApp.DtosViewModel.Filial;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.Filial;
 

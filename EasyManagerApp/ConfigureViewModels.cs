@@ -20,7 +20,7 @@ public static class ConfigureViewModels
 
         builder.Services.AddScoped<UsuarioVinculadoClienteViewModel>();
         builder.Services.AddScoped<ProdutoViewModel>();
-        
+
         builder.Services.AddScoped<UnidadeMedidaProdutoViewModel>();
         builder.Services.AddScoped<EstoqueProdutoViewModel>();
         builder.Services.AddScoped<MovimentoEstoqueViewModel>();

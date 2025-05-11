@@ -1,5 +1,4 @@
 using EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.User.UsuariosVinculados;
 
@@ -11,7 +10,7 @@ public partial class UsuariosVinculadosPage : ContentPage
     {
         InitializeComponent();
         _viewModel = viewModel;
-        BindingContext = _viewModel;       
+        BindingContext = _viewModel;
     }
 
     protected override async void OnAppearing()

@@ -9,10 +9,10 @@ public class EstoqueProdutoDto
     public string NomeProduto { get; set; }
 
     [JsonPropertyName("categoriaProdutoEntityId")]
-    public Guid CategoriaProdutoEntityId { get;  set; }
+    public Guid CategoriaProdutoEntityId { get; set; }
 
     [JsonPropertyName("categoriaProduto")]
-    public string CategoriaProduto { get;  set; }
+    public string CategoriaProduto { get; set; }
 
     [JsonPropertyName("filialId")]
     public Guid FilialId { get; set; }

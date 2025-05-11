@@ -2,10 +2,9 @@
 using EasyManagerApp.Dtos.ProdutoCategoria;
 using EasyManagerApp.Services.API;
 using EasyManagerApp.Services.Intefaces;
-using System.Threading;
 
 namespace EasyManagerApp.Services.ProdutoCategoria;
-public class CategoriaProdutoServices : ICategoriaProdutoServices  
+public class CategoriaProdutoServices : ICategoriaProdutoServices
 {
     private readonly IApiServices _apiServices;
     private const string Rota = "CategoriaProduto/";

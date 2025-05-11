@@ -33,5 +33,5 @@ public partial class FilialPageSelecionarApp : ContentPage
 
             await DisplayAlert("Atenção", ex.Message, "Ok");
         }
-    }  
+    }
 }

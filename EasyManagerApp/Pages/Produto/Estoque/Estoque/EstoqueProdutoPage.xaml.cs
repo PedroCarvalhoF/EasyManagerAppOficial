@@ -1,4 +1,3 @@
-using EasyManagerApp.Dtos.Filial;
 using EasyManagerApp.Dtos.Produto.Estoque;
 using EasyManagerApp.Dtos.ProdutoCategoria;
 using EasyManagerApp.DtosViewModel.Filial;

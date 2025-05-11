@@ -122,7 +122,7 @@ public partial class UserRoleViewModel
         {
             var token = await SecureStorage.GetAsync("token")
                          ?? throw new Exception("Não foi possível localizar token");
-         
+
             var resultResponse = await _userRoleServices.RemovarRoleUser(token, removerRoleUser);
             if (!resultResponse.Status)
                 throw new Exception(resultResponse.Mensagem ?? "Erro inesperado. Verifique a conexão.");

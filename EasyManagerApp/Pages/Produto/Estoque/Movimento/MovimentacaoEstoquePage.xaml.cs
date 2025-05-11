@@ -4,7 +4,6 @@ using EasyManagerApp.Dtos.Produto.Estoque.Movimento;
 using EasyManagerApp.DtosViewModel.Filial;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Movimento;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.Produto.Estoque.Movimento;
 

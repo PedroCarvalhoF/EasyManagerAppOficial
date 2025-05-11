@@ -1,6 +1,5 @@
 using EasyManagerApp.Dtos.Role;
 using EasyManagerApp.DtosViewModel.Compostas;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.User.UsuariosVinculados;
 

@@ -1,5 +1,4 @@
 using EasyManagerApp.DtosViewModel.Compostas;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.User.UsuariosVinculados;
 
@@ -36,7 +35,7 @@ public partial class UsuariosVinculadosPageEditar : ContentPage
     {
         lblAcesso.Text = _viewModel.UsuarioVinculado.acessoPermitido
             ? "Remover Acesso"
-            : "Liberar Acesso";        
+            : "Liberar Acesso";
     }
 
     private async void btnEditarPermissoes_Clicked(object sender, EventArgs e)

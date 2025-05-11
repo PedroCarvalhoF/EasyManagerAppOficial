@@ -53,9 +53,9 @@ public static class ConfigureServices
         builder.Services.AddSingleton<IProdutoServices<ProdutoDto>, ProdutoServices>();
         builder.Services.AddSingleton<IUnidadeMedidaProdutoServices<UnidadeMedidaProdutoDto>, UnidadeMedidaProdutoServices>();
         builder.Services.AddSingleton<IEstoqueProdutoServices<EstoqueProdutoDto>, EstoqueProdutoServices>();
-        
+
         builder.Services.AddSingleton<IMovimentoEstoqueServices<MovimentoEstoqueDto>, MovimentoEstoqueServices>();
         builder.Services.AddSingleton<IUsuarioClienteVinculoServices<UsuarioVinculadoClienteDto>, UsuarioClienteVinculoServices>();
-        
+
     }
 }

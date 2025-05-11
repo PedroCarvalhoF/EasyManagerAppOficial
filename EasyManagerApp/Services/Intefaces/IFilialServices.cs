@@ -1,6 +1,5 @@
 ﻿using EasyManagerApp.Dtos;
 using EasyManagerApp.Dtos.Filial;
-using System.Security.Claims;
 
 namespace EasyManagerApp.Services.Intefaces;
 public interface IFilialServices<F> where F : FilialDto

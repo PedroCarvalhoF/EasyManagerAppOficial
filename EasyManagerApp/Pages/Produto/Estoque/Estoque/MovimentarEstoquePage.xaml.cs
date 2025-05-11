@@ -1,6 +1,5 @@
 using EasyManagerApp.Dtos.Produto.Estoque;
 using EasyManagerApp.DtosViewModel.Produto.Estoque.Estoque;
-using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages.Produto.Estoque.Estoque;
 
@@ -19,7 +18,7 @@ public partial class MovimentarEstoquePage : ContentPage
         Token = token;
         btnConfirmarMovimentacao.IsEnabled = false;
 
-       
+
     }
 
     protected override void OnAppearing()
