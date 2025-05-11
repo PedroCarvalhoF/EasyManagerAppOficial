@@ -31,6 +31,8 @@ public partial class LoginPage : ContentPage
             if (!resultLogin.Status)
                 throw new ArgumentException(resultLogin.Mensagem);
 
+
+            ConfiguracoesGlobalApp.AtualizarUsuarioLogado(resultLogin.Data!);
             await SecureStorage.SetAsync("token", resultLogin.Data.AccessToken ?? string.Empty);
 
 

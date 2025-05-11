@@ -13,7 +13,7 @@ public partial class HomePage : ContentPage
     {
         base.OnAppearing();
 
-        //l.Text = ConfiguracoesGlobalApp.GetFilialSelecionada().NomeFilial;
+        lblBoasVindas.Text = $"{ConfiguracoesGlobalApp.GetUsuarioLogadoResponse().Nome} , Bem Vindo";
 
     }
     private async void Filial_Tapped(object sender, TappedEventArgs e)
