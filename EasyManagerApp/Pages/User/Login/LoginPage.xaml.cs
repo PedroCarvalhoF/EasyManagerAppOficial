@@ -33,9 +33,10 @@ public partial class LoginPage : ContentPage
             await SecureStorage.SetAsync("token", resultLogin.Data.AccessToken ?? string.Empty);
 
 
-            
+
             var model = GetServicesPagesViews.GetProvider().GetRequiredService<UserRoleViewModel>();
-            App.Current.MainPage = new AdminPage(model);
+
+            App.Current.MainPage = new HomePage();
 
             await DisplayAlert("Acesso", "Login realizado com sucesso.", "Acesso permitido");
         }

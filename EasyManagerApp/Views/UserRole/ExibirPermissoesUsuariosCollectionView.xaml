@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Views.UserRole.ExibirPermissoesUsuariosCollectionView"
+             xmlns:local_dto="clr-namespace:EasyManagerApp.Dtos.Role"
+             x:DataType="local_dto:RoleDto">
+
+    <HorizontalStackLayout    HorizontalOptions="Center"
+                              VerticalOptions="Center">
+
+        <Border Padding="5"
+                HeightRequest="40"
+                BackgroundColor="#363949"
+                StrokeShape="RoundRectangle 8"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            <Label x:Name="lblPermissaoUsuario"
+                   Text="{Binding RoleName}"
+                   TextColor="#F5F3EF"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Style="{StaticResource BodyTextStyle}" />
+        </Border>
+    </HorizontalStackLayout>
+</ContentView>

@@ -16,31 +16,47 @@
 
             <!-- Common Styles -->
             <Style TargetType="Label">
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
-                <Setter Property="TextColor" Value="#1d293d" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
+                <Setter Property="TextColor"
+                        Value="#1d293d" />
             </Style>
 
             <Style TargetType="Button">
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
-                <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="CornerRadius" Value="8" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="BackgroundColor" Value="#512BD4" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
+                <Setter Property="HeightRequest"
+                        Value="50" />
+                <Setter Property="CornerRadius"
+                        Value="8" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="BackgroundColor"
+                        Value="#512BD4" />
             </Style>
 
             <Style TargetType="Entry">
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
-                <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="TextColor" Value="#1d293d" />
-                <Setter Property="PlaceholderColor" Value="#666666" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
+                <Setter Property="HeightRequest"
+                        Value="50" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+                <Setter Property="TextColor"
+                        Value="#1d293d" />
+                <Setter Property="PlaceholderColor"
+                        Value="#666666" />
             </Style>
 
             <Style TargetType="SearchBar">
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="TextColor" Value="#1d293d" />
-                <Setter Property="PlaceholderColor" Value="#666666" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+                <Setter Property="TextColor"
+                        Value="#1d293d" />
+                <Setter Property="PlaceholderColor"
+                        Value="#666666" />
             </Style>
 
             <!-- Common Colors -->
@@ -51,49 +67,80 @@
             <Color x:Key="TextTertiaryColor">Gray</Color>
 
             <!-- Common Border Style -->
-            <Style x:Key="CardBorderStyle" TargetType="Border">
-                <Setter Property="StrokeShape" Value="RoundRectangle 10" />
-                <Setter Property="Stroke" Value="LightGray" />
-                <Setter Property="StrokeThickness" Value="1" />
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="Padding" Value="16" />
+            <Style x:Key="CardBorderStyle"
+                   TargetType="Border">
+                <Setter Property="StrokeShape"
+                        Value="RoundRectangle 10" />
+                <Setter Property="Stroke"
+                        Value="LightGray" />
+                <Setter Property="StrokeThickness"
+                        Value="1" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+                <Setter Property="Padding"
+                        Value="16" />
             </Style>
 
             <!-- Common Text Styles -->
-            <Style x:Key="TitleTextStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="18" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
+            <Style x:Key="TitleTextStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource PrimaryColor}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
             </Style>
 
-            <Style x:Key="SubtitleTextStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="TextColor" Value="{StaticResource TextSecondaryColor}" />
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
+            <Style x:Key="SubtitleTextStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="16" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource TextSecondaryColor}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
             </Style>
 
-            <Style x:Key="BodyTextStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="TextColor" Value="{StaticResource TextTertiaryColor}" />
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
+            <Style x:Key="BodyTextStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource TextTertiaryColor}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
             </Style>
 
             <!-- Button Styles -->
-            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
-                <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="CornerRadius" Value="8" />
+            <Style x:Key="PrimaryButtonStyle"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource PrimaryColor}" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
+                <Setter Property="HeightRequest"
+                        Value="40" />
+                <Setter Property="CornerRadius"
+                        Value="8" />
             </Style>
 
-            <Style x:Key="SecondaryButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Gray" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}" />
-                <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="CornerRadius" Value="8" />
+            <Style x:Key="SecondaryButtonStyle"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="Gray" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
+                <Setter Property="HeightRequest"
+                        Value="40" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

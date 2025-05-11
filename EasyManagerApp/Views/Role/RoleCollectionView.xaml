@@ -5,15 +5,18 @@
              xmlns:dto="clr-namespace:EasyManagerApp.Dtos.Role"
              x:DataType="dto:RoleDto">
 
-    <Border Style="{StaticResource CardBorderStyle}">
-        <HorizontalStackLayout>
+    <Border Style="{StaticResource CardBorderStyle}"
+            Margin="2">
+        <Grid ColumnDefinitions="3*,*">
             <Label Text="{Binding RoleName}"
-                   Style="{StaticResource TitleTextStyle}"
-                   Margin="10,16,10,10" />
-            <Switch OnColor="{StaticResource PrimaryColor}"
-                    WidthRequest="10"
-                    HeightRequest="30" />
-        </HorizontalStackLayout>
+                   Style="{StaticResource SubtitleTextStyle}"
+                   VerticalOptions="Center" />
+            <Switch Grid.Column="1"
+                    IsToggled="{Binding IsSelected}"
+                    OnColor="{StaticResource PrimaryColor}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End" />
+        </Grid>
     </Border>
 
 </ContentView>

@@ -16,7 +16,6 @@
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Informações do Cliente"
                            Style="{StaticResource TitleTextStyle}" />
-
                     <Label Text="{Binding UsuarioVinculado.ClienteNome}"
                            Style="{StaticResource SubtitleTextStyle}" />
                 </VerticalStackLayout>
@@ -27,10 +26,8 @@
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Informações do Usuário"
                            Style="{StaticResource TitleTextStyle}" />
-
                     <Label Text="{Binding UsuarioVinculado.NomeUsuarioVinculado}"
                            Style="{StaticResource SubtitleTextStyle}" />
-
                     <Label Text="{Binding UsuarioVinculado.EmailUsuarioVinculado}"
                            Style="{StaticResource BodyTextStyle}" />
                 </VerticalStackLayout>
@@ -38,48 +35,43 @@
 
             <!-- Controle de Acesso -->
             <Border Style="{StaticResource CardBorderStyle}">
-                <HorizontalStackLayout Spacing="10"
-                                       VerticalOptions="Center">
-
-                    <Label Text="Controle de Acesso"
-                           Style="{StaticResource TitleTextStyle}" />
-
-                    <VerticalStackLayout Spacing="10">
-
-                        <Switch IsToggled="{Binding UsuarioVinculado.AcessoPermitido}"
-                                OnColor="{StaticResource PrimaryColor}"
-                                Toggled="Switch_Toggled" />
-
+                <Grid ColumnDefinitions="*,Auto"
+                      Padding="16">
+                    <VerticalStackLayout Grid.Column="0"
+                                         Spacing="4">
+                        <Label Text="Controle de Acesso"
+                               Style="{StaticResource TitleTextStyle}" />
                         <Label x:Name="lblAcesso"
                                Text="Liberar acesso"
-                               Style="{StaticResource SubtitleTextStyle}"
-                               VerticalOptions="Center" />
+                               Style="{StaticResource SubtitleTextStyle}" />
                     </VerticalStackLayout>
-                </HorizontalStackLayout>
+                    <Switch Grid.Column="1"
+                            IsToggled="{Binding UsuarioVinculado.AcessoPermitido}"
+                            OnColor="{StaticResource PrimaryColor}"
+                            Toggled="Switch_Toggled"
+                            VerticalOptions="Center" />
+                </Grid>
             </Border>
 
-            <!-- Roles de Permissoes-->
-            <CollectionView x:Name="cllviewPermissoes"
-                            ItemsSource="{Binding Role.RolesPermissoes}"
-                            ItemsLayout="VerticalGrid, 2"                           >
-
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <collection_view_permissoes:RoleCollectionView />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
             <!-- Botões de Ação -->
-            <VerticalStackLayout Spacing="8">
-                <Button Text="Salvar Alterações"
-                        Command="{Binding LiberarBloquearAcessoCommand}"
-                        Style="{StaticResource PrimaryButtonStyle}" />
-
-                <Button Text="Voltar"
+            <Grid ColumnDefinitions="auto,auto,*"
+                  ColumnSpacing="5">
+                <Button Grid.Column="0"
+                        Text="Voltar"
                         Clicked="OnVoltarClicked"
                         Style="{StaticResource SecondaryButtonStyle}" />
-            </VerticalStackLayout>
+                <Button Grid.Column="1"
+                        Text="Salvar"
+                        Command="{Binding UsuarioVinculado.LiberarBloquearAcessoCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}" />
+
+                <Button x:Name="btnEditarPermissoes"
+                        Clicked="btnEditarPermissoes_Clicked"
+                        Grid.Column="2"
+                        Text="Permissões Avançadas"
+                        Style="{StaticResource PrimaryButtonStyle}" />
+
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

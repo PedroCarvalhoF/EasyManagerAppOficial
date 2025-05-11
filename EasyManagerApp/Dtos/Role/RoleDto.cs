@@ -8,4 +8,9 @@ public class RoleDto
 
     [JsonPropertyName("roleName")]
     public string? RoleName { get; set; }
+
+    [JsonPropertyName("description")]
+    public string? Description { get; set; }
+
+    public bool IsSelected { get; set; }
 }
