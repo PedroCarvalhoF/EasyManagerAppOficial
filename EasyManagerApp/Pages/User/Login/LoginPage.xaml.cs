@@ -1,5 +1,7 @@
 using EasyManagerApp.Dtos.Account;
+using EasyManagerApp.Dtos.Filial;
 using EasyManagerApp.DtosViewModel.Role;
+using EasyManagerApp.Pages.Filial;
 using EasyManagerApp.Pages.PageAdmin;
 using EasyManagerApp.Services.Intefaces;
 
@@ -36,7 +38,26 @@ public partial class LoginPage : ContentPage
 
             var model = GetServicesPagesViews.GetProvider().GetRequiredService<UserRoleViewModel>();
 
-            App.Current.MainPage = new HomePage();
+
+            var filial_services = GetServicesPagesViews.GetProvider().GetRequiredService<IFilialServices<FilialDto>>();
+
+            var filial_reponse = await filial_services.ConsultarFilialById(resultLogin.Data.AccessToken!);
+
+            ConfiguracoesGlobalApp.AtualizarFilialSelecionada(filial_reponse.Data.ToList());
+
+
+            if (ConfiguracoesGlobalApp.GetFiliais().Count > 1)
+            {
+                App.Current.MainPage = new FilialPageSelecionarApp(ConfiguracoesGlobalApp.GetFiliais());
+            }
+            else
+            {
+                ConfiguracoesGlobalApp.AtualizarFilialSelecionada(filial_reponse.Data.FirstOrDefault()!);
+                App.Current.MainPage = new NavigationPage(new HomePage());
+            }
+
+
+
 
             await DisplayAlert("Acesso", "Login realizado com sucesso.", "Acesso permitido");
         }

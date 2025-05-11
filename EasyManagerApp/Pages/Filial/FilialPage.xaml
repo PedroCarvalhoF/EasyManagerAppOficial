@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Pages.Filial.FilialPage"
+             xmlns:filial_vm="clr-namespace:EasyManagerApp.DtosViewModel.Filial"
+             x:DataType="filial_vm:FilialViewModel"
+             Title="FilialPage">
+    <Grid RowDefinitions="Auto,*"
+          Padding="20">
+        <!-- Header Section -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*,Auto"
+              Margin="0,0,0,20">
+            <VerticalStackLayout Grid.Column="0"
+                                 Spacing="5">
+                <Label Text="Filiais"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Gray900}" />
+                <Label Text="Gerencie suas filiais e acompanhe suas métricas"
+                       FontSize="14"
+                       TextColor="{StaticResource Gray600}" />
+            </VerticalStackLayout>
+            <Button Grid.Column="1"
+                    Text="Nova Filial"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    CornerRadius="8"
+                    Padding="20,10"
+                    FontAttributes="Bold" />
+        </Grid>
+
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+                <!-- Search Bar -->
+                <Frame BorderColor="{StaticResource Gray200}"
+                       BackgroundColor="White"
+                       CornerRadius="12"
+                       Padding="15"
+                       HasShadow="True">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Image Source="search_icon.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               VerticalOptions="Center" />
+                        <Entry Grid.Column="1"
+                               Placeholder="Buscar filial..."
+                               Margin="10,0,0,0"
+                               FontSize="14" />
+                    </Grid>
+                </Frame>
+
+                <!-- Branch Cards -->
+                <CollectionView ItemsSource="{Binding FiliaisDtos}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="0,0,0,15"
+                                   BackgroundColor="White"
+                                   BorderColor="{StaticResource Gray200}"
+                                   CornerRadius="16"
+                                   HasShadow="True"
+                                   Padding="0">
+                                <Grid RowDefinitions="Auto,Auto"
+                                      Padding="20">
+                                    <!-- Branch Header -->
+                                    <Grid Grid.Row="0"
+                                          ColumnDefinitions="*,Auto">
+                                        <VerticalStackLayout Grid.Column="0"
+                                                             Spacing="5">
+                                            <Label Text="{Binding NomeFilial}"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{StaticResource Gray900}" />
+
+                                        </VerticalStackLayout>
+                                        <Button Grid.Column="1"
+                                                Text="Editar"
+                                                BackgroundColor="Transparent"
+                                                TextColor="{StaticResource Primary}"
+                                                BorderColor="{StaticResource Primary}"
+                                                BorderWidth="1"
+                                                CornerRadius="8"
+                                                Padding="15,8" />
+                                    </Grid>
+
+                                    <!-- Metrics Grid -->
+                                    <Grid Grid.Row="1"
+                                          ColumnDefinitions="*,*,*"
+                                          Margin="0,20,0,0"
+                                          ColumnSpacing="15">
+
+                                        <!-- Pending Maintenance -->
+                                        <Frame Grid.Column="0"
+                                               BackgroundColor="{StaticResource Gray50}"
+                                               CornerRadius="12"
+                                               Padding="15">
+                                            <VerticalStackLayout Spacing="5">
+                                                <Label Text="Manutenções Pendentes"
+                                                       FontSize="13"
+                                                       TextColor="{StaticResource Gray600}" />
+                                                <Label Text="7"
+                                                       FontSize="24"
+                                                       FontAttributes="Bold"
+                                                       TextColor="{StaticResource Warning}" />
+                                            </VerticalStackLayout>
+                                        </Frame>
+
+                                        <!-- Total Employees -->
+                                        <Frame Grid.Column="1"
+                                               BackgroundColor="{StaticResource Gray50}"
+                                               CornerRadius="12"
+                                               Padding="15">
+                                            <VerticalStackLayout Spacing="5">
+                                                <Label Text="Colaboradores"
+                                                       FontSize="13"
+                                                       TextColor="{StaticResource Gray600}" />
+                                                <Label Text="54"
+                                                       FontSize="24"
+                                                       FontAttributes="Bold"
+                                                       TextColor="{StaticResource Primary}" />
+                                            </VerticalStackLayout>
+                                        </Frame>
+
+                                        <!-- Contra Requests -->
+                                        <Frame Grid.Column="2"
+                                               BackgroundColor="{StaticResource Gray50}"
+                                               CornerRadius="12"
+                                               Padding="15">
+                                            <VerticalStackLayout Spacing="5">
+                                                <Label Text="Solicitações de Contras"
+                                                       FontSize="13"
+                                                       TextColor="{StaticResource Gray600}" />
+                                                <Label Text="{Binding SolicitacoesContras}"
+                                                       FontSize="24"
+                                                       FontAttributes="Bold"
+                                                       TextColor="{StaticResource Info}" />
+                                            </VerticalStackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

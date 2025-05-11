@@ -1,4 +1,5 @@
-﻿using EasyManagerApp.Pages.PageAdmin;
+﻿using EasyManagerApp.Pages.Filial;
+using EasyManagerApp.Pages.PageAdmin;
 using EasyManagerApp.Pages.Produto;
 using EasyManagerApp.Pages.Produto.UnidadeMedidaProduto;
 using EasyManagerApp.Pages.User;
@@ -17,5 +18,6 @@ public static class ConfigurePages
         builder.Services.AddScoped<UnidadeProdutoMedidaPage>();
         builder.Services.AddScoped<UserRolePage>();
         builder.Services.AddScoped<RoleUserPage>();
+        builder.Services.AddScoped<FilialPage>();   
     }
 }

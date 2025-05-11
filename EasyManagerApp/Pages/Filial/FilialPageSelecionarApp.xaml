@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyManagerApp.Pages.Filial.FilialPageSelecionarApp"
+             BackgroundColor="#1d293d">
+
+    <Grid>
+
+        <Border StrokeShape="RoundRectangle 16"
+                Background="White"
+                StrokeThickness="0"
+                Padding="32,32,32,24"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                WidthRequest="380"
+                MinimumWidthRequest="320">
+            <Border.Shadow>
+                <Shadow Brush="#00000022"
+                        Radius="16"
+                        Opacity="0.18" />
+            </Border.Shadow>
+            <VerticalStackLayout Spacing="10">
+
+                <Image Source="filial_icon.png"
+                       WidthRequest="40"
+                       Margin="0,0,0,10" />
+
+                <Label Text="Selecione uma Filial"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,30"
+                       Style="{StaticResource SubtitleTextStyle}" />
+                <Picker x:Name="pckFiliais"
+                        ItemDisplayBinding="{Binding NomeFilial}" />
+                <Button Text="SELECIONAR"
+                        x:Name="btnSelecionarFilial"
+                        Clicked="btnSelecionarFilial_Clicked"
+                        Style="{StaticResource PrimaryButtonStyle}" />
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>

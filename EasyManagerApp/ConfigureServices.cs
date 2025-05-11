@@ -27,10 +27,23 @@ public static class ConfigureServices
     {
         builder.Services.AddSingleton<IApiServices, ApiServices>();
         builder.Services.AddSingleton<IAccountServices, AccountServices>();
-
-
-        //andamento
         builder.Services.AddSingleton<IUserRoleServices<RoleDto>, UserRoleServices>();
+        builder.Services.AddSingleton<IFilialServices<FilialDto>, FilialServices>();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -40,7 +53,7 @@ public static class ConfigureServices
         builder.Services.AddSingleton<IProdutoServices<ProdutoDto>, ProdutoServices>();
         builder.Services.AddSingleton<IUnidadeMedidaProdutoServices<UnidadeMedidaProdutoDto>, UnidadeMedidaProdutoServices>();
         builder.Services.AddSingleton<IEstoqueProdutoServices<EstoqueProdutoDto>, EstoqueProdutoServices>();
-        builder.Services.AddSingleton<IFilialServices<FilialDto>, FilialServices>();
+        
         builder.Services.AddSingleton<IMovimentoEstoqueServices<MovimentoEstoqueDto>, MovimentoEstoqueServices>();
         builder.Services.AddSingleton<IUsuarioClienteVinculoServices<UsuarioVinculadoClienteDto>, UsuarioClienteVinculoServices>();
         
