@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EasyManagerApp.Pages.User.Login.LoginPage"             
-             BackgroundColor="#1d293d" Shell.NavBarIsVisible="False">
+             x:Class="EasyManagerApp.Pages.User.Login.LoginPage"
+             xmlns:tookit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="#1d293d"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <tookit:StatusBarBehavior StatusBarColor="#1d293d"
+                                  StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
     <Grid>
         <Border StrokeShape="RoundRectangle 16"
                 Background="White"

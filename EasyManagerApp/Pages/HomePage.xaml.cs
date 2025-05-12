@@ -14,7 +14,7 @@ public partial class HomePage : ContentPage
         base.OnAppearing();
 
         lblBoasVindas.Text = $"{ConfiguracoesGlobalApp.GetUsuarioLogadoResponse().Nome} , Bem Vindo";
-        lblFilialSelecionada.Text = $"Filial Selecionada: {ConfiguracoesGlobalApp.GetFilialSelecionada().NomeFilial}";
+        lblFilialSelecionada.Text = $"Filial: {ConfiguracoesGlobalApp.GetFilialSelecionada().NomeFilial}";
 
     }
     private async void Filial_Tapped(object sender, TappedEventArgs e)
