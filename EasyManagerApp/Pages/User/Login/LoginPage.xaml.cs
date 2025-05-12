@@ -53,7 +53,7 @@ public partial class LoginPage : ContentPage
             }
             else
             {
-                ConfiguracoesGlobalApp.AtualizarFilialSelecionada(filial_reponse.Data.FirstOrDefault()!);
+                ConfiguracoesGlobalApp.AtualizarFilialSelecionada(filial_reponse.Data.FirstOrDefault()!);                
                 App.Current.MainPage = new NavigationPage(new HomePage());
             }
 

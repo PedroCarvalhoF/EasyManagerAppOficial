@@ -11,6 +11,8 @@
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="SecondaryDarkText">#9880e5</Color>
     <Color x:Key="Tertiary">#FD6618</Color>
+    <Color x:Key="Vermelho">#fb2c36</Color>
+    <Color x:Key="Verde">#007a55</Color>
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
