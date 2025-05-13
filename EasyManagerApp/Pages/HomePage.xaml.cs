@@ -1,5 +1,8 @@
 using EasyManagerApp.DtosViewModel.Filial;
+using EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente;
 using EasyManagerApp.Pages.Filial;
+using EasyManagerApp.Pages.User.UsuariosVinculados;
+using System.Threading.Tasks;
 
 namespace EasyManagerApp.Pages;
 
@@ -24,6 +27,21 @@ public partial class HomePage : ContentPage
             var vw_filila = App.Services.GetRequiredService<FilialViewModel>();
 
             await Navigation.PushAsync(new NavigationPage(new FilialPage(vw_filila)));
+        }
+        catch (Exception ex)
+        {
+
+            await DisplayAlert("Erro", ex.Message, "OK");
+        }
+    }
+
+    private async void OnUsuarios_Tapped(object sender, TappedEventArgs e)
+    {
+        try
+        {
+            var vm_usuarios = App.Services.GetRequiredService<UsuarioVinculadoClienteViewModel>();
+            
+            await Navigation.PushAsync(new NavigationPage(new UsuariosVinculadosPage(vm_usuarios)));
         }
         catch (Exception ex)
         {

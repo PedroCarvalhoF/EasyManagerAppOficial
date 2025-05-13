@@ -58,7 +58,11 @@
                                 Radius="8"
                                 Opacity="0.10" />
                     </Border.Shadow>
-                    
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnUsuarios_Tapped"></TapGestureRecognizer>
+                    </Border.GestureRecognizers>
+
                     <VerticalStackLayout Spacing="8"
                                          HorizontalOptions="Center"
                                          VerticalOptions="Center">
@@ -153,13 +157,13 @@
                                TextColor="{StaticResource TextPrimaryColor}"
                                HorizontalOptions="Center" />
                     </VerticalStackLayout>
-                </Border>              
-            </Grid>      
-            
+                </Border>
+            </Grid>
+
             <!-- Other Functions Menu -->
             <VerticalStackLayout Grid.Row="4"
                                  Spacing="15">
-               
+
                 <Label Text="Outras Funções"
                        FontSize="18"
                        FontAttributes="Bold"
