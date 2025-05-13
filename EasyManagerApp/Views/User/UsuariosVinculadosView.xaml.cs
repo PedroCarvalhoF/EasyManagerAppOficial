@@ -5,16 +5,13 @@ using EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente;
 using EasyManagerApp.Pages.User.UsuariosVinculados;
 
 namespace EasyManagerApp.Views.User;
-
 public partial class UsuariosVinculadosView : ContentView
-{
-    private bool _isInitialized = false;
+{   
     private UsuarioVinculadoClienteDto? _usuarioSelecionado;
     public UsuariosVinculadosView()
     {
         InitializeComponent();
     }
-
     protected override void OnBindingContextChanged()
     {
         base.OnBindingContextChanged();
@@ -22,7 +19,7 @@ public partial class UsuariosVinculadosView : ContentView
         if (BindingContext is UsuarioVinculadoClienteDto dto)
         {
             _usuarioSelecionado = dto;
-            lblStatus.Text = dto.AcessoPermitido ? "Acesso liberado sistema" : "Sem permissão de acesso no sistema";
+            lblStatus.Text = dto.AcessoPermitido ? "Liberado Acesso" : "Acesso Restrito";
             lblStatus.TextColor = dto.AcessoPermitido ? Colors.SeaGreen : Colors.Crimson;
         }
     }

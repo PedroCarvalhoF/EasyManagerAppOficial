@@ -4,36 +4,62 @@
              x:Class="EasyManagerApp.Pages.User.UsuariosVinculados.UsuariosVinculadosPage"
              xmlns:view="clr-namespace:EasyManagerApp.Views.User"
              xmlns:model="clr-namespace:EasyManagerApp.DtosViewModel.UsuarioVinculadoCliente"
+             
              x:DataType="model:UsuarioVinculadoClienteViewModel"
              Title="Usuários Vinculados"
-             BackgroundColor="#F5F6FA">
+             BackgroundColor="#F5F6FA"
+             xmlns:tookit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             NavigationPage.HasNavigationBar="False">
 
-    <Grid RowDefinitions="Auto,*,Auto"
-          Padding="16">
-        <!-- Search Bar -->
-        <SearchBar Grid.Row="0"
-                   Placeholder="Buscar usuário"
-                   Text="{Binding SearchText}"
-                   Margin="0,0,0,8" />
+    <ContentPage.Behaviors>
+        <tookit:StatusBarBehavior StatusBarColor="#123"
+                                  StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
 
-        <!-- Lista de Usuários -->
-        <CollectionView x:Name="cllviewUsuarios"
-                        Grid.Row="1"
-                        ItemsSource="{Binding Usuarios}"
-                        SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <view:UsuariosVinculadosView/>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,*,Auto"
+              Padding="20">
 
-        <!-- Botão Adicionar -->
-        <Button Grid.Row="2"
-                Text="Vincular Novo Usuário"
-                Command="{Binding VincularUsuarioCommand}"
-                Margin="0,8,0,0"
-                BackgroundColor="#1d293d"
-                TextColor="White" />
-    </Grid>
+            <!-- Header -->
+            <Label Text="Usuários Vinculados"
+                   TextColor="{StaticResource Gray900}"
+                   Style="{StaticResource TitleTextStyle}"
+                   Margin="0,0,0,10" />
+
+            <!-- Search Bar -->
+            <SearchBar Grid.Row="1"
+                       Placeholder="Buscar usuário"
+                       Text="{Binding SearchText}"
+                       Margin="0,0,0,5" />
+
+            <!-- Lista de Usuários -->
+            <Border Grid.Row="2"
+                    BackgroundColor="White"
+                    Stroke="{StaticResource White}"
+                    Padding="0">
+                <Border.Shadow>
+                    <Shadow Brush="#00000022"
+                            Radius="8"
+                            Opacity="0.10" />
+                </Border.Shadow>
+
+                <CollectionView x:Name="cllviewUsuarios"
+                                ItemsSource="{Binding Usuarios}"
+                                SelectionMode="None"
+                                Margin="0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <view:UsuariosVinculadosView />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+
+            <!-- Botão Adicionar -->
+            <Button Grid.Row="3"
+                    Text="Vincular Novo Usuário"
+                    Command="{Binding VincularUsuarioCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}" />
+        </Grid>
+    </ScrollView>
 </ContentPage>

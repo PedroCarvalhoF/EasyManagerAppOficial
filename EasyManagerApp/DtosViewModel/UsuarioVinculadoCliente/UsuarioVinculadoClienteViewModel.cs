@@ -10,6 +10,14 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
     private readonly IUsuarioClienteVinculoServices<UsuarioVinculadoClienteDto> _usuarioVinculadoClienteServices;
     private ObservableCollection<UsuarioVinculadoClienteDto> _todosUsuarios = new();
 
+
+
+    #region Teste Notificacao
+
+    public EventHandler<string>? Notificacao;
+
+    #endregion
+
     public UsuarioVinculadoClienteViewModel(IUsuarioClienteVinculoServices<UsuarioVinculadoClienteDto> usuarioVinculadoClienteServices)
     {
         _usuarioVinculadoClienteServices = usuarioVinculadoClienteServices;
@@ -120,12 +128,13 @@ public partial class UsuarioVinculadoClienteViewModel : ObservableObject
         var result = await _usuarioVinculadoClienteServices.LiberarBloquearAcessoUsuarioVinculadoAsync(liberarRemoverAcesso, Token);
         if (result.Status)
         {
+            Notificacao.Invoke(this, "Usuário alterado");
             await CarregarUsuariosVinculados();
-            await Shell.Current.DisplayAlert("Usuário", "Usuário alterado com sucesso.", "OK");
+
         }
         else
         {
-            await Shell.Current.DisplayAlert("Erro", result.Mensagem ?? "Erro ao carregar produtos", "OK");
+            Notificacao.Invoke(this, $"{result.Mensagem}");
         }
 
     }

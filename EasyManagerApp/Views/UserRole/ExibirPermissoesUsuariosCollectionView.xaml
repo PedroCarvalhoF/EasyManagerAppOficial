@@ -5,23 +5,13 @@
              xmlns:local_dto="clr-namespace:EasyManagerApp.Dtos.Role"
              x:DataType="local_dto:RoleDto">
 
-    <HorizontalStackLayout    HorizontalOptions="Center"
-                              VerticalOptions="Center">
-
-        <Border Padding="5"
-                HeightRequest="40"
-                BackgroundColor="#363949"
-                StrokeShape="RoundRectangle 8"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
-            <Label x:Name="lblPermissaoUsuario"
-                   Text="{Binding RoleName}"
-                   TextColor="#F5F3EF"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   Style="{StaticResource BodyTextStyle}" />
-        </Border>
-    </HorizontalStackLayout>
+    <Border Padding="5"
+            Style="{StaticResource CardBorderStyle}"
+            WidthRequest="150">
+        <Label x:Name="lblPermissaoUsuario"
+               Text="{Binding RoleName}"
+               Style="{StaticResource TitleTextStyle}"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center" />
+    </Border>
 </ContentView>

@@ -6,7 +6,7 @@
              x:DataType="model:UsuarioVinculadoClienteDto">
 
     <Border Padding="10"
-            Margin="5"
+            Margin="2"
             BackgroundColor="White"
             Stroke="LightGray"
             StrokeThickness="1"
@@ -24,13 +24,10 @@
                                  VerticalOptions="Center">
 
                 <Label Text="{Binding NomeUsuarioVinculado}"
-                       FontSize="16"
-                       FontAttributes="Bold"
-                       TextColor="DarkSlateGray" />
+                       Style="{StaticResource BodyTextStyle}" />
 
                 <Label Text="{Binding EmailUsuarioVinculado}"
-                       FontSize="13"
-                       TextColor="Gray" />
+                       Style="{StaticResource BodyTextStyle}" />
 
             </VerticalStackLayout>
             <Label Grid.Column="1"

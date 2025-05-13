@@ -11,8 +11,13 @@ public partial class UsuariosVinculadosPageEditar : ContentPage
         InitializeComponent();
         _viewModel = viewModel;
         BindingContext = _viewModel;
-
+        _viewModel.UsuarioVinculado.Notificacao += Vm_UsuariVinciuladoNotificacao;
         AtualizarTextoAcesso();
+    }
+
+    private async void Vm_UsuariVinciuladoNotificacao(object? sender, string e)
+    {
+        await DisplayAlert("Atenção", e, "Ok");
     }
 
     protected override async void OnAppearing()
@@ -20,6 +25,8 @@ public partial class UsuariosVinculadosPageEditar : ContentPage
         base.OnAppearing();
         await _viewModel.Role.InitAsync();
     }
+
+
 
     private async void OnVoltarClicked(object sender, EventArgs e)
     {

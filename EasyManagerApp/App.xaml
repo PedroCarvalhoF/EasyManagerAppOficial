@@ -70,7 +70,7 @@
             <Style x:Key="CardBorderStyle"
                    TargetType="Border">
                 <Setter Property="StrokeShape"
-                        Value="RoundRectangle 10" />
+                        Value="RoundRectangle 8" />
                 <Setter Property="Stroke"
                         Value="LightGray" />
                 <Setter Property="StrokeThickness"
@@ -139,9 +139,46 @@
                         Value="{StaticResource RobotoRegular}" />
                 <Setter Property="HeightRequest"
                         Value="40" />
+                <Setter Property="WidthRequest"
+                        Value="100" />
                 <Setter Property="CornerRadius"
-                        Value="5" />
+                        Value="10" />
             </Style>
+
+            <!--button cancelar/remover-->
+            <Style x:Key="BtnCancelarRemover"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource Vermelho}" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
+                <Setter Property="HeightRequest"
+                        Value="50" />
+                <Setter Property="WidthRequest"
+                        Value="100" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+            </Style>
+
+            <!--button confirmar/add-->
+            <Style x:Key="BtnConfirmarAdd"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource Verde}" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource RobotoRegular}" />
+                <Setter Property="HeightRequest"
+                        Value="50" />
+                <Setter Property="WidthRequest"
+                        Value="100" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
